@@ -38,6 +38,7 @@ body{
         display: flex;
         justify-content: center;
         border-bottom: 1px solid;
+        z-index: -1;
         & nav{
             width: var(--pagewidth);
             display: flex;
