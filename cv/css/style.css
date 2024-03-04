@@ -338,6 +338,7 @@ body{
                 }
                 & >div.puestos{
                     flex-wrap: wrap;
+                    justify-content: space-between;
                     & >article{
                         width: 38%;
                     }
