@@ -89,3 +89,9 @@ button{
     justify-content: left;
     padding-left: 8vw;
 }
+#cr{
+    position: absolute;
+    top: 10px;
+    color: gray;
+    font-weight: 100;
+}
