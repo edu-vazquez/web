@@ -23,7 +23,10 @@ function ejecutar(e){
         jugador = "O";
         document.getElementById("jugador").innerHTML = "O";
         if (check(jugadasX)){
-            anuncio("X");
+            setTimeout(function() {
+                anuncio("X");
+            }, 200);
+
         }
     }else if (jugador == "O" && contenido == ""){
         document.getElementById(e.target.id).innerHTML = "O";
@@ -31,7 +34,9 @@ function ejecutar(e){
         document.getElementById("jugador").innerHTML = "X";
         jugadasO.push(e.target.id);
         if (check(jugadasO)){
-            anuncio("O");
+            setTimeout(function() {
+                anuncio("O");
+            }, 200);
         }
     }
 }
