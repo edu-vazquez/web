@@ -106,7 +106,7 @@ body{
 }
 
 .glow{
-    filter: saturate(500);
+    filter: saturate(100);
 }
 
 @media (max-width: 900px){
