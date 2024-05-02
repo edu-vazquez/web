@@ -4,6 +4,7 @@ let elementBlue = document.getElementById("blue");
 let elementYellow = document.getElementById("yellow");
 let elementGreen = document.getElementById("green");
 let elementLose = document.getElementById("lose");
+let elementSimon = document.getElementById("simon");
 
 let simonInputRed = "red";
 let simonInputBlue = "blue";
@@ -12,37 +13,50 @@ let simonInputGreen = "green";
 
 let playerArray = [];
 let simonArray = [];
+let play = false;
 
 elementRed.addEventListener("click", playerInput);
 elementBlue.addEventListener("click", playerInput);
 elementYellow.addEventListener("click", playerInput);
 elementGreen.addEventListener("click", playerInput);
-document.getElementById("simon").addEventListener("click", simonPlay);
+elementSimon.addEventListener("click", simonPlay);
+
 window.onload = glowCircle;
 elementLose.addEventListener("click", () => {
     elementLose.style.display = "none";
+    elementSimon.addEventListener("click", simonPlay);
 })
 
 function simonPlay(){
+    if (play == false){
+        simonClick();
+    }
     simonArray.push(simonChoose());
     for (let i = 0 ; i < simonArray.length ; i++){
         glow(simonArray[i], i * 500 + 1, i * 500 + 300);
     }
     playerArray = [];
+    play = true;
+    let nivel = simonArray.length;
+    elementSimon.innerHTML = `<p>${nivel}</p>`;
+    elementSimon.removeEventListener("click", simonPlay);
 }
 
 function playerInput(e){
-    playerArray.push(e.target.id);
-    areEquals();
+    if (play == true){
+        playerArray.push(e.target.id);
+        areEquals();
+        glow(e.target.id, 1, 300);
+    }
 }
 function areEquals(){
     for (let i = 0 ; i < playerArray.length ; i++ ){
         if (simonArray[i] !== playerArray[i]){
-            let nivel = simonArray.length - 1;
             simonArray = [];
             playerArray = [];
-            elementLose.innerHTML = `<p>Alcanzaste el nivel:</p><p>${nivel}</p>`;
             elementLose.style.display = "flex";
+            elementSimon.innerHTML = `<p>SIMON</p>`;
+            play = false;
             return (0);
         }
     }
@@ -60,6 +74,15 @@ function glow(elementId, time1, time2){
     setTimeout(() => {
         document.getElementById(elementId).classList.remove("glow");
     }, time2);
+}
+
+function simonClick(){
+    setTimeout(() => {
+        elementSimon.style.backgroundColor = "rgb(211, 211, 211)";
+    }, 1); 
+    setTimeout(() => {
+        elementSimon.style.backgroundColor = "white";
+    }, 200);
 }
 
 function glowCircle(){
