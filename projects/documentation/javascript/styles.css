@@ -1,0 +1,186 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Menlo, Monaco, 'Courier New', monospace;
+    font-size: 0.95em;
+    line-height: 20px;
+    font-weight: inherit;
+    color: rgb(223, 223, 223);
+}
+:root{
+    --colorCodigo: rgb(63, 63, 63);
+    --colorBackgroundPage: rgb(32,32,32);
+    --colorBackgroundHover: rgb(74, 74, 74);
+    --colorBackgroundCode:  rgb(59, 59, 59);
+    --colorBackgroundShorcutsTable1:  rgb(50, 48, 63);
+    --colorBackgroundShorcutsTable2:  rgb(44, 42, 55);
+
+}
+body{
+    width: 100%;
+    height: 100vh;
+    background-color: var(--colorBackgroundPage);
+    color: white;
+    display: flex;
+    flex-wrap: nowrap;
+    & nav, main {
+        padding: 1.5%;
+    }
+    & nav{
+        width: 20vw;
+        height: 100%;
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        outline: 1px solid rgba(98, 98, 98, 0.5); 
+        & >*{
+            border-bottom:  1px solid rgba(120, 120, 120, 0.5); 
+        }
+        & #navbar-title{
+            padding: 10% 10%;
+            font-size: 1.5em;
+        }
+        & a{
+            padding: 5% 10%;
+            &:hover{
+                background-color: var(--colorBackgroundHover);
+            }
+        }
+    }
+    & main{
+        flex: 4;
+        padding: 4%;
+        margin-left: 20vw;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: fit-content;
+
+        & >section{
+            & header, h3{
+                margin: 1vw 0;
+                font-size: 1.5em;
+                color: rgb(255, 255, 255);
+            }
+            & header{
+                color: red;
+            }
+            & >p{
+                margin: 0 0 1vw 0vw;
+            }
+            & li{
+                margin: 0 0 1vw 0vw;
+            }
+            & .code{
+                height: fit-content;
+                margin: 2vw 0vw;
+                padding: 3vw 2vw 2vw 2vw;
+                font-size: 1em;
+                display: flex;
+                flex-direction: column;
+                background-color: var(--colorBackgroundCode);
+                border-radius: 10px;
+                position: relative;
+                overflow: hidden;
+                & #copy-content{
+                    position: absolute;
+                    top: 0.3vw;
+                    right: 1vw;
+                    font-size: 1rem;
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
+                &::before{
+                    content: "JavaScript";
+                    border-bottom: 1px solid gray;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 2vw;
+                    padding-left: 1vw;
+                    display: flex;
+                    align-items: center;
+                }
+                .codeComment{
+                    color: RGB(128, 128, 128);
+                }
+                .codeReservedWord{
+                    color: rgb(79, 139, 218);
+                }
+                .codeNum{
+                    color: rgb(255, 38, 0);
+                }
+                .codeString{
+                    color: rgb(198, 105, 12) ;
+                }
+                .var{
+                    color: rgb(19, 185, 200)
+                }
+            }
+            & .shorcutsVSCMac{
+                width: fit-content;
+                height: fit-content;
+                margin: 2vw 0vw;
+                font-size: 1em;
+                background-color: var(--colorBackgroundShorcutsTable1);
+                border-radius: 10px;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                & .shorcutsListHeader{
+                    font-weight: 900;
+                }
+                & .shorcutsRow{
+                    width: 100%;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    padding: 1em;
+                    &:nth-child(odd) {
+                        background-color: var(--colorBackgroundShorcutsTable2);
+                    }
+                }
+            }
+        }
+    }
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+.key{
+    background-color: var(--colorBackgroundHover);
+    padding: 0.3em 1em;
+    border-radius: 0.5em;
+    font-size: 1.2em;
+}
+
+@media (max-width: 900px){
+    body{
+        & nav{
+            width: 100%;
+            height: 10vh;
+            overflow: auto;
+            background-color: var(--colorBackgroundPage);
+            z-index: 10;
+            & #navbar-title{
+                padding: 3% 2vw;
+                font-size: 1.5em;
+                border-bottom: 0;
+            }
+            & > a{
+                display: none;
+            }
+        }
+        & main{
+            width: 100%;
+            margin: 0;
+            margin-top: 10vh;
+        }
+    }
+
+}
