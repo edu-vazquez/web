@@ -20,19 +20,33 @@
 <body>
     <header id="page-header">
         <h1 id="title">Eduardo Vazquez</h1>
-        <span class="material-symbols-outlined" id="open-navbar">
-            menu
-        </span>
         <nav id="navbar">
-            <span class="material-symbols-outlined" id="close-navbar">
-                close
-            </span>
-            <a href="#welcome-section">home</a>
-            <a href="#about">about</a>
-            <a href="#projects">projects</a>
-            <a href="#contact">contact</a>
-        <!-- 7.The navbar should contain at least one link that you can click on to navigate to different sections of the page -->
-        </nav> <!-- 6.Your portfolio should have a navbar with an id of navbar -->
+            
+            <a href="#welcome-section" class="links">
+                <span class="material-symbols-outlined">
+                    home
+                </span>               
+                home
+            </a>
+            <a href="#about" class="links">
+                <span class="material-symbols-outlined">
+                    person
+                </span> 
+                about
+            </a>
+            <a href="#projects" class="links">
+                <span class="material-symbols-outlined">
+                    work
+                </span>
+                projects
+            </a>
+            <a class="links" id="links">
+                <span class="material-symbols-outlined">
+                    contact_page
+                </span>
+                contact
+            </a>
+        </nav>
     </header>
     <main>
         <section id="welcome-section"> 
@@ -64,23 +78,21 @@
             </article>
         </section>
     </main>
-    <footer>
+    <footer id="footer">
         <section id="contact">
-            <a href="#">
+            <a href="https://github.com/edu-vazquez" target="_blank">
                 <i class="fa-brands fa-github"></i>
             </a>
-            <a href="#">
+            <a id="profile-link" href="www.linkedin.com/in/eduvazquez" target="_blank">
                 <i class="fa-brands fa-linkedin"></i>
             </a>
-            <a href="#">
+            <a target="_blank" id="email-link">
                 <i class="fa-solid fa-envelope"></i>
             </a>
         </section>
-        <section id="copy">
-            <p>all rights reserved</p>
-            <p>may, 2024</p>
+        <section id="email">
+            dev.eduardovazquez@gmail.com
         </section>
-        <!-- 8.Your portfolio should have a link with an id of profile-link, which opens your GitHub or freeCodeCamp profile in a new tab -->
     </footer>
 </body>
 </html>
