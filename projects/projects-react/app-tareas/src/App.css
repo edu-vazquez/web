@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body{
+    color: white;
+    background-color: #1b1b32;
+    font-family: Lato, sans-serif;
+    margin-top: 40px;
+}
+
+.App{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.tarea-lista-principal{
+    width: 600px;
+    min-height: 300px;
+    background-color: #d0d0d5;
+    padding: 25px;
+    margin: 10px;
+    border-radius: 26px;
+}
+h1{
+    color: #1b1b32;
+    font-size: 25px;
+    font-family: Roboto, sans-serif;
+    margin: 20px 0;
+    width: 100%;
+    text-align: center;
+}
