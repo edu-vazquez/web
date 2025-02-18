@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDUARDO VAZQUEZ</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Prism.js (CSS and JS) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" rel="stylesheet">
+
+    <!-- Prism.js for line numbering -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <!-- Fontawesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <div id="menu-container">
+        <div id="file-title">
+            <h1>Eduardo Vazquez - CV</h1>
+            <div class="mac-window-controls">
+                <div class="control close"></div>
+                <div class="control minimize"></div>
+                <div class="control maximize"></div>
+            </div>
+        </div>
+        <div id="menu-options">
+            <p>File</p>
+            <p>Edit</p>
+            <p>Selection</p>
+            <p>View</p>
+            <p>Go</p>
+            <p>Terminal</p>
+            <p>Help</p>
+        </div>
+    </div>
+    <div id="ide-container">
+            <!-- File Explorer Panel -->
+        <div id="file-explorer">
+            <div class="folder open" id="folder1">
+                <div class="folder-name" onclick="toggleFolder('folder1')">CV</div>
+                <div class="file-item file">
+                    <span class="file-name " onclick="showFileContent('index.html')">index.html</span>
+                </div>
+                <div class="file-item file">
+                    <span class="file-name" onclick="showFileContent('style.css')">style.css</span>
+                </div>
+                <div class="file-item file">
+                    <span class="file-name" onclick="showFileContent('app.js')">script.js</span>
+                </div>
+            </div>
+
+            <div class="folder open" id="folder3">
+                <div class="folder-name" onclick="toggleFolder('folder2')">TECH STACK</div>
+            
+                <div class="folder-name subfolder" onclick="toggleFolder('folder2-1')">Programming & Markup Languages</div>
+                    <div class="file-item file level-2">
+                        <span class="file-name" onclick="showFileContent('readme.md')">PYTHON, JAVASCRIPT, C</span>
+                    </div>
+                    <div class="file-item file level-2">
+                        <span class="file-name" onclick="showFileContent('readme.md')">HTML, CSS</span>
+                    </div>
+
+                <div class="folder-name subfolder" onclick="toggleFolder('folder2-3')">Frameworks & Libraries</div>
+                    <div class="file-item file level-2">
+                        <span class="file-name" onclick="showFileContent('readme.md')">React</span>
+                    </div>
+                    <div class="file-item file level-2">
+                        <span class="file-name" onclick="showFileContent('readme.md')">Pandas</span>
+                    </div>
+                    <div class="file-item file level-2">
+                        <span class="file-name" onclick="showFileContent('readme.md')">MySQL</span>
+                    </div>
+
+                <div class="folder-name subfolder" onclick="toggleFolder('folder2-5')">Web Scraping & Automation</div>
+                    <div class="file-item file level-2">
+                        <span class="file-name" onclick="showFileContent('readme.md')">Selenium</span>
+                    </div>
+                    <div class="file-item file level-2">
+                        <span class="file-name" onclick="showFileContent('readme.md')">Puppeteer</span>
+                    </div>
+
+                <div class="folder-name subfolder" onclick="toggleFolder('folder2-6')">Containers & Orchestration</div>
+                    <div class="file-item file level-2">
+                        <span class="file-name" onclick="showFileContent('readme.md')">Docker</span>
+                    </div>
+                
+                <div class="folder-name subfolder" onclick="toggleFolder('folder2')">Version Control & Project Management</div>
+                    <div class="file-item file level-2">
+                        <span class="file-name" onclick="showFileContent('readme.md')">Git, GitHub & GitHub Actions</span>
+                    </div>
+                    <div class="file-item file level-2">
+                        <span class="file-name" onclick="showFileContent('readme.md')">MS Project, Trello</span>
+                    </div>
+                    <div class="file-item file level-2">
+                        <span class="file-name" onclick="showFileContent('readme.md')">Agile: Scrum, Kanban</span>
+                    </div>
+            </div>
+
+            <div class="folder open" id="folder4">
+                <div class="folder-name" onclick="toggleFolder('folder2')">LANGUAGES</div>
+
+                <div class="file-item file">
+                    <span class="file-name" onclick="showFileContent('readme.md')">Spanish (native)</span>
+                </div>
+                <div class="file-item file">
+                    <span class="file-name" onclick="showFileContent('readme.md')">English (advanced)</span>
+                </div>
+            </div>
+
+            <div class="folder open" id="folder5">
+                <div class="folder-name" onclick="toggleFolder('folder2')">EDUCATION</div>
+
+                <div class="file-item file">
+                    <span class="file-name" onclick="showFileContent('readme.md')"><strong>Design and Publishing</strong> - 2024 - STUCOM, Barcelona</span>
+                </div>
+                <div class="file-item file">
+                    <span class="file-name" onclick="showFileContent('readme.md')"><strong>42 Barcelona</strong> - 2023 - Barcelona</span>
+                </div>
+                <div class="file-item file">
+                    <span class="file-name" onclick="showFileContent('readme.md')"><strong>Architecture</strong> - 2013 - National University of Asuncion, Paraguay</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- File Content Area -->
+        <div id="file-content">
+            <pre class="line-numbers">
+<code class="language-markup">&lt;cv lang="en"&gt;
+    &lt;head&gt;
+        &lt;meta phone=  613514974  /&gt;
+        &lt;meta address=  "Barcelona, CP 08028" /&gt;
+        &lt;meta email=  "iam.eduardovazquez@icloud.com"  /&gt;
+        &lt;link href=  "https://www.eduardo-vazquez.com/cv-it"  /&gt;
+        &lt;link href=  "https://www.linkedin.com/in/eduvazquez"  /&gt;
+        &lt;link href=  "https://github.com/edu-vazquez"  /&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;section id=  "PROFESSIONAL PROFILE" ;&gt;
+            &lt;p&gt; A motivated Junior Developer with a focus on writing clean, efficient code.
+                My experience spans across technical roles, project management and customer-facing positions, has allowed me 
+                to develop strong communication and problem-solving skills. 
+                I am passionate about merging design and technology to create intuitive and functional digital experiences. &lt;/p&gt;
+        &lt;/section&gt;
+        
+        &lt;section class=  "WORK EXPERIENCE"  id=  "PROJECT DEVELOPMENT & MANAGEMENT"  &gt;
+            &lt;h2&gt; Vinsoca / A&amp;R / SENAVITAT / Priori Engineering &lt;/h2&gt;
+            &lt;ul&gt;
+                &lt;li&gt; Collaborated with clients to understand project requirements, improving client relationships 
+                and delivering tailored solutions. &lt;/li&gt;
+                &lt;li&gt; Executed and managed complex projects, including budgeting, scheduling, and risk management, 
+                which enhanced my organizational abilities. &lt;/li&gt;
+                &lt;li&gt; Worked closely with cross-functional teams, improving my ability to collaborate and adapt 
+                in dynamic environments. &lt;/li&gt;
+                &lt;li&gt; Provided training sessions and handled post-project support, ensuring customer satisfaction and 
+                fostering long-term relationships. &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/section&gt;
+
+        &lt;section class=  "WORK EXPERIENCE"  id=  "ARCHITECTURAL DESIGN"  &gt;
+            &lt;h2&gt;Ingenia / Achon, La Bella Cucina&lt;/h2&gt;
+            &lt;ul&gt;
+                &lt;li&gt; Led design projects from concept to completion, including needs identification, problem-solving, 
+                and proposal generation. &lt;/li&gt;
+                &lt;li&gt; Provided customer consultations, offering advice and solutions tailored to their needs and 
+                preferences. &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/section&gt;
+
+        &lt;section class=  "WORK EXPERIENCE" id=  "FREELANCE"  &gt;
+            &lt;h2&gt;Freelance Architect &amp; 3D Designer&lt;/h2&gt;
+            &lt;ul&gt;
+                &lt;li&gt; Collaborated remotely with other professionals, utilizing project management tools to ensure 
+                effective coordination and timely project delivery.&lt;/li&gt;
+                &lt;li&gt; Built strong client relationships through consistent communication, addressing feedback, and 
+                adapting designs to meet their evolving needs.&lt;/li&gt;
+                &lt;li&gt; Successfully managed multiple projects simultaneously, ensuring that deadlines were met 
+                while maintaining a high level of quality and attention to detail.&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/section&gt;
+    &lt;/body&gt;
+&lt;/cv&gt;
+</code>
+            </pre>
+            
+            
+        </div>
+
+    </div>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
+</body>
+</html>

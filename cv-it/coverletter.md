@@ -1,0 +1,7 @@
+I am excited to apply for the Junior Software Engineer position at Flanks. My transition into software development has been driven by a passion for technology and its potential to solve real-world challenges. My background in architecture and project management has equipped me with a strong analytical mindset, problem-solving skills, and the ability to collaborate effectively across teams.
+
+Over the past few years, I have been learning programming, studying Python, JavaScript, and also C, gaining experience in both front-end and back-end technologies. Working remotely has strengthened my ability to manage complex tasks, adapt quickly to new tools, and collaborate efficiently with cross-functional teams. My experience in web scraping comes from personal projects, such as searching for appointment times or extracting information from businesses. Additionally, my exposure to wealth management concepts, such as investments, budget management, and cash flow analysis, would be a valuable asset for this role at Flanks. 
+
+I am eager to bring my problem-solving approach, technical knowledge, and collaborative mindset to your team. Based in Barcelona, I would love the opportunity to contribute to Flanks' growth while continuing to develop my skills in an innovative environment.
+
+I look forward to discussing how my skills and enthusiasm can be a great fit for your team. Thank you for your time and consideration.

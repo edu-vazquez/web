@@ -1,0 +1,179 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(39, 40, 34);
+    color: #f1f1f1;
+    flex-wrap: nowrap;
+}
+#file-title{
+    text-align: center;
+    padding: 5px;
+    height: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+#file-title h1{
+    font-size: 1rem;
+    width: 100%;
+    font-weight: 100;
+}
+#menu-options{
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin: 0;
+    padding: 1px;
+    gap: 20px;
+    color: #908f8f;
+    font-size: .8rem;
+    padding-left: 10px;
+    font-weight: lighter;
+    background-color: rgb(59, 59, 59);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#ide-container{
+    width: 100%;
+    height: calc(100vh - 50px) ;
+    display: flex;
+}
+
+#file-explorer {
+    width: 400px;
+    background-color: #2d2d2d;
+    color: #bbb;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+#file-explorer h2 {
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.folder, .file {
+    margin-left: 10px;
+    cursor: pointer;
+}
+.subfolder{
+    margin-left: 15px;
+}
+.file.level-2{
+    margin-left: 30px;
+}
+
+.folder {
+    margin-bottom: 5px;
+}
+
+.folder > .folder-name, .file-name {
+    display: inline-block;
+    padding: 3px;
+    font-size: 0.8rem;
+}
+.folder > .folder-name {
+    color: white;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.folder > .folder-name:hover, .file-name:hover {
+    background-color: #444;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    padding: 1px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.file-item:hover {
+    background-color: #444;
+}
+
+.file-item.active {
+    background-color: #007acc;
+    color: white;
+}
+
+#file-content {
+    width: 100%;
+    flex-grow: 1;
+    font-size: 14px;
+    
+    color: #f1f1f1;
+    overflow-y: auto;
+}
+
+.folder-name::before {
+    content: "\f107 \00a0"; /* unicode flechita */
+    font-family: 'Font Awesome 5 Free'; 
+    font-weight: lighter;
+    font-size: 0.8rem; 
+}
+
+.file-name::before {
+    content: "\f15b\00a0\00a0"; /* unicode file */
+    font-family: 'Font Awesome 5 Free'; 
+    font-size: 0.8rem; 
+    color: #007acc;
+}
+
+.folder.open > .file-item {
+    display: block;
+}
+
+.folder.closed > .file-item {
+    display: none;
+}
+
+/* REESCRIBIR TEMPLATE */
+
+pre[class*=language-] {
+    margin: 0 !important;
+    overflow: hidden !important;
+    border-radius: .3em;
+    font-size: .7rem !important;
+    letter-spacing: 0.5px ;
+    padding-bottom: 0 !important;
+    /* background-color: black !important; */
+}
+
+
+.mac-window-controls {
+    display: flex;
+    justify-content: space-between;
+    width: 60px;
+    height: 100%;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.control {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ff3b30; /* Rojo para cerrar */
+    cursor: pointer;
+}
+
+.control.minimize {
+    background-color: #ffcc00; /* Amarillo para minimizar */
+}
+
+.control.maximize {
+    background-color: #4cd964; /* Verde para maximizar */
+}
+
+.control:hover {
+    opacity: 0.7;
+}
