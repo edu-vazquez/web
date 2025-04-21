@@ -1,10 +1,10 @@
 import { useState } from 'preact/hooks'
+import FloatingPage from './components/FloatingPage';
 
 import './app.css'
 
 export function App() {
-  const [count, setCount] = useState(0)
-
+    const [count, setCount] = useState(0)
 
     const container = document.querySelector(".container");
     const factorDecaimiento = 0.995; // El factor de desaceleración
@@ -126,7 +126,7 @@ export function App() {
 
     // EFECTO CARRUSEL EN CADA PLANO
     document.querySelectorAll(".carousel").forEach(carousel => {
-        const track = carousel.querySelector(".carousel-track");
+        const track = carousel.querySelector(".card");
         let posicion = 0;
         const velocidad = 1;
         
@@ -146,16 +146,8 @@ export function App() {
   return (
     <div class="escena">
         <div class="container">
-            <div class="plano plano1" data-x="-200" data-y="-200" data-z="0">
-                <div class="carousel">
-                    <div class="carousel-track">
-                        <img src="img1.jpg" alt="1"/>
-                        <img src="img2.jpg" alt="2"/>
-                        <img src="img3.jpg" alt="3"/>
-                        <img src="img4.jpg" alt="4"/>
-                    </div>
-                </div>  
-            </div>
+            <FloatingPage />
+            
             <div class="plano plano2" data-x="800" data-y="800" data-z="-2000">
                 <div class="carousel">
                     <div class="carousel-track">

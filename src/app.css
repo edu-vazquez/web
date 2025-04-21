@@ -61,12 +61,13 @@ body {
     width: 100%;
 }
 
-.carousel-track {
+.card {
     display: flex;
+    flex-wrap: wrap;
     width: 200%; /* Doble del tamaño real para efecto infinito */
 }
 
-.carousel-track img {
-    width: 300px; /* Asegura que todas las imágenes tengan el mismo tamaño */
+.card img {
+    width: 100px; /* Asegura que todas las imágenes tengan el mismo tamaño */
 }
 
