@@ -1,0 +1,107 @@
+
+  /* FUNCIONA PARA CREAR PLANOS AL AZAR   */  
+/*   function generarPlanos(cantidad, maxZ, minX, maxX) {
+      for (let i = 0; i < cantidad; i++) {
+          const x = Math.random() * (maxX - minX) + minX;
+          const y = Math.random() * (maxX - minX) + minX;
+          const z = -i * 100; // Espaciado uniforme cada 1100px en Z
+
+          const plano = document.createElement("div");
+          plano.classList.add("planos-extra");
+          plano.style.transform = `translate3d(${x}px, ${y}px, ${z}px)`;
+          plano.setAttribute("data-z", z);
+          container.appendChild(plano);
+      }
+  }
+  generarPlanos(200, 1000, -5000, 5000); // Llamar a la función con parámetros personalizados */
+
+
+
+    const container = document.querySelector(".container3d");
+
+  let containerPosition = {x: 0, y: 0, z:0};
+  const factorDecaimiento = 0.995; // El factor de desaceleración
+  const velocidadMinima = 0.3; // La velocidad mínima para detener la inercia
+  let isAnimating = false; // Controla si la animación está en curso
+
+
+  // FUNCION QUE MANJEA EL SCROLL PARA DESPLAZARSE 
+  window.addEventListener('wheel', (event) => {
+
+      if (!isAnimating){
+          velocidad = event.deltaY * 0.05;
+          updateZoom()
+      }
+
+      event.preventDefault(); // Prevenir el comportamiento por defecto del scroll
+  }, { passive: false });
+
+  // Función que actualiza el transform del container
+  function updateZoom() {
+    
+
+    if (Math.abs(velocidad) > velocidadMinima) {
+      
+      if (containerPosition.z >= 0 ){
+        containerPosition.z += velocidad // Aplicar el movimiento (por ejemplo, zoom en el eje Z)
+
+        velocidad *= factorDecaimiento; // Continuar la desaceleración
+
+        container.style.transform = `translate3d(${containerPosition.x}px, ${containerPosition.y}px, ${containerPosition.z}px)`;
+
+      } else {
+        containerPosition.z = 0
+        /* 
+        DEFINIR SI QUEDA BIEN PONER O NO ESTO esto centra el container al hacer zoomout
+        containerPosition.y = 0
+        containerPosition.x = 0 */
+      }
+      
+      requestAnimationFrame(() => { // Llamar a requestAnimationFrame para hacer el zoom suave
+              updateZoom();
+      });
+    }
+  }
+
+
+
+  const planos = document.querySelectorAll(".plano");
+
+  let targetPosition = { x: 0, y: 0, z: 0 };
+
+
+  planos.forEach(plano => {
+    plano.addEventListener("click", (event) => {
+
+      // Definir la posición objetivo
+      targetPosition.x = -plano.getAttribute("data-x");
+      targetPosition.y = -plano.getAttribute("data-y");
+      targetPosition.z = -plano.getAttribute("data-z");
+
+      if (!isAnimating) {
+          isAnimating = true;
+          animateMovement(plano);
+      }
+    });
+  });
+
+  function animateMovement(elemento) {
+    // Interpolación: acercamos la posición actual a la posición objetivo
+    containerPosition.x += (targetPosition.x - containerPosition.x) * 0.2;
+    containerPosition.y += (targetPosition.y - containerPosition.y) * 0.2;
+    containerPosition.z += (targetPosition.z - containerPosition.z) * 0.2;
+    
+    container.style.transform = `translate3d(${containerPosition.x}px, ${containerPosition.y}px, ${containerPosition.z}px)`; // Aplicar transformación
+
+    // Si la diferencia es mínima, detener la animación
+    if (Math.abs(targetPosition.x - containerPosition.x) < 0.5 &&
+        Math.abs(targetPosition.y - containerPosition.y) < 0.5 &&
+        Math.abs(targetPosition.z - containerPosition.z) < 0.5) {
+        containerPosition.x = targetPosition.x;
+        containerPosition.y = targetPosition.y;
+        containerPosition.z = targetPosition.z;
+        isAnimating = false;
+        return;
+    }
+    requestAnimationFrame(animateMovement);
+  }

@@ -1,16 +1,21 @@
 import Card from "./Card";
 
-export default function FloatingPage(){
+export default function FloatingPage(props){
 
   return (
-    <div class="plano plano1" data-x="-200" data-y="-200" data-z="0">
-      <div className="carousel">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-      </div>  
-    </div>
-  )
+      <div 
+        className="plano plano1" 
+        data-x={props.posX} 
+        data-y={props.posY} 
+        data-z={props.posZ}
+        style={{
+          transform: `translate3d(${props.posX}px, ${props.posY}px, ${props.posZ}px)`,
+          borderColor: `${props.borderColor}`
+        }}
+      >
+            <p>{props.posX}</p>
+            <Card />
+      </div>
+    )
 }
+
