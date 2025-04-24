@@ -1,27 +1,41 @@
-import { useContext, useEffect } from 'preact/hooks';
+import { useContext, useEffect, useRef } from 'preact/hooks';
 import { SceneContext } from './Scene';
 import FloatingPage from "./FloatingPage"
 
 export default function Container3d(){
   const { container3dPosition } = useContext(SceneContext);
+  const isMobile = window.matchMedia("(pointer: coarse)").matches; // detecta si es un movil o un escritorio
+  const isZooming = useRef(false) // flag que se usa para evitar múltiples ejecuciones de requestAnimationFrame al mismo tiempo.
+  const container3dRef = useRef(null)
 
-  let isZooming = false // flag que se usa para evitar múltiples ejecuciones de requestAnimationFrame al mismo tiempo.
 
-  window.addEventListener('wheel', (event) => {
+  function zoomWithScroll(event){
     event.preventDefault(); // Prevenir el comportamiento por defecto del scroll
-    container3dPosition.current.z +=  event.deltaY * 13 //[1]
+    if (isMobile) {
+      // Si es móvil, usamos clientY del evento touchmove
+      container3dPosition.current.z += event.touches[0].clientY;
+    } else {
+      // Si es escritorio, usamos deltaY del evento wheel
+      container3dPosition.current.z += event.deltaY;
+    }
 
     if (!isZooming) {
       window.requestAnimationFrame(() => {
-        document.getElementById('container3d').style.transform = `translate3d(0px, 0px, ${container3dPosition.current.z}px)`
-        isZooming = false
+        container3dRef.style.transform = `translate3d(0px, 0px, ${container3dPosition.current.z}px)`
+        isZooming.current = false
       })
-      isZooming = true
+      isZooming.current = true
     }
-  }, { passive: false }); //[2] para que event.preventDefault() funcione correctamente.
+  }
+
+  if (!isMobile) {
+    window.addEventListener('wheel', zoomWithScroll, { passive: false }); //[2] para que event.preventDefault() funcione correctamente.
+  } else {
+    window.addEventListener('touchmove', zoomWithScroll, { passive: false });
+  }
 
   return (
-    <div className="container3d" id='container3d' >
+    <div className="container3d" id='container3d' ref={container3dRef}>
       <FloatingPage posX={"-200"} posY={"-200"} posZ={"0"} borderColor={'red'}/>
       <FloatingPage posX={"+800"} posY={"+800"} posZ={"-2000"} borderColor={'blue'}/>
       <FloatingPage posX={"-150"} posY={"+200"} posZ={"-4000"} borderColor={'orange'}/>
