@@ -1,46 +1,74 @@
-import { useContext, useEffect, useRef } from 'preact/hooks';
+import { useContext, useEffect, useRef, useState } from 'preact/hooks';
 import { SceneContext } from './Scene';
-import FloatingPage from "./FloatingPage"
+import FloatingPage from './FloatingPage'
+import { pagesData } from '../assets/pagesData';
 
 export default function Container3d(){
   const { container3dPosition } = useContext(SceneContext);
-  const isMobile = window.matchMedia("(pointer: coarse)").matches; // detecta si es un movil o un escritorio
-  const isZooming = useRef(false) // flag que se usa para evitar múltiples ejecuciones de requestAnimationFrame al mismo tiempo.
+  const body = document.querySelector('body')
   const container3dRef = useRef(null)
+  const isZooming = useRef(false) // flag que se usa para evitar múltiples ejecuciones de requestAnimationFrame al mismo tiempo.
+  const prevTouchClientY = useRef(null)
 
+  useEffect(
+    zoom, [])
+
+  function zoom() {
+    const isMobile = window.matchMedia('(pointer: coarse)').matches // detecta si es un movil o un escritorio
+
+    if (isMobile) {
+      body.addEventListener('touchmove', zoomWithTouch, { passive: false }); 
+      body.addEventListener('touchend', handleTouchEnd, { passive: false }); 
+    } else {
+      body.addEventListener('wheel', zoomWithScroll, { passive: false }); //[2] para que event.preventDefault() funcione correctamente.
+    }
+    return () => {
+      body.removeEventListener('touchmove', zoomWithTouch);
+      body.removeEventListener('wheel', zoomWithScroll);
+    }
+  }
 
   function zoomWithScroll(event){
     event.preventDefault(); // Prevenir el comportamiento por defecto del scroll
-    if (isMobile) {
-      // Si es móvil, usamos clientY del evento touchmove
-      container3dPosition.current.z += event.touches[0].clientY;
+    if (container3dPosition.current.z < 0) {
+      container3dPosition.current.z = 0
     } else {
-      // Si es escritorio, usamos deltaY del evento wheel
-      container3dPosition.current.z += event.deltaY;
+      container3dPosition.current.z += event.deltaY
     }
+    moveContainer3d()
+  }
 
-    if (!isZooming) {
+  function zoomWithTouch(event){
+    event.preventDefault(); // Prevenir el comportamiento por defecto del scroll
+    /* if (event.touches.length !== 1) return; */
+
+    if (prevTouchClientY.current !== null) {
+      container3dPosition.current.z += (event.touches[0].pageY - prevTouchClientY.current) * 50;
+    }
+    prevTouchClientY.current = event.touches[0].pageY;
+    moveContainer3d()
+  }
+  function handleTouchEnd() {
+    prevTouchClientY.current = null;
+  }
+
+  function moveContainer3d() {
+    if (!isZooming.current) {
       window.requestAnimationFrame(() => {
-        container3dRef.style.transform = `translate3d(0px, 0px, ${container3dPosition.current.z}px)`
+        container3dRef.current.style.transform = `translate3d(${container3dPosition.current.x}px, ${container3dPosition.current.y}px, ${container3dPosition.current.z}px)`
         isZooming.current = false
       })
       isZooming.current = true
     }
   }
 
-  if (!isMobile) {
-    window.addEventListener('wheel', zoomWithScroll, { passive: false }); //[2] para que event.preventDefault() funcione correctamente.
-  } else {
-    window.addEventListener('touchmove', zoomWithScroll, { passive: false });
-  }
-
   return (
-    <div className="container3d" id='container3d' ref={container3dRef}>
-      <FloatingPage posX={"-200"} posY={"-200"} posZ={"0"} borderColor={'red'}/>
-      <FloatingPage posX={"+800"} posY={"+800"} posZ={"-2000"} borderColor={'blue'}/>
-      <FloatingPage posX={"-150"} posY={"+200"} posZ={"-4000"} borderColor={'orange'}/>
-      <FloatingPage posX={"-250"} posY={"-200"} posZ={"-6000"} borderColor={'purple'}/>
-      <FloatingPage posX={"-200"} posY={"+100"} posZ={"-8000"} borderColor={'yellow'}/>
+    <div className='container3d' id='container3d' ref={container3dRef}>
+      <FloatingPage page={pagesData.floatingPage1} />
+      <FloatingPage page={pagesData.floatingPage2} />
+      <FloatingPage page={pagesData.floatingPage3} />
+      <FloatingPage page={pagesData.floatingPage4} />
+      <FloatingPage page={pagesData.floatingPage5} />
     </div>
   )
 }
@@ -54,6 +82,6 @@ export default function Container3d(){
 
 //[2]
 // Usamos { passive: false } para que event.preventDefault() funcione correctamente.
-// Por defecto, los navegadores asumen que los eventos 'wheel' son "passive",
+// Por defecto, los navegadores asumen que los eventos 'wheel' son 'passive',
 // lo que impide bloquear el scroll nativo. Al marcarlo como false, evitamos el comportamiento
 // por defecto del navegador y podemos manejar el scroll manualmente (por ejemplo, zoom en 3D).

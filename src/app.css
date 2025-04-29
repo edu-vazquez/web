@@ -1,4 +1,5 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
     overflow: hidden;
     background: #111;
@@ -29,7 +30,7 @@ body {
     border: 15px solid blue;
 }
 
-.plano {
+.page {
     width: 300px;
     height: 200px;
     position: absolute;
@@ -37,6 +38,7 @@ body {
     font-weight: bold;
     cursor: pointer;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     border: 5px solid;
@@ -57,11 +59,22 @@ body {
 
 .card {
     display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
-    width: 200%; /* Doble del tamaño real para efecto infinito */
+    width: 20%; /* Doble del tamaño real para efecto infinito */
+    border: 5px solid;
 }
 
 .card img {
     width: 100px; /* Asegura que todas las imágenes tengan el mismo tamaño */
 }
 
+
+/* para borrar */
+.devP{
+    text-align: center;
+    position: absolute;
+    margin-top: -100%;
+}

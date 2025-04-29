@@ -1,4 +1,4 @@
-export default function Card (){
+export default function Card (props){
 
   // EFECTO CARRUSEL EN CADA PLANO
   document.querySelectorAll(".carousel").forEach(carousel => {
@@ -20,9 +20,15 @@ export default function Card (){
     });
 
   return (
-    <div className="card">
+    <div 
+      className="card"
+      style={{
+        borderColor: `${props.card.borderColor}`
+      }}
+
+    >
         {/* <img src="https://picsum.photos/300" alt="1"/> */}
-        <p>CARD CONTENT</p>
+        <p>{props.card.borderColor}</p>
     </div>
   )
 }
