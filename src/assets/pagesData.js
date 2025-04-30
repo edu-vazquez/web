@@ -1,7 +1,7 @@
 export const pagesData = {
   floatingPage1: {
-    x: '-100',
-    y: '-100',
+    x: '-10',
+    y: '-10',
     z: '-500',
     color: 'red',
     cards: {
@@ -20,8 +20,8 @@ export const pagesData = {
     },
   },
   floatingPage2: {
-    x: '+150',
-    y: '+200',
+    x: '+15',
+    y: '+20',
     z: '-2000',
     color: 'blue',
     cards: {
@@ -40,8 +40,8 @@ export const pagesData = {
     },
   },
   floatingPage3: {
-    x: '-150',
-    y: '+200',
+    x: '-15',
+    y: '+20',
     z: '-4000',
     color: 'orange',
     cards: {
@@ -60,8 +60,8 @@ export const pagesData = {
     },
   },
   floatingPage4: {
-    x: '-250',
-    y: '-200',
+    x: '-25',
+    y: '-20',
     z: '-6000',
     color: 'purple',
     cards: {
@@ -80,8 +80,8 @@ export const pagesData = {
     },
   },
   floatingPage5: {
-    x: '+200',
-    y: '-500',
+    x: '+20',
+    y: '-50',
     z: '-8000',
     color: 'yellow',
     cards: {

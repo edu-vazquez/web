@@ -1,19 +1,20 @@
-import { useContext, useEffect, useRef, useState } from 'preact/hooks';
+import { useContext, useEffect, useRef } from 'preact/hooks';
 import { SceneContext } from './Scene';
 import FloatingPage from './FloatingPage'
 import { pagesData } from '../assets/pagesData';
+import { forwardRef } from 'preact/compat';
 
-export default function Container3d(){
-  const { container3dPosition } = useContext(SceneContext);
+export const Container3d = forwardRef((props, ref) => {
+  const scene = useContext(SceneContext);
   const body = document.querySelector('body')
-  const container3dRef = useRef(null)
-  const isZooming = useRef(false) // flag que se usa para evitar múltiples ejecuciones de requestAnimationFrame al mismo tiempo.
+/*   const container3dRef = useRef(null) */
   const prevTouchClientY = useRef(null)
 
   useEffect(
-    zoom, [])
+    adddingListeners, 
+    [])
 
-  function zoom() {
+  function adddingListeners() {
     const isMobile = window.matchMedia('(pointer: coarse)').matches // detecta si es un movil o un escritorio
 
     if (isMobile) {
@@ -30,40 +31,29 @@ export default function Container3d(){
 
   function zoomWithScroll(event){
     event.preventDefault(); // Prevenir el comportamiento por defecto del scroll
-    if (container3dPosition.current.z < 0) {
-      container3dPosition.current.z = 0
+    if (scene.container3dPosition.current.z < 0) {
+      scene.container3dPosition.current.z = 0
     } else {
-      container3dPosition.current.z += event.deltaY
+      scene.container3dPosition.current.z += event.deltaY
     }
-    moveContainer3d()
+    scene.moveContainer3d()
   }
 
   function zoomWithTouch(event){
     event.preventDefault(); // Prevenir el comportamiento por defecto del scroll
     /* if (event.touches.length !== 1) return; */
 
-    if (prevTouchClientY.current !== null) {
-      container3dPosition.current.z += (event.touches[0].pageY - prevTouchClientY.current) * 50;
+    if (prevTouchClientY.current) {
+      scene.container3dPosition.current.z += (event.touches[0].pageY - prevTouchClientY.current) * 50;
     }
     prevTouchClientY.current = event.touches[0].pageY;
-    moveContainer3d()
+    scene.moveContainer3d()
   }
   function handleTouchEnd() {
     prevTouchClientY.current = null;
   }
-
-  function moveContainer3d() {
-    if (!isZooming.current) {
-      window.requestAnimationFrame(() => {
-        container3dRef.current.style.transform = `translate3d(${container3dPosition.current.x}px, ${container3dPosition.current.y}px, ${container3dPosition.current.z}px)`
-        isZooming.current = false
-      })
-      isZooming.current = true
-    }
-  }
-
   return (
-    <div className='container3d' id='container3d' ref={container3dRef}>
+    <div className='container3d' id='container3d' ref={ref}>
       <FloatingPage page={pagesData.floatingPage1} />
       <FloatingPage page={pagesData.floatingPage2} />
       <FloatingPage page={pagesData.floatingPage3} />
@@ -71,7 +61,9 @@ export default function Container3d(){
       <FloatingPage page={pagesData.floatingPage5} />
     </div>
   )
-}
+})
+
+export default Container3d
 
 // NOTAS
 //[1]
