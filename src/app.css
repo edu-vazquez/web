@@ -1,34 +1,32 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-body {
+html, body {
+    height: var(--app-height);
     overflow: hidden;
-    background: #111;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     width: 100vw;
     font-family: Arial, sans-serif;
     color: white;
-    border: 5px solid magenta;
 }
 
 .scene {
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     perspective: 1200px;
     transform-style: preserve-3d;
 }
 
 .container3d {
     width: 100vw;
-    height: 100vh;
+    height: var(--app-height);
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     transform-style: preserve-3d;
-    border: 15px solid blue;
+    pointer-events: none;
     transition: transform 1s ease; 
 }
 
@@ -41,6 +39,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    pointer-events: auto;
     border: 5px solid;
 }
 

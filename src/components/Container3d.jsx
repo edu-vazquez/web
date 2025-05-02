@@ -25,6 +25,7 @@ export const Container3d = forwardRef((props, ref) => {
     }
     return () => {
       body.removeEventListener('touchmove', zoomWithTouch);
+      body.removeEventListener('touchend', handleTouchEnd, { passive: false }); 
       body.removeEventListener('wheel', zoomWithScroll);
     }
   }
@@ -44,7 +45,7 @@ export const Container3d = forwardRef((props, ref) => {
     /* if (event.touches.length !== 1) return; */
 
     if (prevTouchClientY.current) {
-      scene.container3dPosition.current.z += (event.touches[0].pageY - prevTouchClientY.current) * 50;
+      scene.container3dPosition.current.z += (event.touches[0].pageY - prevTouchClientY.current) * 10;
     }
     prevTouchClientY.current = event.touches[0].pageY;
     scene.moveContainer3d()
