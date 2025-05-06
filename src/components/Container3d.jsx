@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef } from 'preact/hooks';
-import { SceneContext } from './Scene';
+import { SceneContext } from '../app';
 import FloatingPage from './FloatingPage'
 import { pagesData } from '../assets/pagesData';
 import { forwardRef } from 'preact/compat';
@@ -34,6 +34,8 @@ export const Container3d = forwardRef((props, ref) => {
     event.preventDefault(); // Prevenir el comportamiento por defecto del scroll
     if (scene.container3dPosition.current.z < 0) {
       scene.container3dPosition.current.z = 0
+      scene.container3dPosition.current.x = 0
+      scene.container3dPosition.current.y = 0
     } else {
       scene.container3dPosition.current.z += event.deltaY
     }
@@ -55,11 +57,10 @@ export const Container3d = forwardRef((props, ref) => {
   }
   return (
     <div className='container3d' id='container3d' ref={ref}>
-      <FloatingPage page={pagesData.floatingPage1} />
-      <FloatingPage page={pagesData.floatingPage2} />
-      <FloatingPage page={pagesData.floatingPage3} />
-      <FloatingPage page={pagesData.floatingPage4} />
-      <FloatingPage page={pagesData.floatingPage5} />
+      <FloatingPage page={pagesData.webDevelopment} />
+      <FloatingPage page={pagesData.codeHub} />
+      <FloatingPage page={pagesData.vizualization3d} />
+      <FloatingPage page={pagesData.architecture} />
     </div>
   )
 })
