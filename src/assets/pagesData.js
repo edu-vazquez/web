@@ -6,16 +6,20 @@ export const pagesData = {
     color: 'red',
     cards: {
       card1:{
-        borderColor: 'red'
+        borderColor: 'red',
+        imageUrl: '/images/architecture/project-01.jpg'
       },
       card2:{
-        borderColor: 'blue'
+        borderColor: 'blue',
+        imageUrl: '/images/architecture/project-02.jpg'
       },
       card3:{
-        borderColor: 'green'
+        borderColor: 'green',
+        imageUrl: '/images/architecture/project-03.jpg'
       },
       card4:{
-        borderColor: 'orange'
+        borderColor: 'orange',
+        imageUrl: '/images/architecture/project-04.jpg'
       }
     },
   },
@@ -26,16 +30,20 @@ export const pagesData = {
     color: 'blue',
     cards: {
       card1:{
-        borderColor: 'red'
+        borderColor: 'red',
+        imageUrl: '/images/architecture/project-01.jpg'
       },
       card2:{
-        borderColor: 'blue'
+        borderColor: 'blue',
+        imageUrl: '/images/architecture/project-02.jpg'
       },
       card3:{
-        borderColor: 'green'
+        borderColor: 'green',
+        imageUrl: '/images/architecture/project-03.jpg'
       },
       card4:{
-        borderColor: 'orange'
+        borderColor: 'orange',
+        imageUrl: '/images/architecture/project-04.jpg'
       }
     },
   },
@@ -46,16 +54,20 @@ export const pagesData = {
     color: 'orange',
     cards: {
       card1:{
-        borderColor: 'red'
+        borderColor: 'red',
+        imageUrl: '/images/architecture/project-01.jpg'
       },
       card2:{
-        borderColor: 'blue'
+        borderColor: 'blue',
+        imageUrl: '/images/architecture/project-02.jpg'
       },
       card3:{
-        borderColor: 'green'
+        borderColor: 'green',
+        imageUrl: '/images/architecture/project-03.jpg'
       },
       card4:{
-        borderColor: 'orange'
+        borderColor: 'orange',
+        imageUrl: '/images/architecture/project-04.jpg'
       }
     },
   },
@@ -66,16 +78,20 @@ export const pagesData = {
     color: 'purple',
     cards: {
       card1:{
-        borderColor: 'red'
+        borderColor: 'red',
+        imageUrl: '/images/architecture/project-01.jpg'
       },
       card2:{
-        borderColor: 'blue'
+        borderColor: 'blue',
+        imageUrl: '/images/architecture/project-02.jpg'
       },
       card3:{
-        borderColor: 'green'
+        borderColor: 'green',
+        imageUrl: '/images/architecture/project-03.jpg'
       },
       card4:{
-        borderColor: 'orange'
+        borderColor: 'orange',
+        imageUrl: '/images/architecture/project-04.jpg'
       }
     },
   },

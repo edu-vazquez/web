@@ -1,18 +1,17 @@
 import Card from "./Card";
 import { SceneContext } from '../app';
-import { useContext } from 'preact/hooks';
+import { useContext, useEffect, useRef } from 'preact/hooks';
 
 
 
 export default function FloatingPage(props){
-  const windowWidth = window.innerWidth
-  const windowHeight = window.innerHeight
-
   const scene = useContext(SceneContext);
+  const pageRef = useRef(null);
+  const cardRandomContainerRef = useRef(null);
 
   function moveToPage(){
-    scene.container3dPosition.current.x = windowWidth * props.page.x / 100 * -1
-    scene.container3dPosition.current.y = windowHeight * props.page.y / 100 * -1
+    scene.container3dPosition.current.x = window.innerWidth * props.page.x / 100 * -1
+    scene.container3dPosition.current.y = window.innerHeight * props.page.y / 100 * -1
     scene.container3dPosition.current.z = props.page.z * -1
     scene.moveContainer3d()
   }
@@ -21,17 +20,26 @@ export default function FloatingPage(props){
       <div 
         className="page"
         onClick={moveToPage}
+        ref={pageRef}
         style={{
           transform: `translate3d(${props.page.x}%, ${props.page.y}%, ${props.page.z}px)`,
-          borderColor: `${props.page.color}`,
-          width: `${windowWidth}px`,
-          height: `${windowHeight}px`,
         }}
       >
-            <Card card={props.page.cards.card1}/>
-            <Card card={props.page.cards.card2}/>
-            <Card card={props.page.cards.card3}/>
-            <Card card={props.page.cards.card4}/>
+            <Card card={props.page.cards.card1} class='card'/>
+            <Card class='card-random'/>
+            <Card card={props.page.cards.card2} class='card'/>
+            <Card class='card-random'/>
+            <Card card={props.page.cards.card3} class='card'/>
+            <Card class='card-random'/>
+            <Card card={props.page.cards.card4} class='card'/>
+            <Card class='card-random'/>
+            <Card card={props.page.cards.card1} class='card'/>
+            <Card class='card-random'/>
+            <Card card={props.page.cards.card2} class='card'/>
+            <Card class='card-random'/>
+            <Card card={props.page.cards.card3} class='card'/>
+            <Card class='card-random'/>
+            <Card card={props.page.cards.card4} class='card'/>
       </div>
     )
 }

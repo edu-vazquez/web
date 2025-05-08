@@ -1,20 +1,30 @@
-import About from "./About";
 import { SceneContext } from '../app';
 import { useContext } from 'preact/hooks';
 import { pagesData } from '../assets/pagesData';
 
 export default function Menu(){
-  const windowWidth = window.innerWidth
-  const windowHeight = window.innerHeight
   const scene = useContext(SceneContext);
 
   function showAbout(){
-    document.querySelector('#about').style.transform = 'translateX(-20vw)';
+    const btnAbout = document.querySelector('#btn-about')
+    if (btnAbout.textContent === 'About') {
+      btnAbout.textContent = 'Home'
+      scene.container3dPosition.current.x = 0
+      scene.container3dPosition.current.y = window.innerHeight
+      scene.container3dPosition.current.z = 0
+      scene.moveContainer3d();
+    } else {
+      btnAbout.textContent = 'About'
+      scene.container3dPosition.current.x = 0
+      scene.container3dPosition.current.y = 0
+      scene.container3dPosition.current.z = 0
+      scene.moveContainer3d();
+    }
   }
 
   function moveToPage(page){
-    scene.container3dPosition.current.x = windowWidth * page.x / 100 * -1
-    scene.container3dPosition.current.y = windowHeight * page.y / 100 * -1
+    scene.container3dPosition.current.x = window.innerWidth * page.x / 100 * -1
+    scene.container3dPosition.current.y = window.innerHeight * page.y / 100 * -1
     scene.container3dPosition.current.z = page.z * -1
     scene.moveContainer3d()
   }
@@ -52,11 +62,10 @@ export default function Menu(){
       </ul>
 
       <ul className={'menu-about'}>
-        <li className="menu-item" onClick={showAbout}>
+        <li className="menu-item" onClick={showAbout} id={'btn-about'}>
           About
         </li>
       </ul>
-      <About />
     </nav>
   )
 }

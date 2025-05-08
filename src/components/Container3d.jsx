@@ -3,6 +3,7 @@ import { SceneContext } from '../app';
 import FloatingPage from './FloatingPage'
 import { pagesData } from '../assets/pagesData';
 import { forwardRef } from 'preact/compat';
+import About from './About';
 
 export const Container3d = forwardRef((props, ref) => {
   const scene = useContext(SceneContext);
@@ -57,6 +58,7 @@ export const Container3d = forwardRef((props, ref) => {
   }
   return (
     <div className='container3d' id='container3d' ref={ref}>
+      <About />
       <FloatingPage page={pagesData.webDevelopment} />
       <FloatingPage page={pagesData.codeHub} />
       <FloatingPage page={pagesData.vizualization3d} />
