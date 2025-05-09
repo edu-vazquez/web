@@ -25,21 +25,19 @@ export default function FloatingPage(props){
           transform: `translate3d(${props.page.x}%, ${props.page.y}%, ${props.page.z}px)`,
         }}
       >
-            <Card card={props.page.cards.card1} class='card'/>
-            <Card class='card-random'/>
-            <Card card={props.page.cards.card2} class='card'/>
-            <Card class='card-random'/>
-            <Card card={props.page.cards.card3} class='card'/>
-            <Card class='card-random'/>
-            <Card card={props.page.cards.card4} class='card'/>
-            <Card class='card-random'/>
-            <Card card={props.page.cards.card1} class='card'/>
-            <Card class='card-random'/>
-            <Card card={props.page.cards.card2} class='card'/>
-            <Card class='card-random'/>
-            <Card card={props.page.cards.card3} class='card'/>
-            <Card class='card-random'/>
-            <Card card={props.page.cards.card4} class='card'/>
+        {props.page.cards.map((card, index) => (
+          <>
+            <Card
+              key={card.id}
+              card={card}
+              class={'card'}
+            />
+            <Card
+              key={index}
+              class={'card-random'}
+            />
+          </>
+        ))}
       </div>
     )
 }

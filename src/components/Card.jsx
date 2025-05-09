@@ -6,9 +6,9 @@ export default function Card (props){
 
   if (props.card?.imageUrl) {
     style.backgroundImage = `url(${props.card.imageUrl})`;
-    style.transform = `translate3d(${Math.random() * (maxX * 2) - maxX}%, ${Math.random() * (maxY * 2) - maxY}%, ${Math.ceil(Math.random() * -200)}px)`
+    style.transform = `translate3d(${Math.random() * (maxX * 2) - maxX}%, ${Math.random() * (maxY * 2) - maxY}%, ${Math.ceil(Math.random() * -300)}px)`
   } else {
-    style.transform = `translate3d(${Math.random() * (maxX * 2) - maxX}%, ${Math.random() * (maxY * 2) - maxY}%, ${Math.ceil(Math.random() * -500)}px)`
+    style.transform = `translate3d(${Math.random() * (maxX * 2) - maxX}%, ${Math.random() * (maxY * 2) - maxY}%, ${Math.ceil(Math.random() * -800)}px)`
   }
 
   return (

@@ -59,10 +59,16 @@ export const Container3d = forwardRef((props, ref) => {
   return (
     <div className='container3d' id='container3d' ref={ref}>
       <About />
-      <FloatingPage page={pagesData.webDevelopment} />
-      <FloatingPage page={pagesData.codeHub} />
-      <FloatingPage page={pagesData.vizualization3d} />
-      <FloatingPage page={pagesData.architecture} />
+      {
+        pagesData.map((page) => {
+          return (
+            <FloatingPage 
+              page={page}
+              key={page.id}
+            />
+          )
+        })
+      }
     </div>
   )
 })
