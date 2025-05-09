@@ -46,7 +46,11 @@ export const Container3d = forwardRef((props, ref) => {
     /* if (event.touches.length !== 1) return; */
 
     if (prevTouchClientY.current) {
-      canvas.container3dPosition.current.z += (event.touches[0].pageY - prevTouchClientY.current) * 10;
+      if (canvas.container3dPosition.current.z < 0) {
+        canvas.updateContainer3dPosition(0,0,0)
+      } else {
+        canvas.container3dPosition.current.z += (event.touches[0].pageY - prevTouchClientY.current) * 10;
+      }
     }
     prevTouchClientY.current = event.touches[0].pageY;
     canvas.moveContainer3d()
