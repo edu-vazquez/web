@@ -7,7 +7,6 @@ import { useContext, useEffect, useRef } from 'preact/hooks';
 export default function FloatingPage(props){
   const scene = useContext(SceneContext);
   const pageRef = useRef(null);
-  const cardRandomContainerRef = useRef(null);
 
   function moveToPage(){
     scene.container3dPosition.current.x = window.innerWidth * props.page.x / 100 * -1

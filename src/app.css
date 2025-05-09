@@ -132,7 +132,7 @@ ul{
     padding-bottom: 10vw;
     padding-top: 10vw;
 
-    border: 3px solid blue;
+    /* border: 3px solid blue; */
     
     & .card{
         width: var(--card-width);

@@ -22,12 +22,23 @@ export default function Menu(){
     }
   }
 
-  function moveToPage(page){
+/*   function moveToPage(page){
     scene.container3dPosition.current.x = window.innerWidth * page.x / 100 * -1
     scene.container3dPosition.current.y = window.innerHeight * page.y / 100 * -1
     scene.container3dPosition.current.z = page.z * -1
     scene.moveContainer3d()
-  }
+  } */
+
+  const moveToPageById = (id) => {
+    const page = pagesData.find(page => page.id === id);
+    if (page) {
+      scene.container3dPosition.current.x = window.innerWidth * page.x / 100 * -1
+      scene.container3dPosition.current.y = window.innerHeight * page.y / 100 * -1
+      scene.container3dPosition.current.z = page.z * -1
+      scene.moveContainer3d();
+    }
+  };
+
   function moveToHome(){
     scene.container3dPosition.current.x = 0
     scene.container3dPosition.current.y = 0
@@ -47,16 +58,16 @@ export default function Menu(){
       </ul>
 
       <ul className="menu-items">
-        <li className="menu-item" onClick={() => moveToPage(pagesData.webDevelopment)}>
+        <li className="menu-item" onClick={() => moveToPageById('webDevelopment')}>
           WEB DEVELOPMENT
         </li>
-        <li className="menu-item" onClick={() => moveToPage(pagesData.codeHub)}>
+        <li className="menu-item" onClick={() => moveToPageById('codeHub')}>
           CODE HUB
         </li>
-        <li className="menu-item" onClick={() => moveToPage(pagesData.vizualization3d)}>
+        <li className="menu-item" onClick={() => moveToPageById('vizualization3d')}>
           3D VISUALIZATION
         </li>
-        <li className="menu-item" onClick={() => moveToPage(pagesData.architecture)}>
+        <li className="menu-item" onClick={() => moveToPageById('architecture')}>
           ARCHITECTURE
         </li>
       </ul>
