@@ -1,4 +1,4 @@
-export const pagesData = [
+export const scenesData = [
   {
     id: 'webDevelopment',
     x: '-50',

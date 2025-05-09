@@ -1,16 +1,36 @@
-import Container3d from "./Container3d";
-import { SceneContext } from '../app';
-import { useContext, useRef } from 'preact/hooks';
+import Card from "./Card";
+import { CanvasContext } from '../app';
+import { useContext, useEffect, useRef } from 'preact/hooks';
 
 
-export default function Scene(){
-  const scene = useContext(SceneContext);
 
+export default function Scene(props){
+  const canvas = useContext(CanvasContext);
+  const sceneRef = useRef(null);
 
   return (
-      <div className="scene">  
-        <Container3d ref={scene.container3dRef}/>
+      <div 
+        className="page"
+        onClick={() => canvas.moveToSceneById(props.scene.id)}
+        ref={sceneRef}
+        style={{
+          transform: `translate3d(${props.scene.x}%, ${props.scene.y}%, ${props.scene.z}px)`,
+        }}
+      >
+        {props.scene.cards.map((card, index) => (
+          <>
+            <Card
+              key={card.id}
+              card={card}
+              class={'card'}
+            />
+            <Card
+              key={index}
+              class={'card-random'}
+            />
+          </>
+        ))}
       </div>
-  )
-
+    )
 }
+

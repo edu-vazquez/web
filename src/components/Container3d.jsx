@@ -1,12 +1,12 @@
 import { useContext, useEffect, useRef } from 'preact/hooks';
-import { SceneContext } from '../app';
-import FloatingPage from './FloatingPage'
-import { pagesData } from '../assets/pagesData';
+import { CanvasContext } from '../app';
+import FloatingPage from './Scene'
+import { scenesData } from '../assets/scenesData';
 import { forwardRef } from 'preact/compat';
 import About from './About';
 
 export const Container3d = forwardRef((props, ref) => {
-  const scene = useContext(SceneContext);
+  const canvas = useContext(CanvasContext);
   const body = document.querySelector('body')
 /*   const container3dRef = useRef(null) */
   const prevTouchClientY = useRef(null)
@@ -33,14 +33,12 @@ export const Container3d = forwardRef((props, ref) => {
 
   function zoomWithScroll(event){
     event.preventDefault(); // Prevenir el comportamiento por defecto del scroll
-    if (scene.container3dPosition.current.z < 0) {
-      scene.container3dPosition.current.z = 0
-      scene.container3dPosition.current.x = 0
-      scene.container3dPosition.current.y = 0
+    if (canvas.container3dPosition.current.z < 0) {
+      canvas.updateContainer3dPosition(0,0,0)
     } else {
-      scene.container3dPosition.current.z += event.deltaY
+      canvas.container3dPosition.current.z += event.deltaY
     }
-    scene.moveContainer3d()
+    canvas.moveContainer3d()
   }
 
   function zoomWithTouch(event){
@@ -53,6 +51,7 @@ export const Container3d = forwardRef((props, ref) => {
     prevTouchClientY.current = event.touches[0].pageY;
     scene.moveContainer3d()
   }
+
   function handleTouchEnd() {
     prevTouchClientY.current = null;
   }
@@ -60,11 +59,11 @@ export const Container3d = forwardRef((props, ref) => {
     <div className='container3d' id='container3d' ref={ref}>
       <About />
       {
-        pagesData.map((page) => {
+        scenesData.map((scene) => {
           return (
             <FloatingPage 
-              page={page}
-              key={page.id}
+              scene={scene}
+              key={scene.id}
             />
           )
         })

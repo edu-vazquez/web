@@ -1,55 +1,25 @@
-import { SceneContext } from '../app';
+import { CanvasContext } from '../app';
 import { useContext } from 'preact/hooks';
-import { pagesData } from '../assets/pagesData';
 
 export default function Menu(){
-  const scene = useContext(SceneContext);
+  const canvas = useContext(CanvasContext);
 
   function showAbout(){
     const btnAbout = document.querySelector('#btn-about')
     if (btnAbout.textContent === 'About') {
       btnAbout.textContent = 'Home'
-      scene.container3dPosition.current.x = 0
-      scene.container3dPosition.current.y = window.innerHeight
-      scene.container3dPosition.current.z = 0
-      scene.moveContainer3d();
+      canvas.updateContainer3dPosition(0, window.innerHeight, 0)
+      canvas.moveContainer3d();
     } else {
       btnAbout.textContent = 'About'
-      scene.container3dPosition.current.x = 0
-      scene.container3dPosition.current.y = 0
-      scene.container3dPosition.current.z = 0
-      scene.moveContainer3d();
+      canvas.updateContainer3dPosition(0, 0, 0)
+      canvas.moveContainer3d();
     }
-  }
-
-/*   function moveToPage(page){
-    scene.container3dPosition.current.x = window.innerWidth * page.x / 100 * -1
-    scene.container3dPosition.current.y = window.innerHeight * page.y / 100 * -1
-    scene.container3dPosition.current.z = page.z * -1
-    scene.moveContainer3d()
-  } */
-
-  const moveToPageById = (id) => {
-    const page = pagesData.find(page => page.id === id);
-    if (page) {
-      scene.container3dPosition.current.x = window.innerWidth * page.x / 100 * -1
-      scene.container3dPosition.current.y = window.innerHeight * page.y / 100 * -1
-      scene.container3dPosition.current.z = page.z * -1
-      scene.moveContainer3d();
-    }
-  };
-
-  function moveToHome(){
-    scene.container3dPosition.current.x = 0
-    scene.container3dPosition.current.y = 0
-    scene.container3dPosition.current.z = 0
-    scene.moveContainer3d()
   }
 
   return (
     <nav class="menu-main">
       <ul className={'menu-home'}
-        onClick={moveToHome}
       >
         <li>
           <p>Web Developer</p>
@@ -58,16 +28,16 @@ export default function Menu(){
       </ul>
 
       <ul className="menu-items">
-        <li className="menu-item" onClick={() => moveToPageById('webDevelopment')}>
+        <li className="menu-item" onClick={() => canvas.moveToSceneById('webDevelopment')}>
           WEB DEVELOPMENT
         </li>
-        <li className="menu-item" onClick={() => moveToPageById('codeHub')}>
+        <li className="menu-item" onClick={() => canvas.moveToSceneById('codeHub')}>
           CODE HUB
         </li>
-        <li className="menu-item" onClick={() => moveToPageById('vizualization3d')}>
+        <li className="menu-item" onClick={() => canvas.moveToSceneById('vizualization3d')}>
           3D VISUALIZATION
         </li>
-        <li className="menu-item" onClick={() => moveToPageById('architecture')}>
+        <li className="menu-item" onClick={() => canvas.moveToSceneById('architecture')}>
           ARCHITECTURE
         </li>
       </ul>

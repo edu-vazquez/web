@@ -91,7 +91,7 @@ ul{
     letter-spacing: 2px;
 }
 
-.scene {
+.canvas {
     width: 100vw;
     height: var(--app-height);
     perspective: 500px;
