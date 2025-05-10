@@ -21,23 +21,22 @@ export const Container3d = forwardRef((props, ref) => {
     [])
 
   function adddingListeners() {
-      body.addEventListener('touchmove', zoomWithPinch, { passive: false }); 
-      body.addEventListener('touchend', handleTouchEnd, { passive: false }); 
-      body.addEventListener('wheel', zoomWithScroll, { passive: false }); //[2] para que event.preventDefault() funcione correctamente.
+    body.addEventListener('touchmove', zoomWithPinch, { passive: false }); 
+    body.addEventListener('touchend', handleTouchEnd, { passive: false }); 
+    body.addEventListener('wheel', zoomWithScroll, { passive: false }); 
+    // {pasive: false} para que event.preventDefault() funcione correctamente.
   }
 
   function zoomWithScroll(event){
     event.preventDefault(); // Prevenir el comportamiento por defecto del scroll
-    console.log(canvas.container3dPosition.current.z)
 
     canvas.container3dPosition.current.z += event.deltaY
-    
-    if (canvas.container3dPosition.current.z < canvas.zoomMin.current) {
-      canvas.container3dPosition.current.z = canvas.zoomMin.current;
-    } else if (canvas.container3dPosition.current.z > canvas.zoomMax.current) {
-      canvas.container3dPosition.current.z = canvas.zoomMax.current;
+  
+    if (canvas.container3dPosition.current.z < canvas.zMin.current) {
+      canvas.container3dPosition.current.z = canvas.zMin.current;
+    } else if (canvas.container3dPosition.current.z > canvas.zMax.current) {
+      canvas.container3dPosition.current.z = canvas.zMax.current;
     }
-    
     canvas.moveContainer3d()
   }
 
@@ -59,10 +58,10 @@ export const Container3d = forwardRef((props, ref) => {
 
         canvas.container3dPosition.current.z += zoomFactor * 10; // Ajusta el divisor para controlar la velocidad del zoom
 
-        if (canvas.container3dPosition.current.z < canvas.zoomMin.current) {
-          canvas.container3dPosition.current.z = canvas.zoomMin.current;
-        } else if (canvas.container3dPosition.current.z > canvas.zoomMax.current) {
-          canvas.container3dPosition.current.z = canvas.zoomMax.current;
+        if (canvas.container3dPosition.current.z < canvas.zMin.current) {
+          canvas.container3dPosition.current.z = canvas.zMin.current;
+        } else if (canvas.container3dPosition.current.z > canvas.zMax.current) {
+          canvas.container3dPosition.current.z = canvas.zMax.current;
         }
 
         canvas.moveContainer3d();

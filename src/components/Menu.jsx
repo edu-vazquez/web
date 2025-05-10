@@ -28,16 +28,16 @@ export default function Menu(){
       </ul> */}
 
       <ul className="menu-items">
-        <li className="menu-item" onClick={() => canvas.moveToSceneById('webDevelopment')}>
+        <li className="menu-item" onClick={() => canvas.activateSceneById('webDevelopment')}>
           WEB DEVELOPMENT
         </li>
-        <li className="menu-item" onClick={() => canvas.moveToSceneById('codeHub')}>
+        <li className="menu-item" onClick={() => canvas.activateSceneById('codeHub')}>
           CODE HUB
         </li>
-        <li className="menu-item" onClick={() => canvas.moveToSceneById('vizualization3d')}>
+        <li className="menu-item" onClick={() => canvas.activateSceneById('vizualization3d')}>
           3D VISUALIZATION
         </li>
-        <li className="menu-item" onClick={() => canvas.moveToSceneById('architecture')}>
+        <li className="menu-item" onClick={() => canvas.activateSceneById('architecture')}>
           ARCHITECTURE
         </li>
       </ul>

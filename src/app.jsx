@@ -14,8 +14,8 @@ export function App() {
   const container3dPosition = useRef({ x: 0, y: 0, z: 0 });
   const container3dRef = useRef(null)
   let isZooming = false // flag que se usa para evitar múltiples ejecuciones de requestAnimationFrame al mismo tiempo.
-  const zoomMax = useRef(5000)
-  const zoomMin = useRef(0)
+  const zMax = useRef(7000)
+  const zMin = useRef(0)
 
   function moveContainer3d() {
     if (!isZooming) {
@@ -29,7 +29,7 @@ export function App() {
     }
   }
 
-  function moveToSceneById(id) {
+  function activateSceneById(id) {
     const scene = scenesData.find(scene => scene.id === id);
     if (scene) {
       updateContainer3dPosition(
@@ -69,9 +69,10 @@ export function App() {
   }
 
   useEffect(() => initAppDimentions(), []);
+  
 
   return (
-    <CanvasContext.Provider value={{ container3dPosition, container3dRef, currentScene, updateContainer3dPosition, moveContainer3d, moveToSceneById, zoomMax, zoomMin }}>
+    <CanvasContext.Provider value={{ container3dPosition, container3dRef, currentScene, updateContainer3dPosition, moveContainer3d, activateSceneById, zMax, zMin }}>
       <Menu />
       <Canvas />
       <Title />
