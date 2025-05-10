@@ -9,56 +9,74 @@ export const Container3d = forwardRef((props, ref) => {
   const canvas = useContext(CanvasContext);
   const body = document.querySelector('body')
 /*   const container3dRef = useRef(null) */
-  const prevTouchClientY = useRef(null)
+  const prevTouchDistance = useRef(null)
 
-  useEffect(
-    adddingListeners, 
+  useEffect( () => {
+    adddingListeners()
+    return (() => {
+      body.removeEventListener('touchmove', zoomWithPinch);
+      body.removeEventListener('touchend', handleTouchEnd, { passive: false }); 
+      body.removeEventListener('wheel', zoomWithScroll);
+    })},
     [])
 
   function adddingListeners() {
-    const isMobile = window.matchMedia('(pointer: coarse)').matches // detecta si es un movil o un escritorio
-
-    if (isMobile) {
-      body.addEventListener('touchmove', zoomWithTouch, { passive: false }); 
+      body.addEventListener('touchmove', zoomWithPinch, { passive: false }); 
       body.addEventListener('touchend', handleTouchEnd, { passive: false }); 
-    } else {
       body.addEventListener('wheel', zoomWithScroll, { passive: false }); //[2] para que event.preventDefault() funcione correctamente.
-    }
-    return () => {
-      body.removeEventListener('touchmove', zoomWithTouch);
-      body.removeEventListener('touchend', handleTouchEnd, { passive: false }); 
-      body.removeEventListener('wheel', zoomWithScroll);
-    }
   }
 
   function zoomWithScroll(event){
     event.preventDefault(); // Prevenir el comportamiento por defecto del scroll
-    if (canvas.container3dPosition.current.z < 0) {
-      canvas.updateContainer3dPosition(0,0,0)
-    } else {
-      canvas.container3dPosition.current.z += event.deltaY
+    console.log(canvas.container3dPosition.current.z)
+
+    canvas.container3dPosition.current.z += event.deltaY
+    
+    if (canvas.container3dPosition.current.z < canvas.zoomMin.current) {
+      canvas.container3dPosition.current.z = canvas.zoomMin.current;
+    } else if (canvas.container3dPosition.current.z > canvas.zoomMax.current) {
+      canvas.container3dPosition.current.z = canvas.zoomMax.current;
     }
+    
     canvas.moveContainer3d()
   }
 
-  function zoomWithTouch(event){
-    event.preventDefault(); // Prevenir el comportamiento por defecto del scroll
-    /* if (event.touches.length !== 1) return; */
+  function zoomWithPinch(event) {
+    event.preventDefault();
 
-    if (prevTouchClientY.current) {
-      if (canvas.container3dPosition.current.z < 0) {
-        canvas.updateContainer3dPosition(0,0,0)
-      } else {
-        canvas.container3dPosition.current.z += (event.touches[0].pageY - prevTouchClientY.current) * 10;
+    // Solo manejamos pinch con 2 dedos
+    if (event.touches.length === 2) {
+      const touch1 = event.touches[0];
+      const touch2 = event.touches[1];
+
+      // Calculamos la distancia entre los dos dedos
+      const distance = Math.sqrt(
+        Math.pow(touch2.pageX - touch1.pageX, 2) + Math.pow(touch2.pageY - touch1.pageY, 2)
+      );
+
+      if (prevTouchDistance.current) {
+        const zoomFactor = distance - prevTouchDistance.current;
+
+        canvas.container3dPosition.current.z += zoomFactor * 10; // Ajusta el divisor para controlar la velocidad del zoom
+
+        if (canvas.container3dPosition.current.z < canvas.zoomMin.current) {
+          canvas.container3dPosition.current.z = canvas.zoomMin.current;
+        } else if (canvas.container3dPosition.current.z > canvas.zoomMax.current) {
+          canvas.container3dPosition.current.z = canvas.zoomMax.current;
+        }
+
+        canvas.moveContainer3d();
       }
+
+      // Actualizamos la distancia anterior para el siguiente evento
+      prevTouchDistance.current = distance;
     }
-    prevTouchClientY.current = event.touches[0].pageY;
-    canvas.moveContainer3d()
   }
 
   function handleTouchEnd() {
-    prevTouchClientY.current = null;
+    prevTouchDistance.current = null;
   }
+
   return (
     <div className='container3d' id='container3d' ref={ref}>
       <About />

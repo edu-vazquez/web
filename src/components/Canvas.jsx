@@ -8,7 +8,7 @@ export default function Canvas(){
 
 
   return (
-      <div className="canvas">  
+      <div className="canvas" id='canvas'>  
         <Container3d ref={canvas.container3dRef}/>
       </div>
   )

@@ -14,7 +14,8 @@ export function App() {
   const container3dPosition = useRef({ x: 0, y: 0, z: 0 });
   const container3dRef = useRef(null)
   let isZooming = false // flag que se usa para evitar múltiples ejecuciones de requestAnimationFrame al mismo tiempo.
-
+  const zoomMax = useRef(5000)
+  const zoomMin = useRef(0)
 
   function moveContainer3d() {
     if (!isZooming) {
@@ -37,7 +38,6 @@ export function App() {
         scene.z * -1)
       moveContainer3d();
       currentScene.current = id;
-      console.log(currentScene.current)
     }
   };
 
@@ -47,7 +47,9 @@ export function App() {
     container3dPosition.current.z = z
   }
 
-  function initAppDimentions() {
+  /* ################################ */
+  /* VERIFICAR ESTA FUNCION, ME PARECE QUE TENGO QUE SACAR AFUERA DE LA FUNCION LOS WINDOW EVENT LISTENERS. 23.05.10 */
+  function initAppDimentions() { 
     const setAppDimentions = () => {
       document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
       document.documentElement.style.setProperty('--app-width', `${window.innerWidth}px`);
@@ -69,7 +71,7 @@ export function App() {
   useEffect(() => initAppDimentions(), []);
 
   return (
-    <CanvasContext.Provider value={{ container3dPosition, container3dRef, currentScene, updateContainer3dPosition, moveContainer3d, moveToSceneById }}>
+    <CanvasContext.Provider value={{ container3dPosition, container3dRef, currentScene, updateContainer3dPosition, moveContainer3d, moveToSceneById, zoomMax, zoomMin }}>
       <Menu />
       <Canvas />
       <Title />

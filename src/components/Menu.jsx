@@ -7,7 +7,7 @@ export default function Menu(){
   function showAbout(){
     const btnAbout = document.querySelector('#btn-about')
     if (btnAbout.textContent === 'About') {
-      btnAbout.textContent = 'Home'
+      btnAbout.textContent = 'Back'
       canvas.updateContainer3dPosition(0, window.innerHeight, 0)
       canvas.moveContainer3d();
     } else {
@@ -19,13 +19,13 @@ export default function Menu(){
 
   return (
     <nav class="menu-main">
-      <ul className={'menu-home'}
+{/*       <ul className={'menu-home'}
       >
         <li>
           <p>Web Developer</p>
           <p>Based in Barcelona, Spain</p>
         </li>
-      </ul>
+      </ul> */}
 
       <ul className="menu-items">
         <li className="menu-item" onClick={() => canvas.moveToSceneById('webDevelopment')}>

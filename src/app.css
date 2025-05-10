@@ -25,6 +25,10 @@ html, body {
     background-color: var(--background-color);
     user-select: none;
 }
+html, body, .canvas {
+    touch-action: none; /* Bloquea gestos táctiles como zoom o scroll. En .canvas no tiene efecto si no hay gestos. */
+    overscroll-behavior: none; /* Evita el rebote de scroll en móviles. Solo se aplica en html y body. */
+}
 
 a{
     color: var(--font-color);
@@ -34,9 +38,9 @@ ul{
     list-style: none;
 }
 
-.app{
+/* .app{
     position: relative;
-}
+} */
 
 .menu-main{
     position: fixed;
@@ -47,8 +51,8 @@ ul{
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    font-size: .8rem;
-    line-height: 1.2rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
     font-family: "Cal Sans", sans-serif;
     z-index: 2;
 
@@ -69,20 +73,22 @@ ul{
         color: var(--font-color);
     }
 
-    & .menu-items {
+    /* & .menu-items {
         width: 200px;
         margin-left: auto;
         margin-right: calc(10dvw - 100px );
-    }
+    } */
 
     & .menu-about{
         width: 100px;
         text-align: right;
     }
 }
+
+
 .title{
     width: 100vw;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     text-align: center;
@@ -96,7 +102,7 @@ ul{
     height: var(--app-height);
     perspective: 500px;
     transform-style: preserve-3d;
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     pointer-events: none;
@@ -105,39 +111,33 @@ ul{
 .container3d {
     width: var(--app-width);
     height: var(--app-height);
-    position: absolute;
+    position: relative;
     top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     transform-style: preserve-3d;
-    pointer-events: none;
     transition: transform 1s ease; 
-    z-index: -1;
 }
 
-.page {
+.scene {
     width: var(--app-width);
     height: var(--app-height);
     position: absolute;
     cursor: pointer;
-    pointer-events: auto;
-    border: none;
-    z-index: 1;
     transform-style: preserve-3d;
 
     display: grid;
-    grid-template-rows: 1fr 1fr; /* 2 rows */
-    grid-template-columns: repeat(5, 1fr);
-    padding-bottom: 10vw;
-    padding-top: 10vw;
-
-    /* border: 3px solid blue; */
+    grid-template-rows: auto auto; /* 2 rows */
+    grid-template-columns: repeat(5, auto);
+    place-content: center;
+    z-index: 300;
+    pointer-events: auto;
+    border: 3px solid red;
     
     & .card{
         width: var(--card-width);
         height: var(--card-height);
-        border: 1px solid rgba(0, 0, 0, 0.929);
         transform-style: preserve-3d;
         background-size: cover;
         background-position: center;
@@ -150,6 +150,8 @@ ul{
         flex-shrink: 0;
     }
 }
+
+
 .about{
     border: none;
 }
@@ -172,4 +174,17 @@ ul{
     text-align: center;
     position: absolute;
     margin-top: -100%;
+}
+
+@media (max-width: 835px) {
+    .menu-main {
+        padding: 1rem;
+      }
+    .title {
+        font-size: 8.5vw;
+        white-space: normal;
+    }
+    .scene{
+        margin-top: 10vw;
+    }
 }

@@ -10,7 +10,7 @@ export default function Scene(props){
 
   return (
       <div 
-        className="page"
+        className="scene"
         onClick={() => canvas.moveToSceneById(props.scene.id)}
         ref={sceneRef}
         style={{
