@@ -9,72 +9,128 @@ export const Container3d = forwardRef((props, ref) => {
   const canvas = useContext(CanvasContext);
   const body = document.querySelector('body')
 /*   const container3dRef = useRef(null) */
-  const prevTouchDistance = useRef(null)
+  const touchMode = useRef(null); // 'drag' | 'pinch' | null
+  const lastTouchPosition = useRef({ x: 0, y: 0 });
+  const prevTouchDistance = useRef(null);
+  const isPointerDown = useRef(false);
+  const lastPointerPosition = useRef({ x: 0, y: 0 });
 
-  useEffect( () => {
-    adddingListeners()
-    return (() => {
-      body.removeEventListener('touchmove', zoomWithPinch);
-      body.removeEventListener('touchend', handleTouchEnd, { passive: false }); 
+  useEffect(() => {
+    // Touch listeners
+    body.addEventListener('touchstart', handleTouchStart, { passive: false });
+    body.addEventListener('touchmove', handleTouchMove, { passive: false });
+    body.addEventListener('touchend', handleTouchEnd, { passive: false });
+
+    // Pointer listeners
+    body.addEventListener('pointerdown', handlePointerDown);
+    body.addEventListener('pointermove', handlePointerMove);
+    body.addEventListener('pointerup', handlePointerUp);
+
+    // Wheel zoom
+    body.addEventListener('wheel', zoomWithScroll, { passive: false });
+
+    return () => {
+      body.removeEventListener('touchstart', handleTouchStart);
+      body.removeEventListener('touchmove', handleTouchMove);
+      body.removeEventListener('touchend', handleTouchEnd);
+
+      body.removeEventListener('pointerdown', handlePointerDown);
+      body.removeEventListener('pointermove', handlePointerMove);
+      body.removeEventListener('pointerup', handlePointerUp);
+
       body.removeEventListener('wheel', zoomWithScroll);
-    })},
-    [])
+    };
+  }, []);
 
-  function adddingListeners() {
-    body.addEventListener('touchmove', zoomWithPinch, { passive: false }); 
-    body.addEventListener('touchend', handleTouchEnd, { passive: false }); 
-    body.addEventListener('wheel', zoomWithScroll, { passive: false }); 
-    // {pasive: false} para que event.preventDefault() funcione correctamente.
-  }
+  /* ######### LOGICA PARA MOVILES CON TOUCH EVENTS */
 
-  function zoomWithScroll(event){
-    event.preventDefault(); // Prevenir el comportamiento por defecto del scroll
-
-    canvas.container3dPosition.current.z += event.deltaY
-  
-    if (canvas.container3dPosition.current.z < canvas.zMin.current) {
-      canvas.container3dPosition.current.z = canvas.zMin.current;
-    } else if (canvas.container3dPosition.current.z > canvas.zMax.current) {
-      canvas.container3dPosition.current.z = canvas.zMax.current;
-    }
-    canvas.moveContainer3d()
-  }
-
-  function zoomWithPinch(event) {
-    event.preventDefault();
-
-    // Solo manejamos pinch con 2 dedos
-    if (event.touches.length === 2) {
-      const touch1 = event.touches[0];
-      const touch2 = event.touches[1];
-
-      // Calculamos la distancia entre los dos dedos
-      const distance = Math.sqrt(
-        Math.pow(touch2.pageX - touch1.pageX, 2) + Math.pow(touch2.pageY - touch1.pageY, 2)
+  function handleTouchStart(e) {
+    if (e.touches.length === 1) {
+      touchMode.current = 'drag';
+      lastTouchPosition.current = {
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY,
+      };
+    } else if (e.touches.length === 2) {
+      touchMode.current = 'pinch';
+      const [touch1, touch2] = e.touches;
+      prevTouchDistance.current = Math.hypot(
+        touch2.pageX - touch1.pageX,
+        touch2.pageY - touch1.pageY
       );
-
-      if (prevTouchDistance.current) {
-        const zoomFactor = distance - prevTouchDistance.current;
-
-        canvas.container3dPosition.current.z += zoomFactor * 10; // Ajusta el divisor para controlar la velocidad del zoom
-
-        if (canvas.container3dPosition.current.z < canvas.zMin.current) {
-          canvas.container3dPosition.current.z = canvas.zMin.current;
-        } else if (canvas.container3dPosition.current.z > canvas.zMax.current) {
-          canvas.container3dPosition.current.z = canvas.zMax.current;
-        }
-
-        canvas.moveContainer3d();
-      }
-
-      // Actualizamos la distancia anterior para el siguiente evento
-      prevTouchDistance.current = distance;
     }
   }
-
+  
+  function handleTouchMove(e) {
+    e.preventDefault();
+    if (touchMode.current === 'drag' && e.touches.length === 1) {
+      const touch = e.touches[0];
+      const deltaX = touch.clientX - lastTouchPosition.current.x;
+      const deltaY = touch.clientY - lastTouchPosition.current.y;
+  
+      canvas.container3dPosition.current.x += deltaX;
+      canvas.container3dPosition.current.y += deltaY;
+  
+      lastTouchPosition.current = { x: touch.clientX, y: touch.clientY };
+      canvas.moveContainer3d();
+  
+    } else if (touchMode.current === 'pinch' && e.touches.length === 2) {
+      const [touch1, touch2] = e.touches;
+      const distance = Math.hypot(
+        touch2.pageX - touch1.pageX,
+        touch2.pageY - touch1.pageY
+      );
+      const zoomFactor = distance - prevTouchDistance.current;
+  
+      canvas.container3dPosition.current.z += zoomFactor * 5;
+      canvas.container3dPosition.current.z = Math.max(
+        canvas.zMin.current,
+        Math.min(canvas.zMax.current, canvas.container3dPosition.current.z)
+      );
+  
+      prevTouchDistance.current = distance;
+      canvas.moveContainer3d();
+    }
+  }
+  
   function handleTouchEnd() {
+    touchMode.current = null;
     prevTouchDistance.current = null;
   }
+
+  /* ######### LOGICA PARA DESKTOP CON POINTER EVENTS */
+  function handlePointerDown(e) {
+    isPointerDown.current = true;
+    lastPointerPosition.current = { x: e.clientX, y: e.clientY };
+  }
+  
+  function handlePointerMove(e) {
+    if (!isPointerDown.current) return;
+  
+    const deltaX = e.clientX - lastPointerPosition.current.x;
+    const deltaY = e.clientY - lastPointerPosition.current.y;
+  
+    canvas.container3dPosition.current.x += deltaX;
+    canvas.container3dPosition.current.y += deltaY;
+  
+    lastPointerPosition.current = { x: e.clientX, y: e.clientY };
+    canvas.moveContainer3d();
+  }
+  
+  function handlePointerUp() {
+    isPointerDown.current = false;
+  }
+
+  function zoomWithScroll(e) {
+    e.preventDefault();
+    canvas.container3dPosition.current.z += e.deltaY;
+    canvas.container3dPosition.current.z = Math.max(
+      canvas.zMin.current,
+      Math.min(canvas.zMax.current, canvas.container3dPosition.current.z)
+    );
+    canvas.moveContainer3d();
+  }
+  
 
   return (
     <div className='container3d' id='container3d' ref={ref}>

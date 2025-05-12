@@ -14,8 +14,12 @@ export function App() {
   const container3dPosition = useRef({ x: 0, y: 0, z: 0 });
   const container3dRef = useRef(null)
   let isZooming = false // flag que se usa para evitar múltiples ejecuciones de requestAnimationFrame al mismo tiempo.
+
+  /* ###### LIMITES PARA ZOOMS, X e Y */
   const zMax = useRef(7000)
   const zMin = useRef(0)
+  const XMax = useRef(100)
+  const yMax = useRef(100)
 
   function moveContainer3d() {
     if (!isZooming) {
