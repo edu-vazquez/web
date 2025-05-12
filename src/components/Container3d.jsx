@@ -8,7 +8,6 @@ import About from './About';
 export const Container3d = forwardRef((props, ref) => {
   const canvas = useContext(CanvasContext);
   const body = document.querySelector('body')
-/*   const container3dRef = useRef(null) */
   const touchMode = useRef(null); // 'drag' | 'pinch' | null
   const lastTouchPosition = useRef({ x: 0, y: 0 });
   const prevTouchDistance = useRef(null);
