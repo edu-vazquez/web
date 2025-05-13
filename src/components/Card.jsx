@@ -1,8 +1,5 @@
-import { useContext } from 'preact/hooks';
-import { CanvasContext } from '../app';
 
 export default function Card (props){
-  const canvas = useContext(CanvasContext);
   const maxY = 10
   const maxX = 30
 
@@ -19,7 +16,6 @@ export default function Card (props){
     <div 
       className={props.class}
       style={style}
-      onClick={() => canvas.activateSceneById(props.sceneId)}
     >
     </div>
   )

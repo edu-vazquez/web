@@ -3,7 +3,6 @@ import { CanvasContext } from '../app';
 import Scene from './Scene'
 import { scenesData } from '../assets/scenesData';
 import { forwardRef } from 'preact/compat';
-import { jsx } from 'preact/jsx-runtime';
 
 export const Container3d = forwardRef((props, ref) => {
   const canvas = useContext(CanvasContext);
@@ -69,7 +68,7 @@ export const Container3d = forwardRef((props, ref) => {
         return; // Salir para no calcular el zoom en la primera iteración pra que no haya un SALTO muy grande
       }
       const zoom = hypot - hypotPrev.current
-      canvas.container3dPosition.current.z += zoom * 10
+      canvas.container3dPosition.current.z += zoom * 5
       
       hypotPrev.current = hypot
       activePointers.set(e.pointerId, { x: e.clientX, y: e.clientY });

@@ -58,6 +58,7 @@ ul{
     font-family: "Cal Sans", sans-serif;
     z-index: 2;
     pointer-events: none;
+    height: fit-content;
 
     & li{
         transition: color .5s ease;
@@ -84,7 +85,7 @@ ul{
     font-family: "Audiowide", sans-serif;
     font-size: 10dvw;
     letter-spacing: 2px;
-    pointer-events: none;
+    height: fit-content;
 }
 
 .canvas {
@@ -181,7 +182,7 @@ ul{
 
 @media (max-width: 835px) {
     .menu-main {
-        padding: 1rem;
+        padding: 0.5rem;
       }
     .title {
         font-size: 8.5dvw;
@@ -191,6 +192,34 @@ ul{
         margin-top: 10vw;
     }
     .container3d {
-        transition: transform 0.1s ease-in-out 
+        transition: transform 0.5s ease-in-out 
     }
+}
+@media (max-width: 450px){
+    .title{
+        top: 0;
+    }
+    .menu-main{
+        top: auto;
+        bottom: 0;
+        flex-direction: row-reverse;
+        align-items: end;
+        text-align: right;
+    
+        & li{
+            transition: color .5s ease;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+    
+        & li:hover{
+            color:  var(--font-color-hover)
+        }
+        & .menu-about{
+            width: 100px;
+            text-align: left;
+        }
+    }
+    
+
 }
