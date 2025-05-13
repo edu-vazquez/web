@@ -2,6 +2,7 @@
     margin: 0; 
     padding: 0; 
     box-sizing: border-box;
+    user-select: none;
 }
 
 :root {
@@ -24,6 +25,7 @@ html, body {
     font-family: Arial, sans-serif;
     background-color: var(--background-color);
     user-select: none;
+
 }
 html, body, .canvas {
     touch-action: none; /* Bloquea gestos táctiles como zoom o scroll. En .canvas no tiene efecto si no hay gestos. */
@@ -105,8 +107,9 @@ ul{
     justify-content: center;
     align-items: center;
     transform-style: preserve-3d;
-    transition: transform .1s ease; 
+    transition: transform .5s ease; 
     pointer-events: none;
+    touch-action: none;
 }
 
 .scene {
@@ -135,12 +138,19 @@ ul{
 
         cursor: pointer;
         pointer-events: auto;
+
+        &:hover{
+            border: 5px solid red;
+        }
     }
     & .card-random{
         width: var(--card-width);
         height: var(--card-height);
         background-color: rgba(0, 0, 0, 0.485);
         flex-shrink: 0;
+
+        cursor: pointer;
+        pointer-events: auto;
     }
 }
 
@@ -179,5 +189,8 @@ ul{
     }
     .scene{
         margin-top: 10vw;
+    }
+    .container3d {
+        transition: transform 0.1s ease-in-out 
     }
 }

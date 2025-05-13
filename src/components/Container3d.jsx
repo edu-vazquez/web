@@ -1,26 +1,21 @@
-import { useContext, useEffect, useRef } from 'preact/hooks';
+import { useContext, useEffect, useRef, useState } from 'preact/hooks';
 import { CanvasContext } from '../app';
-import FloatingPage from './Scene'
+import Scene from './Scene'
 import { scenesData } from '../assets/scenesData';
 import { forwardRef } from 'preact/compat';
-import About from './About';
+import { jsx } from 'preact/jsx-runtime';
 
 export const Container3d = forwardRef((props, ref) => {
   const canvas = useContext(CanvasContext);
   const body = document.querySelector('body')
-  const touchMode = useRef(null); // 'drag' | 'pinch' | null
-  const lastTouchPosition = useRef({ x: 0, y: 0 });
-  const prevTouchDistance = useRef(null);
-  const isPointerDown = useRef(false);
-  const lastPointerPosition = useRef({ x: 0, y: 0 });
+
+  const activePointers = new Map();
+
+  const isPointerDown = useRef(false)
+
+  const hypotPrev = useRef(null)
 
   useEffect(() => {
-    // Touch listeners
-    body.addEventListener('touchstart', handleTouchStart, { passive: false });
-    body.addEventListener('touchmove', handleTouchMove, { passive: false });
-    body.addEventListener('touchend', handleTouchEnd, { passive: false });
-
-    // Pointer listeners
     body.addEventListener('pointerdown', handlePointerDown);
     body.addEventListener('pointermove', handlePointerMove);
     body.addEventListener('pointerup', handlePointerUp);
@@ -29,95 +24,65 @@ export const Container3d = forwardRef((props, ref) => {
     body.addEventListener('wheel', zoomWithScroll, { passive: false });
 
     return () => {
-      body.removeEventListener('touchstart', handleTouchStart);
-      body.removeEventListener('touchmove', handleTouchMove);
-      body.removeEventListener('touchend', handleTouchEnd);
 
       body.removeEventListener('pointerdown', handlePointerDown);
       body.removeEventListener('pointermove', handlePointerMove);
       body.removeEventListener('pointerup', handlePointerUp);
 
+      // wheel zoom
       body.removeEventListener('wheel', zoomWithScroll);
     };
   }, []);
 
-  /* ######### LOGICA PARA MOVILES CON TOUCH EVENTS */
-
-  function handleTouchStart(e) {
-    if (e.touches.length === 1) {
-      touchMode.current = 'drag';
-      lastTouchPosition.current = {
-        x: e.touches[0].clientX,
-        y: e.touches[0].clientY,
-      };
-    } else if (e.touches.length === 2) {
-      touchMode.current = 'pinch';
-      const [touch1, touch2] = e.touches;
-      prevTouchDistance.current = Math.hypot(
-        touch2.pageX - touch1.pageX,
-        touch2.pageY - touch1.pageY
-      );
-    }
-  }
-  
-  function handleTouchMove(e) {
-    e.preventDefault();
-    if (touchMode.current === 'drag' && e.touches.length === 1) {
-      const touch = e.touches[0];
-      const deltaX = touch.clientX - lastTouchPosition.current.x;
-      const deltaY = touch.clientY - lastTouchPosition.current.y;
-  
-      canvas.container3dPosition.current.x += deltaX;
-      canvas.container3dPosition.current.y += deltaY;
-  
-      lastTouchPosition.current = { x: touch.clientX, y: touch.clientY };
-      canvas.moveContainer3d();
-  
-    } else if (touchMode.current === 'pinch' && e.touches.length === 2) {
-      const [touch1, touch2] = e.touches;
-      const distance = Math.hypot(
-        touch2.pageX - touch1.pageX,
-        touch2.pageY - touch1.pageY
-      );
-      const zoomFactor = distance - prevTouchDistance.current;
-  
-      canvas.container3dPosition.current.z += zoomFactor * 5;
-      canvas.container3dPosition.current.z = Math.max(
-        canvas.zMin.current,
-        Math.min(canvas.zMax.current, canvas.container3dPosition.current.z)
-      );
-  
-      prevTouchDistance.current = distance;
-      canvas.moveContainer3d();
-    }
-  }
-  
-  function handleTouchEnd() {
-    touchMode.current = null;
-    prevTouchDistance.current = null;
-  }
-
-  /* ######### LOGICA PARA DESKTOP CON POINTER EVENTS */
   function handlePointerDown(e) {
-    isPointerDown.current = true;
-    lastPointerPosition.current = { x: e.clientX, y: e.clientY };
+    isPointerDown.current = true /* esto es para que lea el click o sino handlepointermove seguira al pointer sin haber hecho click */
+    activePointers.set(e.pointerId, { x: e.pageX, y: e.pageY });
+
   }
   
   function handlePointerMove(e) {
     if (!isPointerDown.current) return;
-  
-    const deltaX = e.clientX - lastPointerPosition.current.x;
-    const deltaY = e.clientY - lastPointerPosition.current.y;
-  
-    canvas.container3dPosition.current.x += deltaX;
-    canvas.container3dPosition.current.y += deltaY;
-  
-    lastPointerPosition.current = { x: e.clientX, y: e.clientY };
+
+    if (activePointers.size === 1){
+
+      const lastPos = activePointers.get(e.pointerId);
+      if (!lastPos) return;
+
+      const deltaX = e.clientX - lastPos.x;
+      const deltaY = e.clientY - lastPos.y;
+
+      canvas.container3dPosition.current.x += deltaX;
+      canvas.container3dPosition.current.y += deltaY;
+
+      activePointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+
+    } else if (activePointers.size === 2){
+      const hypotPoints = Array.from(activePointers.values());
+      
+      const hypot = Math.hypot(
+        hypotPoints[1].x - hypotPoints[0].x,
+        hypotPoints[1].y - hypotPoints[0].y
+      )
+      
+      if (hypotPrev.current === null) {
+        hypotPrev.current = hypot;
+        return; // Salir para no calcular el zoom en la primera iteración pra que no haya un SALTO muy grande
+      }
+      const zoom = hypot - hypotPrev.current
+      canvas.container3dPosition.current.z += zoom * 10
+      
+      hypotPrev.current = hypot
+      activePointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+
+    }
+
     canvas.moveContainer3d();
   }
   
-  function handlePointerUp() {
-    isPointerDown.current = false;
+  function handlePointerUp(e) {
+    activePointers.delete(e.pointerId)
+    isPointerDown.current = false
+    hypotPrev.current = null
   }
 
   function zoomWithScroll(e) {
@@ -133,14 +98,16 @@ export const Container3d = forwardRef((props, ref) => {
 
   return (
     <div className='container3d' id='container3d' ref={ref}>
-      <About />
       {
         scenesData.map((scene) => {
           return (
-            <FloatingPage 
+            <>
+             <Scene 
               scene={scene}
               key={scene.id}
             />
+            </>
+
           )
         })
       }

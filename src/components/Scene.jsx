@@ -24,6 +24,7 @@ export default function Scene(props){
             <Card
               key={index}
               class={'card-random'}
+              sceneId={props.scene.id}
             />
           </>
         ))}
