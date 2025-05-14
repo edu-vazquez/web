@@ -108,7 +108,7 @@ ul{
     justify-content: center;
     align-items: center;
     transform-style: preserve-3d;
-    transition: transform .5s ease; 
+    transition: transform 1s ease; 
     pointer-events: none;
     touch-action: none;
 }
@@ -192,7 +192,7 @@ ul{
         margin-top: 10vw;
     }
     .container3d {
-        transition: transform 0.5s ease-in-out 
+        transition: transform 1s ease 
     }
 }
 @media (max-width: 450px){
