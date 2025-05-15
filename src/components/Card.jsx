@@ -3,6 +3,7 @@ export default function Card (props){
   const maxY = 10
   const maxX = 30
 
+  const cardId = props.card?.id ?? props.cardRandomId;
   const style = {};
 
   if (props.card?.imageUrl) {
@@ -14,8 +15,9 @@ export default function Card (props){
 
   return (
     <div 
-      className={props.class}
+      className={props.className}
       style={style}
+      id={cardId}
     >
     </div>
   )

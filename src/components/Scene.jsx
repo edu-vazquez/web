@@ -18,13 +18,14 @@ export default function Scene(props){
             <Card
               key={card.id}
               card={card}
-              class={'card'}
+              className={'card'}
               sceneId={props.scene.id}
             />
             <Card
               key={index}
-              class={'card-random'}
+              className={'card-random'}
               sceneId={props.scene.id}
+              cardRandomId={`${props.scene.id}-${index}`}
             />
           </>
         ))}
