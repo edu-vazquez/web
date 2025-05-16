@@ -36,6 +36,9 @@ export function App() {
 
   function activateSceneById(id) {
     const scene = scenesData.find(scene => scene.id === id);
+    if (activeCard.current){
+      deactivateCardById(activeCard.current)
+    }
     if (scene) {
       updateContainer3dPosition(
         window.innerWidth * scene.x / 100 * -1, 
@@ -45,19 +48,6 @@ export function App() {
       activeScene.current = id;
     }
   };
-
-  function deactivateSceneById(id) {
-    const scene = scenesData.find(scene => scene.id === id);
-    if (scene) {
-      updateContainer3dPosition(
-        window.innerWidth * scene.x / 100 * -1, 
-        window.innerHeight * scene.y / 100 * -1, 
-        scene.z * -1)
-      moveContainer3d();
-      activeScene.current = id;
-    }
-  };
-
 
   function activateCardById(sceneId, cardId) {
     if (activeScene.current === sceneId && !cardId.includes("random")){
@@ -70,7 +60,7 @@ export function App() {
     }
   }
 
-  function deactivateCardById(sceneId, cardId) {
+  function deactivateCardById(cardId) {
     if (activeCard.current){
       const card = document.querySelector(`#${cardId}`)
       const title = document.querySelector(`#title`)
