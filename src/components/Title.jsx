@@ -7,7 +7,7 @@ export default function Title() {
   function handleClick(){
     canvas.updateContainer3dPosition(0,0,0);
     canvas.moveContainer3d()
-    canvas.currentScene.current = 'home';
+    canvas.activeScene.current = null;
   }
 
   return (

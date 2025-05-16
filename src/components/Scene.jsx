@@ -4,6 +4,18 @@ import { useRef } from 'preact/hooks';
 export default function Scene(props){
   const sceneRef = useRef(null);
 
+  const cardsPositions = [
+    { x: -150, y: 50 },
+    { x: -150, y: -50 },
+    { x: -50, y: -50 },
+    { x: -50, y: 50 },
+    { x: 50, y: 50 },
+    { x: 50, y: -50 },
+    { x: 150, y: -50 },
+    { x: 150, y: 50 },
+  ]
+  let cardsPositionsIndex = 0
+
   return (
       <div 
         className="scene"
@@ -20,12 +32,15 @@ export default function Scene(props){
               card={card}
               className={'card'}
               sceneId={props.scene.id}
+              position={cardsPositions[cardsPositionsIndex++]}
+              /* el cardId se asigna con el id del objeto card */
             />
             <Card
               key={index}
               className={'card-random'}
               sceneId={props.scene.id}
-              cardRandomId={`${props.scene.id}-${index}`}
+              cardRandomId={`${props.scene.id}-random-${index}`}
+              position={cardsPositions[cardsPositionsIndex++]}
             />
           </>
         ))}

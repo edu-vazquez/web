@@ -86,8 +86,11 @@ ul{
     font-size: 10dvw;
     letter-spacing: 2px;
     height: fit-content;
+    transition: all 1s ease;
 }
-
+.title-hide{
+    bottom: -100% !important;
+}
 .canvas {
     width: 100vw;
     height: var(--app-height);
@@ -123,10 +126,9 @@ ul{
     justify-content: center;
     align-items: center;
     align-content: center;
-    flex-wrap: wrap;
 
-    z-index: 300;
     pointer-events: none;
+    /* border: 2px solid blue; */
     
     & .card{
         width: var(--card-width);
@@ -134,16 +136,18 @@ ul{
         transform-style: preserve-3d;
         background-size: cover;
         background-position: center;
-        flex-shrink: 0;
-        margin: 0 0 ;
 
         cursor: pointer;
         pointer-events: auto;
-
-        &:hover{
-            border: 5px solid red;
-        }
+        position: absolute;
+        transition: all 2s ease;
     }
+    .card-expanded {
+        width: 100dvw !important;
+        height: 100dvh !important;
+        transform: translate3d(0,0,0) !important;
+    }
+
     & .card-random{
         width: var(--card-width);
         height: var(--card-height);
@@ -152,6 +156,8 @@ ul{
 
         cursor: pointer;
         pointer-events: auto;
+
+        position: absolute;
     }
 }
 
@@ -173,6 +179,7 @@ ul{
 }
 
 
+
 /* para borrar */
 .devP{
     text-align: center;
@@ -188,9 +195,6 @@ ul{
         font-size: 8.5dvw;
         white-space: normal;
     }
-    .scene{
-        margin-top: 10vw;
-    }
     .container3d {
         transition: transform 1s ease 
     }
@@ -198,6 +202,9 @@ ul{
 @media (max-width: 450px){
     .title{
         top: 0;
+    }
+    .title-hide{
+        top: -100% !important;
     }
     .menu-main{
         top: auto;

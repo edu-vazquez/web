@@ -42,7 +42,7 @@ export const Container3d = forwardRef((props, ref) => {
   function handlePointerMove(e) {
     if (!isPointerDown.current) return;
 
-    if (activePointers.size === 1){
+    if (activePointers.size === 1 && !canvas.activeCard.current && !canvas.activeScene.current){
 
       const lastPos = activePointers.get(e.pointerId);
       if (!lastPos) return;
@@ -56,6 +56,8 @@ export const Container3d = forwardRef((props, ref) => {
       activePointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
 
     } else if (activePointers.size === 2){
+      canvas.deactivateCardById(canvas.activeScene.current, canvas.activeCard.current)
+      canvas.activeScene.current = null
       const hypotPoints = Array.from(activePointers.values());
       
       const hypot = Math.hypot(
@@ -72,9 +74,7 @@ export const Container3d = forwardRef((props, ref) => {
       
       hypotPrev.current = hypot
       activePointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
-
     }
-
     canvas.moveContainer3d();
   }
   
@@ -86,6 +86,8 @@ export const Container3d = forwardRef((props, ref) => {
 
   function zoomWithScroll(e) {
     e.preventDefault();
+    canvas.deactivateCardById(canvas.activeScene.current, canvas.activeCard.current)
+    canvas.activeScene.current = null
     canvas.container3dPosition.current.z += e.deltaY;
     canvas.container3dPosition.current.z = Math.max(
       canvas.zMin.current,
@@ -93,7 +95,6 @@ export const Container3d = forwardRef((props, ref) => {
     );
     canvas.moveContainer3d();
   }
-  
 
   return (
     <div className='container3d' id='container3d' ref={ref}>
