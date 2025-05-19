@@ -56,7 +56,7 @@ export const Container3d = forwardRef((props, ref) => {
       activePointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
 
     } else if (activePointers.size === 2){
-      canvas.deactivateCardById(canvas.activeScene.current, canvas.activeCard.current)
+      canvas.deactivateCardById(canvas.activeCard.current)
       canvas.activeScene.current = null
       const hypotPoints = Array.from(activePointers.values());
       
@@ -86,7 +86,7 @@ export const Container3d = forwardRef((props, ref) => {
 
   function zoomWithScroll(e) {
     e.preventDefault();
-    canvas.deactivateCardById(canvas.activeScene.current, canvas.activeCard.current)
+    canvas.deactivateCardById(canvas.activeCard.current)
     canvas.activeScene.current = null
     canvas.container3dPosition.current.z += e.deltaY;
     canvas.container3dPosition.current.z = Math.max(

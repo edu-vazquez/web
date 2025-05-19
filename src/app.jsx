@@ -5,6 +5,7 @@ import { scenesData } from "./assets/scenesData";
 import Menu from './components/Menu';
 import Canvas from './components/Canvas';
 import Title from './components/Title';
+import About from "./components/About";
 import './app.css'
 
 export const CanvasContext = createContext();
@@ -14,6 +15,7 @@ export function App() {
   const activeCard = useRef(null)
   const container3dPosition = useRef({ x: 0, y: 0, z: 0 });
   const container3dRef = useRef(null)
+  const isMobile = useRef(false)
   let isZooming = false // flag que se usa para evitar múltiples ejecuciones de requestAnimationFrame al mismo tiempo.
 
   /* ###### LIMITES PARA ZOOMS, X e Y */
@@ -35,25 +37,45 @@ export function App() {
   }
 
   function activateSceneById(id) {
-    const scene = scenesData.find(scene => scene.id === id);
+    const scene = scenesData.find(scene => scene.id === id); // esto es para extraer los datos de x e y para mover el container3d
+    const title = document.querySelector(`#title`)
+    const menu = document.querySelector(`#menu-${id}`)
+
+    if (activeScene.current){
+      const menuLeaving = document.querySelector(`#menu-${activeScene.current}`)
+      menuLeaving.classList.remove(`menu-item-as-title`)
+    }
+    
     if (activeCard.current){
       deactivateCardById(activeCard.current)
     }
-    if (scene) {
-      updateContainer3dPosition(
-        window.innerWidth * scene.x / 100 * -1, 
-        window.innerHeight * scene.y / 100 * -1, 
-        scene.z * -1)
-      moveContainer3d();
-      activeScene.current = id;
-    }
+    updateContainer3dPosition(
+      window.innerWidth * scene.x / 100 * -1, 
+      window.innerHeight * scene.y / 100 * -1, 
+      scene.z * -1)
+    moveContainer3d();
+    activeScene.current = id;
+    menu.classList.add(`menu-item-as-title`)
+    title.classList.add(`title-small`)
   };
 
-  function activateCardById(sceneId, cardId) {
-    if (activeScene.current === sceneId && !cardId.includes("random")){
+  function goHome(){
+    updateContainer3dPosition(0,0,0);
+    moveContainer3d()
+    if (activeScene.current){
+      const menuLeaving = document.querySelector(`#menu-${activeScene.current}`)
+      menuLeaving.classList.remove(`menu-item-as-title`)
+    }
+    document.querySelector(`#title`).classList.remove(`title-small`)
+  }
+
+  function activateCardById(cardId) {
+    if (activeScene.current && !cardId.includes("random")){
       const card = document.querySelector(`#${cardId}`)
       const title = document.querySelector(`#title`)
+      const menu = document.querySelector(`#menu-main`)
 
+      menu.classList.add(`menu-main-hide`)
       title.classList.add(`title-hide`)
       card.classList.add('card-expanded'); 
       activeCard.current = cardId
@@ -70,18 +92,6 @@ export function App() {
       activeCard.current = null
     }
   }
-
-  function toggleCardState(sceneId, cardId) {
-    if (activeScene.current === sceneId && !cardId.includes("random")){
-      const card = document.querySelector(`#${cardId}`)
-      const title = document.querySelector(`#title`)
-
-      title.classList.toggle(`title-hide`)
-      card.classList.toggle('card-expanded'); 
-      activeCard.current === null ? activeCard.current = cardId : activeCard.current = null
-    }
-  }
-
   function updateContainer3dPosition(x, y ,z){
     container3dPosition.current.x = x
     container3dPosition.current.y = y
@@ -120,16 +130,20 @@ export function App() {
         container3dRef, 
         activeScene, 
         activeCard,
+        isMobile,
         updateContainer3dPosition, 
         moveContainer3d, 
         activateSceneById,
         activateCardById, 
         deactivateCardById,
+        goHome,
         zMax, 
-        zMin }}>
+        zMin }}
+        >
       <Menu />
       <Canvas />
       <Title />
+      <About />
     </CanvasContext.Provider>
   )
 }

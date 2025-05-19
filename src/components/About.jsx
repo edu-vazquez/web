@@ -1,10 +1,5 @@
 export default function About(){
-  const windowWidth = window.innerWidth
-  const windowHeight = window.innerHeight
 
-  function hideAbout(){
-    document.querySelector('#about').style.transform = 'translateX(20dvw)'
-  }
   
   function copyMail() {
     const btnCopy = document.querySelector('#btn-copy')
@@ -22,15 +17,11 @@ export default function About(){
 
   return (
     <div
-      className={'page about'}
+      className={'about'}
       id={'about'}
-      style={{
-        transform: `translate3d(0px, -${windowHeight}px, 0px)`,
-        width: `${windowWidth}px`,
-        height: `${windowHeight}px`,
-      }}
     >
-      <p>Hello! I’m a web developer based in Spain, passionate about creating innovative web solutions. I have a strong background in [mention relevant skills/technologies], and I love to experiment with new technologies to solve real-world problems.</p>
+      <div className="about-container">
+        <p>Hello! I’m a web developer based in Spain, passionate about creating innovative web solutions. I have a strong background in [mention relevant skills/technologies], and I love to experiment with new technologies to solve real-world problems.</p>
 
       <ul>
         <li>
@@ -50,6 +41,7 @@ export default function About(){
             <i class="fa-solid fa-copy" id="btn-copy" onClick={copyMail}></i>
         </li>
       </ul>
+      </div>
     </div>
 
   )

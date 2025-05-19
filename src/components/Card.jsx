@@ -27,7 +27,7 @@ export default function Card (props){
       className={props.className}
       style={style}
       id={cardId}
-      onClick={() => canvas.activateCardById(props.sceneId, cardId)}
+      onClick={() => canvas.activateCardById(cardId)}
     >
     </div>
   )

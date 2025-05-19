@@ -73,7 +73,7 @@ export const scenesData = [
   },
   {
     id: 'architecture',
-    x: '-85',
+    x: '00',
     y: '-90',
     z: '-6000',
     cards: [
