@@ -21,7 +21,8 @@ export default function About(){
       id={'about'}
     >
       <div className="about-container">
-        <p>Hello! I’m a web developer based in Spain, passionate about creating innovative web solutions. I have a strong background in [mention relevant skills/technologies], and I love to experiment with new technologies to solve real-world problems.</p>
+        <p>Hello!</p> 
+        <p>I’m a web developer based in Spain, passionate about creating innovative web solutions. I have a strong background in [mention relevant skills/technologies], and I love to experiment with new technologies to solve real-world problems.</p>
 
       <ul>
         <li>

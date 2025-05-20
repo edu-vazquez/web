@@ -113,6 +113,9 @@ ul{
     transition: font-size 1s ease, transform 1s ease;
     cursor: pointer;
     transform: translateY(0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .title-small{
     font-size: 4vw;
@@ -124,6 +127,7 @@ ul{
     transform: translateY(-80vh);
     font-size: 5vw;
     transition: font-size 1s ease, transform 1s ease;
+
 }
 
 .canvas {
@@ -193,7 +197,8 @@ ul{
 
 .about{
     width: var(--app-width);
-    height: var(--app-height);
+    height: 80dvh;
+
 
     position: fixed;
     top: 100dvh;
@@ -201,11 +206,10 @@ ul{
     font-family: "Cal Sans", sans-serif;
     font-size: 1.5rem;
     transition: top .8s ease; 
-    padding: 10vh;
 
     & .about-container{
         max-width: 50vw;
-        height: 100dvh;
+        height: 100%;
         margin: auto auto;
 
         display: flex;
@@ -218,7 +222,7 @@ ul{
     }
 }
 .about-active{
-    top: 0;
+    top: 20dvh;
     transition: top 1s ease; 
 }
 
@@ -253,7 +257,7 @@ ul{
             pointer-events: auto;
             font-weight: bold;
             position: fixed;
-            width: 45vw;
+            width: 60vw;
             transition: 
                 transform 0.5s ease, 
                 font-size 0.5s ease,
@@ -262,36 +266,32 @@ ul{
             display: flex;
             align-items: center;
             justify-content: right;
-
-            &:hover{
-                color:  var(--font-color-hover)
-            }
         }
         & .menu-item-as-title{
-            font-size: 1.1rem;
+            font-size: 1.5rem;
             color: var(--font-color-hover);
             margin-left: 0;
         }
  
         & .menu-item:nth-child(1) {
 
-            transform: translate3d(53vw, -105px, 0);
+            transform: translate3d(38vw, -105px, 0);
         }
         & .menu-item:nth-child(2) {
-             transform: translate3d(53vw, -80px, 0);           
+             transform: translate3d(38vw, -80px, 0);           
         }
         & .menu-item:nth-child(3) {
-            transform: translate3d(53vw, -55px, 0);
+            transform: translate3d(38vw, -55px, 0);
         }
         & .menu-item:nth-child(4) {
-            transform: translate3d(53vw, -30px, 0);            
+            transform: translate3d(38vw, -30px, 0);            
         }
         & #menu-about{
             justify-content: left;
             transform: translate3d(2vw, -30px, 0)
         }
         & .menu-item-about{
-            transform: translate3d(53vw, 10px, 0) !important;
+            transform: translate3d(38vw, 10px, 0) !important;
         }
     }
     .title {
@@ -310,20 +310,26 @@ ul{
 
         font-size: 1.2rem;
         padding: 0;
+        height: 100dvh;
 
         & .about-container{
             max-width: 80vw;
-            height: 100dvh;
+            height: 100%;
 
             display: flex;
             flex-direction: column;
             justify-content: center;
-            gap: 5px;
+            gap: 5dvh;
         }
         & i{
             margin-left:1rem;
         }
     }
+    .about-active{
+        top: 0;
+        transition: top 1s ease; 
+    }
+
     .container3d {
         transition: transform 1s ease 
     }
