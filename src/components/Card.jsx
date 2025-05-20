@@ -21,7 +21,6 @@ export default function Card (props){
   }
   style.transform = `translate3d(${card3dPosition.current.x}%, ${card3dPosition.current.y}%, ${card3dPosition.current.z}px)`
 
-
   return (
     <div 
       className={props.className}

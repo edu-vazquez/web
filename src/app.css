@@ -61,10 +61,9 @@ ul{
         pointer-events: auto;
         font-weight: bold;
         position: fixed;
-        transition: transform 0.5s ease,
-                     margin-left .5s ease,
-                     font-size 0.5s ease;
-
+        transition: transform 0.5s cubic-bezier(.37,.08,.17,1.47),
+                    margin-left .5s cubic-bezier(.37,.08,.17,1.47),
+                    font-size 0.5s cubic-bezier(.37,.08,.17,1.47);
         display: flex;
         align-items: center;
 
@@ -79,7 +78,6 @@ ul{
     }
     & .menu-item-about{
         transform: translate3d(2rem, -100px, 0) !important;
-
     }
     & .menu-item:nth-child(1) {
         transform: translate3d(2rem, 25px, 0);
@@ -96,6 +94,9 @@ ul{
     & #menu-about{
         transform: translate3d(93vw, 25px, 0)
     }
+    & #menu-about.menu-about-hidden{
+        transform: translate3d(93vw, -25px,0) ;
+    }
 }
 
 .title{
@@ -110,7 +111,8 @@ ul{
     letter-spacing: 2px;
     height: fit-content;
     padding: 0;
-    transition: font-size 1s ease, transform 1s ease;
+    transition: font-size 1s ease, 
+                transform 1s ease;
     cursor: pointer;
     transform: translateY(0);
     display: flex;
@@ -173,9 +175,12 @@ ul{
                 cursor: pointer;
                 pointer-events: auto;
                 position: absolute;
-                transition: all 2s ease;
+                transition: width 1.5s ease,
+                            height 1.5s ease,
+                            transform 1.5s ease;
+
             }
-            & .card-expanded {
+            & .card-active {
                 width: 100dvw !important;
                 height: 100dvh !important;
                 transform: translate3d(0,0,0) !important;
@@ -190,14 +195,22 @@ ul{
                 pointer-events: auto;
 
                 position: absolute;
+                transition: width 1.5s ease,
+                            height 1.5s ease,
+                            transform 1.5s ease;
             }
+        }
+        & .scene-active > :not(.card-active){
+            width: 0;
+            height: 0;
+            transform: translate3d(0,0,-1000px) !important;
         }
     }
 }
 
 .about{
     width: var(--app-width);
-    height: 80dvh;
+    height: 100dvh;
 
 
     position: fixed;
@@ -206,6 +219,8 @@ ul{
     font-family: "Cal Sans", sans-serif;
     font-size: 1.5rem;
     transition: top .8s ease; 
+
+    padding-top: 20dvh;
 
     & .about-container{
         max-width: 50vw;
@@ -222,7 +237,7 @@ ul{
     }
 }
 .about-active{
-    top: 20dvh;
+    top: 0;
     transition: top 1s ease; 
 }
 
@@ -240,36 +255,16 @@ ul{
 
 @media (max-width: 780px) {
     .menu-main{
-        position: fixed;
         top: auto;
         bottom: 0;
-        left: 0;
-        width: 100dvw;
-        z-index: 2;
-
         font-size: 1rem;
-        font-family: "Cal Sans", sans-serif;
-        pointer-events: none;
 
         & .menu-item{
-            height: 25px;
-            cursor: pointer;
-            pointer-events: auto;
-            font-weight: bold;
-            position: fixed;
             width: 60vw;
-            transition: 
-                transform 0.5s ease, 
-                font-size 0.5s ease,
-                opacity 0.5s ease,
-            ;
-            display: flex;
-            align-items: center;
             justify-content: right;
         }
         & .menu-item-as-title{
-            font-size: 1.5rem;
-            color: var(--font-color-hover);
+            font-size: 1.4rem;
             margin-left: 0;
         }
  

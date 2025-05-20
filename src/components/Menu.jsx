@@ -9,7 +9,6 @@ export default function Menu(){
     const btnAbout = document.querySelector('#menu-about')
     const title = document.querySelector(`#title`)
     const about = document.querySelector('#about')
-    const menuItemsArr = [...document.querySelectorAll('.menu-scenes > .menu-item')]
 
     if (btnAbout.textContent === 'About') {
       btnAbout.textContent = 'Back'
@@ -18,7 +17,7 @@ export default function Menu(){
       about.classList.add('about-active')
       title.classList.add(`title-about`)
 
-      menuItemsArr.forEach((el, index ) => {setTimeout(() => el.classList.add('menu-item-about'), 100*index)});
+      canvas.hideMenu()
     } else {
       btnAbout.textContent = 'About'
       canvas.updateContainer3dPosition(0, 0, 0)
@@ -27,7 +26,7 @@ export default function Menu(){
       about.classList.remove('about-active')
       title.classList.remove(`title-about`)
 
-      menuItemsArr.forEach((el, index ) => {setTimeout(() => el.classList.remove('menu-item-about'), 300*index)});
+      canvas.showMenu()
     }
   }
 

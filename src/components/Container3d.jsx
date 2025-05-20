@@ -56,8 +56,9 @@ export const Container3d = forwardRef((props, ref) => {
       activePointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
 
     } else if (activePointers.size === 2){
-      canvas.deactivateCardById(canvas.activeCard.current)
-      canvas.activeScene.current = null
+      zoomOutLayout()
+      canvas.showMenu()
+      
       const hypotPoints = Array.from(activePointers.values());
       
       const hypot = Math.hypot(
@@ -86,14 +87,28 @@ export const Container3d = forwardRef((props, ref) => {
 
   function zoomWithScroll(e) {
     e.preventDefault();
-    canvas.deactivateCardById(canvas.activeCard.current)
-    canvas.activeScene.current = null
+    zoomOutLayout()
+    
     canvas.container3dPosition.current.z += e.deltaY;
     canvas.container3dPosition.current.z = Math.max(
       canvas.zMin.current,
       Math.min(canvas.zMax.current, canvas.container3dPosition.current.z)
     );
     canvas.moveContainer3d();
+  }
+
+  function zoomOutLayout(){
+    canvas.deactivateCardById(canvas.activeCard.current)
+    if (canvas.activeScene.current){
+      const menu = document.querySelector(`#menu-${canvas.activeScene.current}`)
+      menu.classList.remove(`menu-item-as-title`)
+      canvas.activeScene.current = null
+    }
+
+    const title = document.querySelector(`#title`)
+    title.classList.remove(`title-small`)
+
+    canvas.showMenu()
   }
 
   return (

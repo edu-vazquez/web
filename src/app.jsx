@@ -40,7 +40,7 @@ export function App() {
     const scene = scenesData.find(scene => scene.id === id); // esto es para extraer los datos de x e y para mover el container3d
     const title = document.querySelector(`#title`)
     const menu = document.querySelector(`#menu-${id}`)
-
+  
     if (activeScene.current){
       const menuLeaving = document.querySelector(`#menu-${activeScene.current}`)
       menuLeaving.classList.remove(`menu-item-as-title`)
@@ -67,17 +67,25 @@ export function App() {
       menuLeaving.classList.remove(`menu-item-as-title`)
     }
     document.querySelector(`#title`).classList.remove(`title-small`)
+    const menuItemsArr = [...document.querySelectorAll('.menu-scenes > .menu-item')]
+    menuItemsArr.forEach((el, index ) => {setTimeout(() => el.classList.remove('menu-item-about'), 100*index)});
   }
 
   function activateCardById(cardId) {
     if (activeScene.current && !cardId.includes("random")){
-      const card = document.querySelector(`#${cardId}`)
-      const title = document.querySelector(`#title`)
-      const menu = document.querySelector(`#menu-main`)
+      hideMenu()
 
-      menu.classList.add(`menu-main-hide`)
-      title.classList.add(`title-hide`)
-      card.classList.add('card-expanded'); 
+      const sceneEl = document.querySelector(`#${activeScene.current}`)
+      sceneEl.classList.add('scene-active')
+
+      document.querySelector(`#menu-main`).classList.add(`menu-main-hide`)
+
+      document.querySelector(`#title`).classList.add(`title-hide`)
+
+      document.querySelector(`#${cardId}`).classList.add('card-active');
+
+      document.querySelector(`#menu-about`).classList.add(`menu-about-hidden`)
+
       activeCard.current = cardId
     }
   }
@@ -88,14 +96,31 @@ export function App() {
       const title = document.querySelector(`#title`)
 
       title.classList.remove(`title-hide`)
-      card.classList.remove('card-expanded'); 
+      card.classList.remove('card-active'); 
       activeCard.current = null
+      document.querySelector(`#menu-about`).classList.remove(`menu-about-hidden`)
+      showMenu()
     }
+    if (activeScene.current){
+      const sceneEl = document.querySelector(`#${activeScene.current}`)
+      sceneEl.classList.remove('scene-active')
+    }
+
   }
+
   function updateContainer3dPosition(x, y ,z){
     container3dPosition.current.x = x
     container3dPosition.current.y = y
     container3dPosition.current.z = z
+  }
+
+  function hideMenu(){
+    const menuItemsArr = [...document.querySelectorAll('.menu-scenes > .menu-item')]
+    menuItemsArr.forEach((el, index ) => {setTimeout(() => el.classList.add('menu-item-about'), 100*index)});
+  }
+  function showMenu(){
+    const menuItemsArr = [...document.querySelectorAll('.menu-scenes > .menu-item')]
+    menuItemsArr.forEach((el, index ) => {setTimeout(() => el.classList.remove('menu-item-about'), 100*index)});
   }
 
   function initAppDimentions() {
@@ -137,6 +162,8 @@ export function App() {
         activateCardById, 
         deactivateCardById,
         goHome,
+        hideMenu,
+        showMenu,
         zMax, 
         zMin }}
         >
