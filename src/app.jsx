@@ -83,7 +83,7 @@ export function App() {
       hideMenu()
 
       const sceneEl = document.querySelector(`#${activeScene.current}`)
-      sceneEl.classList.add('scene-active')
+      sceneEl.classList.add('scene-with-card-active')
 
       document.querySelector(`#menu-main`).classList.add(`menu-main-hide`)
 
@@ -110,7 +110,7 @@ export function App() {
     }
     if (activeScene.current){
       const sceneEl = document.querySelector(`#${activeScene.current}`)
-      sceneEl.classList.remove('scene-active')
+      sceneEl.classList.remove('scene-with-card-active')
     }
 
   }

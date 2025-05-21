@@ -170,18 +170,17 @@ ul{
                 transform-style: preserve-3d;
                 background-size: cover;
                 background-position: center;
-                cursor: pointer;
                 pointer-events: auto;
                 position: absolute;
+                background-color: white;
                 transition: width 1.5s ease,
                             height 1.5s ease,
-                            transform 1.5s ease;
-
+                            transform .5s ease,
+                            opacity 1s ease,
             }
             & .card-active {
-                /* width: 30dvw !important;
-                height: 30dvh !important; */
-                /* transform: translateX(0,0,0) !important; */
+                background-image: none !important;
+                border: 2px solid black !important;
             }
             & .card-random{
                 width: var(--app-width);
@@ -195,14 +194,19 @@ ul{
                 position: absolute;
                 transition: width 1.5s ease,
                             height 1.5s ease,
-                            transform 1.5s ease;
+                            transform .5s ease,
+                            opacity .5s ease;
             }
         }
-        & .scene-active > :not(.card-active){
-            width: 0;
-            height: 0;
-            transform: translate3d(0,0,-1000px) !important;
+        & .scene-with-card-active > :not(.card-active){
+            /* width: 0;
+            height: 0; */
+            transform: translate3d(0, 0, -1000) !important;
+            opacity: 0;
         }
+        & .scene-active > .card{
+            cursor: pointer;
+        } /* tengo agregar funcion que agrege la class scene al elento scene active */
     }
 }
 
