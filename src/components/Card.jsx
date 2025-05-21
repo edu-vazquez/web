@@ -21,12 +21,22 @@ export default function Card (props){
   }
   style.transform = `translate3d(${card3dPosition.current.x}%, ${card3dPosition.current.y}%, ${card3dPosition.current.z}px)`
 
+  function moveToCard(){
+    const posX = -(window.innerWidth * props.scene.x / 100) - (window.innerWidth  * (card3dPosition.current.x / 100 ))
+    const posY =  -(window.innerHeight * props.scene.y/ 100)  - (window.innerHeight * (card3dPosition.current.y / 100 ))
+    const posZ = -(props.scene.z) - card3dPosition.current.z
+    canvas.updateContainer3dPosition(posX, posY, posZ) // recibe px tambien
+    canvas.moveContainer3d() // usa todo pixeles
+    canvas.activateCardById(cardId)
+  }
+
   return (
     <div 
       className={props.className}
       style={style}
       id={cardId}
-      onClick={() => canvas.activateCardById(cardId)}
+      onClick={moveToCard}
+      /* onClick={() => canvas.activateCardById(cardId)} */
     >
     </div>
   )

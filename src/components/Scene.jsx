@@ -30,9 +30,10 @@ export default function Scene(props){
             <Card
               key={card.id}
               card={card}
+              scene={props.scene}
               className={'card'}
-              sceneId={props.scene.id}
               position={cardsPositions[cardsPositionsIndex++]}
+
               /* el cardId se asigna con el id del objeto card */
             />
             <Card

@@ -24,6 +24,12 @@ export function App() {
   const XMax = useRef(100)
   const yMax = useRef(100)
 
+  function updateContainer3dPosition(x, y ,z){
+    container3dPosition.current.x = x
+    container3dPosition.current.y = y
+    container3dPosition.current.z = z
+  }
+
   function moveContainer3d() {
     if (!isZooming) {
       isZooming = true;
@@ -52,7 +58,8 @@ export function App() {
     updateContainer3dPosition(
       window.innerWidth * scene.x / 100 * -1, 
       window.innerHeight * scene.y / 100 * -1, 
-      scene.z * -1)
+      -(scene.z + 2000))
+    console.log(container3dPosition.current)
     moveContainer3d();
     activeScene.current = id;
     menu.classList.add(`menu-item-as-title`)
@@ -108,12 +115,6 @@ export function App() {
 
   }
 
-  function updateContainer3dPosition(x, y ,z){
-    container3dPosition.current.x = x
-    container3dPosition.current.y = y
-    container3dPosition.current.z = z
-  }
-
   function hideMenu(){
     const menuItemsArr = [...document.querySelectorAll('.menu-scenes > .menu-item')]
     menuItemsArr.forEach((el, index ) => {setTimeout(() => el.classList.add('menu-item-about'), 100*index)});
@@ -130,8 +131,6 @@ export function App() {
     const setAppDimentions = () => {
       document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
       document.documentElement.style.setProperty('--app-width', `${window.innerWidth}px`);
-      document.documentElement.style.setProperty('--card-height', `${window.innerHeight / 5}px`);
-      document.documentElement.style.setProperty('--card-width', `${window.innerWidth / 5}px`);
     };
 
     setAppDimentions()

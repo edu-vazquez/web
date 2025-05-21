@@ -11,8 +11,6 @@
     --font-color-hover: rgb(142, 142, 142);
     --app-height: 100vh;
     --app-width: 100vw;
-    --card-height: calc(var(--app-height) / 5);
-    --card-width: calc(var(--app-width) / 5);
   }
 
 html, body {
@@ -167,8 +165,8 @@ ul{
             pointer-events: none;
             
             & .card{
-                width: var(--card-width);
-                height: var(--card-height);
+                width: var(--app-width);
+                height: var(--app-height);
                 transform-style: preserve-3d;
                 background-size: cover;
                 background-position: center;
@@ -181,13 +179,13 @@ ul{
 
             }
             & .card-active {
-                width: 100dvw !important;
-                height: 100dvh !important;
-                transform: translate3d(0,0,0) !important;
+                /* width: 30dvw !important;
+                height: 30dvh !important; */
+                /* transform: translateX(0,0,0) !important; */
             }
             & .card-random{
-                width: var(--card-width);
-                height: var(--card-height);
+                width: var(--app-width);
+                height: var(--app-height);
                 background-color: rgba(0, 0, 0, 0.485);
                 flex-shrink: 0;
 
