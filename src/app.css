@@ -11,7 +11,7 @@
     --font-color-hover: rgb(142, 142, 142);
     --app-height: 100vh;
     --app-width: 100vw;
-    --cube-size-px: 300px;
+    --cube-size-px: 250px;
   }
 
 html, body {
@@ -215,7 +215,7 @@ ul{
                         & .face {
                             position: absolute;
                             width: var(--cube-size-px);
-                            height: var(--cube-size-px);
+                            height: calc(var(--cube-size-px) / 2);
                             background: rgba(0, 0, 0, 0.1);
                             border: 1px solid #fff;
                             display: flex;
@@ -226,13 +226,31 @@ ul{
                             background-position: center;
                             background-size: cover;
                         }
-                        & .front  { transform: translateZ(calc(var(--cube-size-px) / 2)); }
-                        & .back   { transform: rotateY(180deg) translateZ(calc(var(--cube-size-px) / 2)); }
-                        & .right  { transform: rotateY(90deg) translateZ(calc(var(--cube-size-px) / 2)); }
-                        & .left   { transform: rotateY(-90deg) translateZ(calc(var(--cube-size-px) / 2)); }
-                        & .top    { transform: rotateX(90deg) translateZ(calc(var(--cube-size-px) / 2)); }
-                        & .bottom { transform: rotateX(-90deg) translateZ(calc(var(--cube-size-px) / 2)); }
+                        & .face01  { 
+                            transform:  rotateY(135deg) 
+                                        translate3d(0,  calc(var(--cube-size-px) * -1.5), calc(var(--cube-size-px)));
                         }
+                        & .face02   { 
+                            transform:  rotateY(90deg) 
+                                        translate3d(0,  calc(var(--cube-size-px) * -1), calc(var(--cube-size-px))); 
+                        }
+                        & .face03 { 
+                            transform:  rotateY(45deg) 
+                                        translate3d(0,   calc(var(--cube-size-px) * -0.5), calc(var(--cube-size-px))); 
+                        }
+                        & .face04   { 
+                            transform:  rotateY(0deg) 
+                                        translate3d(0,  calc(var(--cube-size-px) * 0), calc(var(--cube-size-px))); 
+                        }
+                        & .face05    { 
+                            transform:  rotateY(-45deg) 
+                                        translate3d(0,  calc(var(--cube-size-px) * 0.5), calc(var(--cube-size-px))); 
+                        }
+                        & .face06 { 
+                            transform:  rotateY(-90deg) 
+                                        translate3d(0,  calc(var(--cube-size-px) * 1), calc(var(--cube-size-px))); 
+                        }
+                    }
                 }
             }
             & .card-active {
@@ -393,9 +411,9 @@ ul{
 
 @keyframes spinCube {
   from {
-    transform: rotateX(0deg) rotateY(0deg);
+    transform: rotateY(0deg);
   }
   to {
-    transform: rotateX(360deg) rotateY(360deg);
+    transform: rotateY(360deg);
   }
 }
