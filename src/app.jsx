@@ -11,8 +11,8 @@ import './app.css'
 export const CanvasContext = createContext();
 
 export function App() {
-  const activeScene = useRef(null);
-  const activeCard = useRef(null)
+  const activeSceneRef = useRef(null);
+  const activeCardRef = useRef(null)
   const container3dPosition = useRef({ x: 0, y: 0, z: 0 });
   const container3dRef = useRef(null)
   const isMobile = useRef(false)
@@ -47,21 +47,20 @@ export function App() {
     const title = document.querySelector(`#title`)
     const menu = document.querySelector(`#menu-${id}`)
   
-    if (activeScene.current){
-      const menuLeaving = document.querySelector(`#menu-${activeScene.current}`)
+    if (activeSceneRef.current){
+      const menuLeaving = document.querySelector(`#menu-${activeSceneRef.current}`)
       menuLeaving.classList.remove(`menu-item-as-title`)
     }
     
-    if (activeCard.current){
-      deactivateCardById(activeCard.current)
+    if (activeCardRef.current){
+      deactivateCardById(activeCardRef.current)
     }
     updateContainer3dPosition(
       window.innerWidth * scene.x / 100 * -1, 
       window.innerHeight * scene.y / 100 * -1, 
       -(scene.z + 2000))
-    console.log(container3dPosition.current)
     moveContainer3d();
-    activeScene.current = id;
+    activeSceneRef.current = id;
     menu.classList.add(`menu-item-as-title`)
     title.classList.add(`title-small`)
   };
@@ -69,8 +68,8 @@ export function App() {
   function goHome(){
     updateContainer3dPosition(0,0,0);
     moveContainer3d()
-    if (activeScene.current){
-      const menuLeaving = document.querySelector(`#menu-${activeScene.current}`)
+    if (activeSceneRef.current){
+      const menuLeaving = document.querySelector(`#menu-${activeSceneRef.current}`)
       menuLeaving.classList.remove(`menu-item-as-title`)
     }
     document.querySelector(`#title`).classList.remove(`title-small`)
@@ -79,10 +78,10 @@ export function App() {
   }
 
   function activateCardById(cardId) {
-    if (activeScene.current && !cardId.includes("random")){
+    if (activeSceneRef.current && !cardId.includes("random")){
       hideMenu()
 
-      const sceneEl = document.querySelector(`#${activeScene.current}`)
+      const sceneEl = document.querySelector(`#${activeSceneRef.current}`)
       sceneEl.classList.add('scene-with-card-active')
 
       document.querySelector(`#menu-main`).classList.add(`menu-main-hide`)
@@ -93,23 +92,23 @@ export function App() {
 
       document.querySelector(`#menu-about`).classList.add(`menu-about-hidden`)
 
-      activeCard.current = cardId
+      activeCardRef.current = cardId
     }
   }
 
   function deactivateCardById(cardId) {
-    if (activeCard.current){
+    if (activeCardRef.current){
       const card = document.querySelector(`#${cardId}`)
       const title = document.querySelector(`#title`)
 
       title.classList.remove(`title-hide`)
       card.classList.remove('card-active'); 
-      activeCard.current = null
+      activeCardRef.current = null
       document.querySelector(`#menu-about`).classList.remove(`menu-about-hidden`)
       showMenu()
     }
-    if (activeScene.current){
-      const sceneEl = document.querySelector(`#${activeScene.current}`)
+    if (activeSceneRef.current){
+      const sceneEl = document.querySelector(`#${activeSceneRef.current}`)
       sceneEl.classList.remove('scene-with-card-active')
     }
 
@@ -152,8 +151,8 @@ export function App() {
     <CanvasContext.Provider value={{ 
         container3dPosition, 
         container3dRef, 
-        activeScene, 
-        activeCard,
+        activeSceneRef, 
+        activeCardRef,
         isMobile,
         updateContainer3dPosition, 
         moveContainer3d, 

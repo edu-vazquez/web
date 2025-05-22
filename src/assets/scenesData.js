@@ -7,19 +7,71 @@ export const scenesData = [
     cards: [
       {
         id: 'webDevelopment-card1',
-        imageUrl: '/images/architecture/project-01.jpg'
+        title:'this is a Title',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        technologies: [
+          'html',
+          'css',
+          'javascript',
+        ],
+        imageUrl: '/images/architecture/project-01.jpg',
+        image01: '/images/architecture/project-01.jpg',
+        image02: '/images/architecture/project-02.jpg',
+        image03: '/images/architecture/project-03.jpg',
+        image04: '/images/architecture/project-04.jpg',
+        image05: '/images/architecture/project-05.jpg',
+        image06: '/images/architecture/project-06.jpg',
       },
       {
         id: 'webDevelopment-card2',
-        imageUrl: '/images/architecture/project-02.jpg'
+        title:'this is a Title',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        technologies: [
+          'html',
+          'css',
+          'javascript',
+        ],
+        imageUrl: '/images/architecture/project-01.jpg',
+        image01: '/images/architecture/project-01.jpg',
+        image02: '/images/architecture/project-02.jpg',
+        image03: '/images/architecture/project-03.jpg',
+        image04: '/images/architecture/project-04.jpg',
+        image05: '/images/architecture/project-05.jpg',
+        image06: '/images/architecture/project-06.jpg',
       },
       {
         id: 'webDevelopment-card3',
-        imageUrl: '/images/architecture/project-03.jpg'
+        title:'this is a Title',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        technologies: [
+          'html',
+          'css',
+          'javascript',
+        ],
+        imageUrl: '/images/architecture/project-01.jpg',
+        image01: '/images/architecture/project-01.jpg',
+        image02: '/images/architecture/project-02.jpg',
+        image03: '/images/architecture/project-03.jpg',
+        image04: '/images/architecture/project-04.jpg',
+        image05: '/images/architecture/project-05.jpg',
+        image06: '/images/architecture/project-06.jpg',
       },
       {
         id: 'webDevelopment-card4',
-        imageUrl: '/images/architecture/project-04.jpg'
+        title:'this is a Title',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        technologies: [
+          'html',
+          'css',
+          'javascript',
+        ],
+        imageUrl: '/images/architecture/project-01.jpg',
+        image01: '/images/architecture/project-01.jpg',
+        image02: '/images/architecture/project-02.jpg',
+        image03: '/images/architecture/project-03.jpg',
+        image04: '/images/architecture/project-04.jpg',
+        image05: '/images/architecture/project-05.jpg',
+        image06: '/images/architecture/project-06.jpg',
       }
     ],
   },
@@ -31,19 +83,71 @@ export const scenesData = [
     cards: [
       {
         id: 'codeHub-card1',
-        imageUrl: '/images/architecture/project-01.jpg'
+        title:'this is a Title',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        technologies: [
+          'html',
+          'css',
+          'javascript',
+        ],
+        imageUrl: '/images/architecture/project-01.jpg',
+        image01: '/images/architecture/project-01.jpg',
+        image02: '/images/architecture/project-02.jpg',
+        image03: '/images/architecture/project-03.jpg',
+        image04: '/images/architecture/project-04.jpg',
+        image05: '/images/architecture/project-05.jpg',
+        image06: '/images/architecture/project-06.jpg',
       },
-      {
+        {
         id: 'codeHub-card2',
-        imageUrl: '/images/architecture/project-02.jpg'
+        title:'this is a Title',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        technologies: [
+          'html',
+          'css',
+          'javascript',
+        ],
+        imageUrl: '/images/architecture/project-01.jpg',
+        image01: '/images/architecture/project-01.jpg',
+        image02: '/images/architecture/project-02.jpg',
+        image03: '/images/architecture/project-03.jpg',
+        image04: '/images/architecture/project-04.jpg',
+        image05: '/images/architecture/project-05.jpg',
+        image06: '/images/architecture/project-06.jpg',
       },
       {
         id: 'codeHub-card3',
-        imageUrl: '/images/architecture/project-03.jpg'
+        title:'this is a Title',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        technologies: [
+          'html',
+          'css',
+          'javascript',
+        ],
+        imageUrl: '/images/architecture/project-01.jpg',
+        image01: '/images/architecture/project-01.jpg',
+        image02: '/images/architecture/project-02.jpg',
+        image03: '/images/architecture/project-03.jpg',
+        image04: '/images/architecture/project-04.jpg',
+        image05: '/images/architecture/project-05.jpg',
+        image06: '/images/architecture/project-06.jpg',
       },
       {
         id: 'codeHub-card4',
-        imageUrl: '/images/architecture/project-04.jpg'
+        title:'this is a Title',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        technologies: [
+          'html',
+          'css',
+          'javascript',
+        ],
+        imageUrl: '/images/architecture/project-01.jpg',
+        image01: '/images/architecture/project-01.jpg',
+        image02: '/images/architecture/project-02.jpg',
+        image03: '/images/architecture/project-03.jpg',
+        image04: '/images/architecture/project-04.jpg',
+        image05: '/images/architecture/project-05.jpg',
+        image06: '/images/architecture/project-06.jpg',
       }
     ],
   },
@@ -55,19 +159,71 @@ export const scenesData = [
     cards: [
       {
         id: 'vizualization3d-card1',
-        imageUrl: '/images/architecture/project-01.jpg'
+        title:'this is a Title',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        technologies: [
+          'html',
+          'css',
+          'javascript',
+        ],
+        imageUrl: '/images/architecture/project-01.jpg',
+        image01: '/images/architecture/project-01.jpg',
+        image02: '/images/architecture/project-02.jpg',
+        image03: '/images/architecture/project-03.jpg',
+        image04: '/images/architecture/project-04.jpg',
+        image05: '/images/architecture/project-05.jpg',
+        image06: '/images/architecture/project-06.jpg',
       },
       {
         id: 'vizualization3d-card2',
-        imageUrl: '/images/architecture/project-02.jpg'
+        title:'this is a Title',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        technologies: [
+          'html',
+          'css',
+          'javascript',
+        ],
+        imageUrl: '/images/architecture/project-01.jpg',
+        image01: '/images/architecture/project-01.jpg',
+        image02: '/images/architecture/project-02.jpg',
+        image03: '/images/architecture/project-03.jpg',
+        image04: '/images/architecture/project-04.jpg',
+        image05: '/images/architecture/project-05.jpg',
+        image06: '/images/architecture/project-06.jpg',
       },
       {
         id: 'vizualization3d-card3',
-        imageUrl: '/images/architecture/project-03.jpg'
+        title:'this is a Title',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        technologies: [
+          'html',
+          'css',
+          'javascript',
+        ],
+        imageUrl: '/images/architecture/project-01.jpg',
+        image01: '/images/architecture/project-01.jpg',
+        image02: '/images/architecture/project-02.jpg',
+        image03: '/images/architecture/project-03.jpg',
+        image04: '/images/architecture/project-04.jpg',
+        image05: '/images/architecture/project-05.jpg',
+        image06: '/images/architecture/project-06.jpg',
       },
       {
         id: 'vizualization3d-card4',
-        imageUrl: '/images/architecture/project-04.jpg'
+        title:'this is a Title',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        technologies: [
+          'html',
+          'css',
+          'javascript',
+        ],
+        imageUrl: '/images/architecture/project-01.jpg',
+        image01: '/images/architecture/project-01.jpg',
+        image02: '/images/architecture/project-02.jpg',
+        image03: '/images/architecture/project-03.jpg',
+        image04: '/images/architecture/project-04.jpg',
+        image05: '/images/architecture/project-05.jpg',
+        image06: '/images/architecture/project-06.jpg',
       }
     ],
   },
@@ -79,19 +235,71 @@ export const scenesData = [
     cards: [
       {
         id: 'architecture-card1',
-        imageUrl: '/images/architecture/project-01.jpg'
+        title:'this is a Title',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        technologies: [
+          'html',
+          'css',
+          'javascript',
+        ],
+        imageUrl: '/images/architecture/project-01.jpg',
+        image01: '/images/architecture/project-01.jpg',
+        image02: '/images/architecture/project-02.jpg',
+        image03: '/images/architecture/project-03.jpg',
+        image04: '/images/architecture/project-04.jpg',
+        image05: '/images/architecture/project-05.jpg',
+        image06: '/images/architecture/project-06.jpg',
       },
       {
         id: 'architecture-card2',
-        imageUrl: '/images/architecture/project-02.jpg'
+        title:'this is a Title',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        technologies: [
+          'html',
+          'css',
+          'javascript',
+        ],
+        imageUrl: '/images/architecture/project-01.jpg',
+        image01: '/images/architecture/project-01.jpg',
+        image02: '/images/architecture/project-02.jpg',
+        image03: '/images/architecture/project-03.jpg',
+        image04: '/images/architecture/project-04.jpg',
+        image05: '/images/architecture/project-05.jpg',
+        image06: '/images/architecture/project-06.jpg',
       },
       {
         id: 'architecture-card3',
-        imageUrl: '/images/architecture/project-03.jpg'
+        title:'this is a Title',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        technologies: [
+          'html',
+          'css',
+          'javascript',
+        ],
+        imageUrl: '/images/architecture/project-01.jpg',
+        image01: '/images/architecture/project-01.jpg',
+        image02: '/images/architecture/project-02.jpg',
+        image03: '/images/architecture/project-03.jpg',
+        image04: '/images/architecture/project-04.jpg',
+        image05: '/images/architecture/project-05.jpg',
+        image06: '/images/architecture/project-06.jpg',
       },
       {
         id: 'architecture-card4',
-        imageUrl: '/images/architecture/project-04.jpg'
+        title:'this is a Title',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        technologies: [
+          'html',
+          'css',
+          'javascript',
+        ],
+        imageUrl: '/images/architecture/project-01.jpg',
+        image01: '/images/architecture/project-01.jpg',
+        image02: '/images/architecture/project-02.jpg',
+        image03: '/images/architecture/project-03.jpg',
+        image04: '/images/architecture/project-04.jpg',
+        image05: '/images/architecture/project-05.jpg',
+        image06: '/images/architecture/project-06.jpg',
       }
     ],
   }

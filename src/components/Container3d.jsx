@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from 'preact/hooks';
+import { useContext, useEffect, useRef } from 'preact/hooks';
 import { CanvasContext } from '../app';
 import Scene from './Scene'
 import { scenesData } from '../assets/scenesData';
@@ -42,7 +42,7 @@ export const Container3d = forwardRef((props, ref) => {
   function handlePointerMove(e) {
     if (!isPointerDown.current) return;
 
-    if (activePointers.size === 1 && !canvas.activeCard.current && !canvas.activeScene.current){
+    if (activePointers.size === 1 && !canvas.activeCardRef.current && !canvas.activeSceneRef.current){
 
       const lastPos = activePointers.get(e.pointerId);
       if (!lastPos) return;
@@ -98,11 +98,11 @@ export const Container3d = forwardRef((props, ref) => {
   }
 
   function zoomOutLayout(){
-    canvas.deactivateCardById(canvas.activeCard.current)
-    if (canvas.activeScene.current){
-      const menu = document.querySelector(`#menu-${canvas.activeScene.current}`)
+    canvas.deactivateCardById(canvas.activeCardRef.current)
+    if (canvas.activeSceneRef.current){
+      const menu = document.querySelector(`#menu-${canvas.activeSceneRef.current}`)
       menu.classList.remove(`menu-item-as-title`)
-      canvas.activeScene.current = null
+      canvas.activeSceneRef.current = null
     }
 
     const title = document.querySelector(`#title`)
