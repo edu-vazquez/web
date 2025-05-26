@@ -43,22 +43,38 @@ export function App() {
   }
 
   function activateSceneById(id) {
-    const scene = scenesData.find(scene => scene.id === id); // esto es para extraer los datos de x e y para mover el container3d
+    const sceneEnteringData = scenesData.find(scene => scene.id === id); // esto es para extraer los datos de x e y para mover el container3d
     const title = document.querySelector(`#title`)
     const menu = document.querySelector(`#menu-${id}`)
   
     if (activeSceneRef.current){
       const menuLeaving = document.querySelector(`#menu-${activeSceneRef.current}`)
       menuLeaving.classList.remove(`menu-item-as-title`)
+
+      const sceneLeavingData = scenesData.find(scene => scene.id === activeSceneRef.current)
+
+      if (id !== activeSceneRef.current){
+        const sceneLeavingEl = document.querySelector(`#${activeSceneRef.current}`)
+        const sceneEnteringEl = document.querySelector(`#${id}`)
+
+        if (sceneEnteringData.z < sceneLeavingData.z) {
+          sceneLeavingEl.classList.add('scene-invisible')
+          setTimeout(()=> sceneLeavingEl.classList.remove('scene-invisible'), 1000)
+        } else {
+          sceneEnteringEl.classList.add('scene-invisible')
+          setTimeout(()=> sceneEnteringEl.classList.remove('scene-invisible'), 1600)
+        }
+      }
+      
     }
     
     if (activeCardRef.current){
       deactivateCardById(activeCardRef.current)
     }
     updateContainer3dPosition(
-      window.innerWidth * scene.x / 100 * -1, 
-      window.innerHeight * scene.y / 100 * -1, 
-      -(scene.z + 2000))
+      window.innerWidth * sceneEnteringData.x / 100 * -1, 
+      window.innerHeight * sceneEnteringData.y / 100 * -1, 
+      -(sceneEnteringData.z + 2000))
     moveContainer3d();
     activeSceneRef.current = id;
     menu.classList.add(`menu-item-as-title`)

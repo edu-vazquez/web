@@ -12,7 +12,9 @@
     --app-height: 100vh;
     --app-width: 100vw;
     --cube-size-px: 250px;
-  }
+}
+
+
 
 html, body {
     height: 100dvh;
@@ -24,8 +26,19 @@ html, body {
     font-family: Arial, sans-serif;
     background-color: var(--background-color);
     user-select: none;
-
 }
+
+body{
+    /* background-color: #ffffff;
+    opacity: 1;
+    background-image:  linear-gradient(#7c7c7c97 1px, transparent 1px), linear-gradient(to right, #7c7c7c97 1px, #ffffff 1px);
+    background-size: 100px 100px; */
+
+    /* HERO PATTERNS */
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23d9d9d9' fill-opacity='1'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
 html, body, .canvas {
     touch-action: none; /* Bloquea gestos táctiles como zoom o scroll. En .canvas no tiene efecto si no hay gestos. */
     overscroll-behavior: none; /* Evita el rebote de scroll en móviles. Solo se aplica en html y body. */
@@ -140,6 +153,7 @@ ul{
     top: 0;
     left: 0;
     pointer-events: none;
+    perspective: 500px;
 
     & .container3d {
         width: var(--app-width);
@@ -150,7 +164,7 @@ ul{
         justify-content: center;
         align-items: center;
         transform-style: preserve-3d;
-        transition: transform 1s ease; 
+        transition: transform 2s ease-in-out; 
         pointer-events: none;
         touch-action: none;
 
@@ -164,8 +178,9 @@ ul{
             align-items: center;
             align-content: center;
             pointer-events: none;
+            transition: opacity 0.3s ease-in-out;
             
-            & .card{
+            & .project{
                 width: var(--app-width);
                 height: var(--app-height);
                 transform-style: preserve-3d;
@@ -177,7 +192,8 @@ ul{
                 transition: width 1.5s ease,
                             height 1.5s ease,
                             transform .5s ease,
-                            opacity 1s ease;
+                            opacity 0.3s ease;
+    
                 & .card-content{
                     width: 100%;
                     height: 100%;
@@ -189,35 +205,37 @@ ul{
                     align-items: center;
 
 
-                    & .cube-container{
+                    & .card-images-side{
                         width: 50%;
                         height: 100%;
                         border: 5px solid blue;
                         display: flex;
                         justify-content: center;
                         align-items: center;
+                        transform-style: preserve-3d;
+        
 
-                        & .cube {
-                            width: var(--cube-size-px);
-                            height: var(--cube-size-px);
+                        & .images-container-3d {
+                            width: 100%;
+                            height: 100%;
                             border: 5px solid green;
                             position: relative;
-                            transform-style: preserve-3d;
                             transition: transform 0.1s;
                             display: flex;
                             justify-content: center;
                             align-items: center;
 
-                            animation: spinCube 40s linear infinite;
+                            /* animation: spinCube 40s linear infinite; */
+                            
                             transform-style: preserve-3d;
-                            /* Añadí lo necesario para estilo 3D */
+                            transform: translateZ(100px);
+
+                            border: '5px solid yellow'
                         }
-                        & .face {
+                        & .card-image {
                             position: absolute;
                             width: var(--cube-size-px);
                             height: calc(var(--cube-size-px) / 2);
-                            background: rgba(0, 0, 0, 0.1);
-                            border: 1px solid #fff;
                             display: flex;
                             align-items: center;
                             justify-content: center;
@@ -225,30 +243,12 @@ ul{
 
                             background-position: center;
                             background-size: cover;
-                        }
-                        & .face01  { 
-                            transform:  rotateY(135deg) 
-                                        translate3d(0,  calc(var(--cube-size-px) * -1.5), calc(var(--cube-size-px)));
-                        }
-                        & .face02   { 
-                            transform:  rotateY(90deg) 
-                                        translate3d(0,  calc(var(--cube-size-px) * -1), calc(var(--cube-size-px))); 
-                        }
-                        & .face03 { 
-                            transform:  rotateY(45deg) 
-                                        translate3d(0,   calc(var(--cube-size-px) * -0.5), calc(var(--cube-size-px))); 
-                        }
-                        & .face04   { 
-                            transform:  rotateY(0deg) 
-                                        translate3d(0,  calc(var(--cube-size-px) * 0), calc(var(--cube-size-px))); 
-                        }
-                        & .face05    { 
-                            transform:  rotateY(-45deg) 
-                                        translate3d(0,  calc(var(--cube-size-px) * 0.5), calc(var(--cube-size-px))); 
-                        }
-                        & .face06 { 
-                            transform:  rotateY(-90deg) 
-                                        translate3d(0,  calc(var(--cube-size-px) * 1), calc(var(--cube-size-px))); 
+                            transform-style: preserve-3d;
+                            & img {
+                                transform-style: preserve-3d;
+                                width: 100px;
+                                height: 50px;
+                            }
                         }
                     }
                 }
@@ -257,7 +257,7 @@ ul{
                 background-image: none !important;
                 border: 2px solid black !important;
             }
-            & .card-random{
+            & .project-empty{
                 width: var(--app-width);
                 height: var(--app-height);
                 background-color: rgba(0, 0, 0, 0.485);
@@ -270,9 +270,12 @@ ul{
                 transition: width 1.5s ease,
                             height 1.5s ease,
                             transform .5s ease,
-                            opacity .5s ease;
+                            opacity .3s ease;
             }
 
+        }
+        & .scene-invisible > * {
+            opacity: 0;
         }
         & .scene-with-card-active > :not(.card-active){
             /* width: 0;
@@ -409,11 +412,11 @@ ul{
 }
 
 
-@keyframes spinCube {
+@keyframes moveImage {
   from {
-    transform: rotateY(0deg);
+    transform: translateY(70dvh) rotateY(-90deg);
   }
   to {
-    transform: rotateY(360deg);
+    transform: translateY(-70dvh)  rotateY(90deg);
   }
 }

@@ -31,16 +31,16 @@ export default function Scene(props){
               key={card.id}
               card={card}
               scene={props.scene}
-              className={'card'}
+              className={'project'}
               position={cardsPositions[cardsPositionsIndex++]}
 
               /* el cardId se asigna con el id del objeto card */
             />
             <Card
               key={index}
-              className={'card-random'}
+              className={'project-empty'}
               sceneId={props.scene.id}
-              cardRandomId={`${props.scene.id}-random-${index}`}
+              cardRandomId={`${props.scene.id}-project-empty-${index}`}
               position={cardsPositions[cardsPositionsIndex++]}
             />
           </>
