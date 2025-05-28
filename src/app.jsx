@@ -11,8 +11,8 @@ import './app.css'
 export const CanvasContext = createContext();
 
 export function App() {
-  const activeSceneRef = useRef(null);
-  const activeCardRef = useRef(null)
+  const activeSceneIdRef = useRef(null);
+  const activeProjectIdRef = useRef(null)
   const container3dPosition = useRef({ x: 0, y: 0, z: 0 });
   const container3dRef = useRef(null)
   const isMobile = useRef(false)
@@ -47,14 +47,14 @@ export function App() {
     const title = document.querySelector(`#title`)
     const menu = document.querySelector(`#menu-${id}`)
   
-    if (activeSceneRef.current){
-      const menuLeaving = document.querySelector(`#menu-${activeSceneRef.current}`)
+    if (activeSceneIdRef.current){
+      const menuLeaving = document.querySelector(`#menu-${activeSceneIdRef.current}`)
       menuLeaving.classList.remove(`menu-item-as-title`)
 
-      const sceneLeavingData = scenesData.find(scene => scene.id === activeSceneRef.current)
+      const sceneLeavingData = scenesData.find(scene => scene.id === activeSceneIdRef.current)
 
-      if (id !== activeSceneRef.current){
-        const sceneLeavingEl = document.querySelector(`#${activeSceneRef.current}`)
+      if (id !== activeSceneIdRef.current){
+        const sceneLeavingEl = document.querySelector(`#${activeSceneIdRef.current}`)
         const sceneEnteringEl = document.querySelector(`#${id}`)
 
         if (sceneEnteringData.z < sceneLeavingData.z) {
@@ -65,18 +65,17 @@ export function App() {
           setTimeout(()=> sceneEnteringEl.classList.remove('scene-invisible'), 1600)
         }
       }
-      
     }
     
-    if (activeCardRef.current){
-      deactivateCardById(activeCardRef.current)
+    if (activeProjectIdRef.current){
+      deactivateProjectById(activeProjectIdRef.current)
     }
     updateContainer3dPosition(
       window.innerWidth * sceneEnteringData.x / 100 * -1, 
       window.innerHeight * sceneEnteringData.y / 100 * -1, 
       -(sceneEnteringData.z + 2000))
     moveContainer3d();
-    activeSceneRef.current = id;
+    activeSceneIdRef.current = id;
     menu.classList.add(`menu-item-as-title`)
     title.classList.add(`title-small`)
   };
@@ -84,8 +83,8 @@ export function App() {
   function goHome(){
     updateContainer3dPosition(0,0,0);
     moveContainer3d()
-    if (activeSceneRef.current){
-      const menuLeaving = document.querySelector(`#menu-${activeSceneRef.current}`)
+    if (activeSceneIdRef.current){
+      const menuLeaving = document.querySelector(`#menu-${activeSceneIdRef.current}`)
       menuLeaving.classList.remove(`menu-item-as-title`)
     }
     document.querySelector(`#title`).classList.remove(`title-small`)
@@ -93,39 +92,39 @@ export function App() {
     menuItemsArr.forEach((el, index ) => {setTimeout(() => el.classList.remove('menu-item-about'), 100*index)});
   }
 
-  function activateCardById(cardId) {
-    if (activeSceneRef.current && !cardId.includes("random")){
+  function activateProjectById(cardId) {
+    if (activeSceneIdRef.current && !cardId.includes("random")){
       hideMenu()
 
-      const sceneEl = document.querySelector(`#${activeSceneRef.current}`)
-      sceneEl.classList.add('scene-with-card-active')
+      const sceneEl = document.querySelector(`#${activeSceneIdRef.current}`)
+      sceneEl.classList.add('scene-with-project-active')
 
       document.querySelector(`#menu-main`).classList.add(`menu-main-hide`)
 
       document.querySelector(`#title`).classList.add(`title-hide`)
 
-      document.querySelector(`#${cardId}`).classList.add('card-active');
+      document.querySelector(`#${cardId}`).classList.add('project-active');
 
       document.querySelector(`#menu-about`).classList.add(`menu-about-hidden`)
 
-      activeCardRef.current = cardId
+      activeProjectIdRef.current = cardId
     }
   }
 
-  function deactivateCardById(cardId) {
-    if (activeCardRef.current){
+  function deactivateProjectById(cardId) {
+    if (activeProjectIdRef.current){
       const card = document.querySelector(`#${cardId}`)
       const title = document.querySelector(`#title`)
 
       title.classList.remove(`title-hide`)
-      card.classList.remove('card-active'); 
-      activeCardRef.current = null
+      card.classList.remove('project-active'); 
+      activeProjectIdRef.current = null
       document.querySelector(`#menu-about`).classList.remove(`menu-about-hidden`)
       showMenu()
     }
-    if (activeSceneRef.current){
-      const sceneEl = document.querySelector(`#${activeSceneRef.current}`)
-      sceneEl.classList.remove('scene-with-card-active')
+    if (activeSceneIdRef.current){
+      const sceneEl = document.querySelector(`#${activeSceneIdRef.current}`)
+      sceneEl.classList.remove('scene-with-project-active')
     }
 
   }
@@ -167,14 +166,14 @@ export function App() {
     <CanvasContext.Provider value={{ 
         container3dPosition, 
         container3dRef, 
-        activeSceneRef, 
-        activeCardRef,
+        activeSceneIdRef, 
+        activeProjectIdRef,
         isMobile,
         updateContainer3dPosition, 
         moveContainer3d, 
         activateSceneById,
-        activateCardById, 
-        deactivateCardById,
+        activateProjectById, 
+        deactivateProjectById,
         goHome,
         hideMenu,
         showMenu,

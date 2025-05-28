@@ -9,7 +9,7 @@ export default function CardContent(props){
   const [contentState, setContentState] = useState(false)
 
   function handleClick(){
-    if (props.scene.id === canvas.activeSceneRef.current){
+    if (props.scene.id === canvas.activeSceneIdRef.current){
       contentState ? setContentState(false) : setContentState(true)
     }
   }

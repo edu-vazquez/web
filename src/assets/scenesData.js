@@ -1,10 +1,11 @@
 export const scenesData = [
   {
     id: 'webDevelopment',
-    x: -200,
-    y: -200,
-    z: -4000,
-    cards: [
+    type: 'web',
+    x: -150,
+    y: -100,
+    z: -3000,
+    projects: [
       {
         id: 'webDevelopment-card1',
         title:'this is a Title',
@@ -14,7 +15,8 @@ export const scenesData = [
           'css',
           'javascript',
         ],
-        imageUrl: '/images/architecture/project-01.jpg',
+        imageUrl: '/images/projects/web/healthy_food.png',
+        projectUrl: 'https://healthy-food.eduardo-vazquez.com',
         cardAditionalImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',
@@ -33,7 +35,8 @@ export const scenesData = [
           'css',
           'javascript',
         ],
-        imageUrl: '/images/architecture/project-01.jpg',
+        imageUrl: '/images/projects/web/healthy_food.png',
+        projectUrl: 'https://healthy-food.eduardo-vazquez.com',
         cardAditionalImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',
@@ -52,7 +55,8 @@ export const scenesData = [
           'css',
           'javascript',
         ],
-        imageUrl: '/images/architecture/project-01.jpg',
+        imageUrl: '/images/projects/web/healthy_food.png',
+        projectUrl: 'https://healthy-food.eduardo-vazquez.com',
         cardAditionalImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',
@@ -71,7 +75,8 @@ export const scenesData = [
           'css',
           'javascript',
         ],
-        imageUrl: '/images/architecture/project-01.jpg',
+        imageUrl: '/images/projects/web/healthy_food.png',
+        projectUrl: 'https://healthy-food.eduardo-vazquez.com',
         cardAditionalImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',
@@ -85,10 +90,11 @@ export const scenesData = [
   },
   {
     id: 'codeHub',
+    type: 'code',
     x: 300,
     y: 300,
-    z: -20000,
-    cards: [
+    z: -5000,
+    projects: [
       {
         id: 'codeHub-card1',
         title:'this is a Title',
@@ -169,10 +175,11 @@ export const scenesData = [
   },
   {
     id: 'vizualization3d',
+    type: 'threeD',
     x: 750,
     y: 0,
-    z: -40000,
-    cards: [
+    z: -7000,
+    projects: [
       {
         id: 'vizualization3d-card1',
         title:'this is a Title',
@@ -253,10 +260,11 @@ export const scenesData = [
   },
   {
     id: 'architecture',
+    type: 'architecture',
     x: 0,
     y: -500,
-    z: -60000,
-    cards: [
+    z: -9000,
+    projects: [
       {
         id: 'architecture-card1',
         title:'this is a Title',

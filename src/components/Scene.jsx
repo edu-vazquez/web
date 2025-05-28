@@ -1,20 +1,19 @@
-import Card from "./Card";
+import Project from "./Project";
 import { useRef } from 'preact/hooks';
 
 export default function Scene(props){
   const sceneRef = useRef(null);
-
-  const cardsPositions = [
-    { x: -150, y: 50 },
-    { x: -150, y: -50 },
+  const projectsPositions = [
     { x: -50, y: -50 },
     { x: -50, y: 50 },
     { x: 50, y: 50 },
     { x: 50, y: -50 },
     { x: 150, y: -50 },
     { x: 150, y: 50 },
+    { x: -150, y: 50 },
+    { x: -150, y: -50 },
   ]
-  let cardsPositionsIndex = 0
+  let projectsPositionsIndex = 0
 
   return (
       <div 
@@ -25,27 +24,47 @@ export default function Scene(props){
           transform: `translate3d(${props.scene.x}%, ${props.scene.y}%, ${props.scene.z}px)`,
         }}
       >
-        {props.scene.cards.map((card, index) => (
+        {props.scene.projects.map((project, index) => (
           <>
-            <Card
-              key={card.id}
-              card={card}
+            <Project
+              key={project.id}
+              projectData={project}
               scene={props.scene}
-              className={'project'}
-              position={cardsPositions[cardsPositionsIndex++]}
-
-              /* el cardId se asigna con el id del objeto card */
+              position={projectsPositions[projectsPositionsIndex++]}
             />
-            <Card
+
+            <EmptyProject
               key={index}
-              className={'project-empty'}
               sceneId={props.scene.id}
-              cardRandomId={`${props.scene.id}-project-empty-${index}`}
-              position={cardsPositions[cardsPositionsIndex++]}
+              position={projectsPositions[projectsPositionsIndex++]}
             />
           </>
         ))}
       </div>
     )
 }
+
+function EmptyProject (props){
+  const maxX = 30
+  const maxY = 30
+  const style = {};
+  const project3dPosition = useRef({
+    x: `${props.position.x + (Math.random() * 2 - 1) * maxX}`, 
+    y: `${props.position.y + (Math.random() * 2 - 1) * maxY}`, 
+    z: 0})
+
+  project3dPosition.current.z = (Math.floor(Math.random() * (2000 - 500 + 1)) + 500) * -1
+
+  style.transform = `translate3d(${project3dPosition.current.x}%, ${project3dPosition.current.y}%, ${project3dPosition.current.z}px)`
+
+  return (
+    <div 
+      className={'project-empty'}
+      style={style}
+    >
+    </div>
+  )
+}
+
+
 
