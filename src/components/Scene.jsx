@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import Project from "./Project";
 import { useRef } from 'preact/hooks';
+import { CanvasContext } from "../app";
 
 export default function Scene(props){
   const sceneRef = useRef(null);
@@ -45,21 +47,21 @@ export default function Scene(props){
 }
 
 function EmptyProject (props){
-  const maxX = 30
-  const maxY = 30
+  const maxX = 20
+  const maxY = 20
+  const minZ = 500
+  const maxZ = 3000
   const style = {};
   const project3dPosition = useRef({
     x: `${props.position.x + (Math.random() * 2 - 1) * maxX}`, 
     y: `${props.position.y + (Math.random() * 2 - 1) * maxY}`, 
-    z: 0})
-
-  project3dPosition.current.z = (Math.floor(Math.random() * (2000 - 500 + 1)) + 500) * -1
+    z: (Math.floor(Math.random() * (maxZ - minZ + 1)) + minZ) * -1})
 
   style.transform = `translate3d(${project3dPosition.current.x}%, ${project3dPosition.current.y}%, ${project3dPosition.current.z}px)`
 
   return (
     <div 
-      className={'project-empty'}
+      className={'project project--empty'}
       style={style}
     >
     </div>

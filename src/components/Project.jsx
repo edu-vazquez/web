@@ -1,18 +1,17 @@
-import { useContext, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { CanvasContext } from "../app";
 import ModuleWeb from "./ModuleWeb";
 
 export default function Project (props){
   const canvas = useContext(CanvasContext)
-  const maxX = 30
-  const maxY = 30
+  const maxX = 20
+  const maxY = 20
   const style = {};
   const project3dPosition = useRef({
     x: `${props.position.x + (Math.random() * 2 - 1) * maxX}`, 
     y: `${props.position.y + (Math.random() * 2 - 1) * maxY}`, 
-    z: 0})
-
-  project3dPosition.current.z = Math.ceil(Math.random() * -1000)
+    z: Math.ceil(Math.random() * -1000)})
+  
   style.transform = `translate3d(${project3dPosition.current.x}%, ${project3dPosition.current.y}%, ${project3dPosition.current.z}px)`
 
   function moveToproject(){
@@ -26,6 +25,21 @@ export default function Project (props){
     } 
   }
 
+  const isActive = props.scene.id === canvas.activeSceneIdState;
+  const [showModule, setShowModule] = useState(isActive);// MANEJA si el módulo debe renderizarse
+  const [fadeOut, setFadeOut] = useState(false); // agrega clase fade-out
+
+  useEffect(() => {
+    if (isActive) {
+      setFadeOut(false);
+      setShowModule(true);
+    } else if (showModule) {
+      setFadeOut(true);
+      const timeout = setTimeout(() => setShowModule(false), 1000); 
+      return () => clearTimeout(timeout);
+    }
+  }, [isActive]);
+
   return (
     <div 
       className='project'
@@ -33,7 +47,11 @@ export default function Project (props){
       id={props.projectData.id}
       onClick={moveToproject}
     >
-        <ModuleWeb projectData={props.projectData}/>
+        { showModule && 
+          <div className={fadeOut ? "project--content fade-out" : "project--content"}>
+            <ModuleWeb projectData={props.projectData} />
+          </div>
+        }
     </div>
   )
 }

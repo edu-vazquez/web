@@ -1,7 +1,9 @@
+import "./ModuleWeb.css";
+
 export default function ModuleWeb(props){
   return (
     <div
-      className="module-web"
+      className='module-web'
     >
 
       <div className="module-web-img-container">
@@ -10,7 +12,7 @@ export default function ModuleWeb(props){
 
       <div className="module-web-info">
         <h2>{props.projectData.title}</h2>
-        <p>Description: {props.projectData.description}</p>
+        <p>Description: {props.projectData.description}</p> 
         <ul>
           { props.projectData.technologies.map(item => {
             return <li>{item}</li>

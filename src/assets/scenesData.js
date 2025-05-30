@@ -2,8 +2,8 @@ export const scenesData = [
   {
     id: 'webDevelopment',
     type: 'web',
-    x: -150,
-    y: -100,
+    x: -250,
+    y: -150,
     z: -3000,
     projects: [
       {
@@ -91,9 +91,9 @@ export const scenesData = [
   {
     id: 'codeHub',
     type: 'code',
-    x: 300,
-    y: 300,
-    z: -5000,
+    x: 250,
+    y: 150,
+    z: -3500,
     projects: [
       {
         id: 'codeHub-card1',
@@ -176,9 +176,9 @@ export const scenesData = [
   {
     id: 'vizualization3d',
     type: 'threeD',
-    x: 750,
-    y: 0,
-    z: -7000,
+    x: 250,
+    y: -150,
+    z: -4000,
     projects: [
       {
         id: 'vizualization3d-card1',
@@ -261,9 +261,9 @@ export const scenesData = [
   {
     id: 'architecture',
     type: 'architecture',
-    x: 0,
-    y: -500,
-    z: -9000,
+    x: -250,
+    y: 150,
+    z: -4500,
     projects: [
       {
         id: 'architecture-card1',

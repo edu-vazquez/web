@@ -6,22 +6,15 @@
 }
 
 :root {
-    --background: 
-        linear-gradient(to bottom, 
-            rgba(0,0,0,0.15) 0%, 
-            rgba(218, 218, 218, 0.15) 500%, 
-            rgba(0,0,0,0.15) 100%
-        ), 
-        radial-gradient( 
-            rgba(230, 230, 230, 0.4) 0%, 
-            rgba(0,0,0,0.80) 100%) 
-        #000000;
+    --background: black;
     background-blend-mode: multiply,multiply;
     --font-color: rgb(243, 243, 243);
     --font-color-hover: rgb(142, 142, 142);
     --app-height: 100vh;
     --app-width: 100vw;
     --cube-size-px: 250px;
+    --container3dMovementTimeTransition: 1s;
+    /* MODIFICAR TIMETRANSITION EN PROJECT SETTIMEOUT */
 }
 
 html, body {
@@ -104,7 +97,7 @@ ul{
         display: block;
     }
     & #menu-about.menu-about-hidden{
-        transform: translate3d(93vw, -25px,0) ;
+        transform: translate3d(83vw, -25px,0) ;
     }
 }
 
@@ -161,7 +154,7 @@ ul{
         justify-content: center;
         align-items: center;
         transform-style: preserve-3d;
-        transition: transform 1s ease; 
+        transition: transform var(--container3dMovementTimeTransition) ease; 
         pointer-events: none;
         touch-action: none;
 
@@ -175,88 +168,32 @@ ul{
             align-items: center;
             align-content: center;
             pointer-events: none;
-            transition: opacity 0.3s ease-in-out;
             
             & .project{
                 width: var(--app-width);
                 height: var(--app-height);
                 transform-style: preserve-3d;
-                background-size: cover;
-                background-position: center;
                 pointer-events: auto;
                 position: absolute;
-                background-color: rgba(255, 255, 255, 0.526);
-                transition: width 1.5s ease,
-                            height 1.5s ease,
-                            transform .5s ease,
-                            opacity 0.3s ease;
-    
-                & .module-web{
-                    width: 100%;
-                    height: 100%;
-                    overflow: auto;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
+                cursor: pointer;
+                background-color: rgba(255, 255, 255, 0.5);
 
-                    & img{
-                        width: 100%;
-                        height: auto;
-                        transition: width 1s ease 1s;
-                    }
-                    & .module-web-img-container{
-                        width: 100%;
-                    }
-                    & .module-web-info{
-                        height: 100%;
-                        display: none;
-                        flex-direction: column;
-                        justify-content: center;
-                        border: 3px solid red;
-                    }
+                & .project--content{
+                    width: var(--app-width);
+                    height: var(--app-height);  
+                    overflow: hidden;
+                    animation: appear var(--container3dMovementTimeTransition) ease;
+                }
+                & .project--content.fade-out {
+                    animation: disappear calc(var(--container3dMovementTimeTransition) / 2) ease forwards;
                 }
             }
-            & .project-active {
-                background-image: none !important;
-                border: none !important;
 
-                & .module-web-img-container{
-                    width: 50% !important;
-                    margin: 1rem;
-                }
-                & .module-web-info{
-                    display: flex;
-                }
-            }
-            & .project-empty{
-                width: var(--app-width);
-                height: var(--app-height);
-                background-color: rgba(255, 255, 255, 0.485);
-                flex-shrink: 0;
-
+            & .project.project--empty{
                 cursor: none;
                 pointer-events: none;
-
-                position: absolute;
-                transition: width 1.5s ease,
-                            height 1.5s ease,
-                            transform .5s ease,
-                            opacity .3s ease;
             }
-
         }
-        & .scene-invisible > * {
-            opacity: 0;
-        }
-        & .scene-with-project-active > :not(.project-active){
-            /* width: 0;
-            height: 0; */
-            transform: translate3d(0, 0, -1000) !important;
-            opacity: 0;
-        }
-        & .scene-active > .card{
-            cursor: pointer;
-        } /* tengo agregar funcion que agrege la class scene al elento scene active */
     }
 }
 
@@ -307,18 +244,7 @@ ul{
 
 @media (max-width: 780px) {
     .menu-main{
-        /* top: auto;
-        bottom: 0; */
         font-size: 1rem;
-
-        /* & .menu-item{
-            width: 60vw;
-            justify-content: right;
-        }
-        & .menu-item-as-title{
-            font-size: 1.4rem;
-            margin-left: 0;
-        } */
  
         & .menu-item:nth-child(1) {
             transform: translate3d(.5rem, .5rem, 0);
@@ -332,6 +258,7 @@ ul{
         & .menu-item:nth-child(4) {
             transform: translate3d(.5rem, 5rem, 0);            
         }
+
         & #menu-about{
             transform: translate3d(83vw, .5rem, 0)
         }
@@ -339,7 +266,7 @@ ul{
             transform: translate3d(.5rem, -2rem, 0) !important;
         }
         & #menu-about.menu-about-hidden{
-            transform: translate3d(2vw, 30px,0) ;
+            transform: translate3d(83vw, -2rem,0) ;
         }
 
         & .menu-item-as-title{
@@ -380,21 +307,21 @@ ul{
             margin-left:1rem;
         }
     }
-    /* .about-active{
-        top: 0;
-        transition: top 1s ease; 
-    } */
-
     .container3d {
         transition: transform 1s ease 
     }
 }
 
-@keyframes moveImage {
+@keyframes appear {
   from {
-    transform: translateY(70dvh) rotateY(-90deg);
+    opacity: 0;
   }
   to {
-    transform: translateY(-70dvh)  rotateY(90deg);
+    opacity: 1;
   }
+}
+
+@keyframes disappear {
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
