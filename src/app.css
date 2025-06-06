@@ -50,7 +50,7 @@ ul{
     z-index: 2;
 
     font-size: 1rem;
-    font-family: "Cal Sans", sans-serif;
+    font-family: "Syne Mono", monospace;
     pointer-events: none;
     letter-spacing: 1px;
 
@@ -109,7 +109,7 @@ ul{
     left: 0;
     text-align: center;
     font-family: "Audiowide", sans-serif;
-    font-size: 9.5vw;
+    font-size: 8vw;
     letter-spacing: 2px;
     height: fit-content;
     padding: 0;
@@ -176,11 +176,12 @@ ul{
                 pointer-events: auto;
                 position: absolute;
                 cursor: pointer;
-                background-color: rgba(255, 255, 255, 0.5);
+                background-color: rgba(255, 255, 255, 0.4);
 
                 & .project--content{
-                    width: var(--app-width);
-                    height: var(--app-height);  
+                    width: 100vw;
+                    height: var(--app-height); 
+                    margin: 0 auto; 
                     overflow: hidden;
                     animation: appear var(--container3dMovementTimeTransition) ease;
                 }

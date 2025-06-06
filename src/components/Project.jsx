@@ -1,6 +1,7 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { CanvasContext } from "../app";
 import ModuleWeb from "./ModuleWeb";
+import ProjectFloatingMenu from "./ProjectFloatingMenu";
 
 export default function Project (props){
   const canvas = useContext(CanvasContext)
@@ -14,7 +15,7 @@ export default function Project (props){
   
   style.transform = `translate3d(${project3dPosition.current.x}%, ${project3dPosition.current.y}%, ${project3dPosition.current.z}px)`
 
-  function moveToproject(){
+  function activateToproject(){
     if (props.scene.id === canvas.activeSceneIdRef.current) {
       const posX = -(window.innerWidth * props.scene.x / 100) - (window.innerWidth  * (project3dPosition.current.x / 100 ))
       const posY =  -(window.innerHeight * props.scene.y/ 100)  - (window.innerHeight * (project3dPosition.current.y / 100 ))
@@ -41,18 +42,21 @@ export default function Project (props){
   }, [isActive]);
 
   return (
-    <div 
+    <article 
       className='project'
       style={style}
       id={props.projectData.id}
-      onClick={moveToproject}
+      onClick={activateToproject}
     >
         { showModule && 
-          <div className={fadeOut ? "project--content fade-out" : "project--content"}>
-            <ModuleWeb projectData={props.projectData} />
-          </div>
+          <>
+            <div className={fadeOut ? "project--content fade-out" : "project--content"}>
+              <ModuleWeb projectData={props.projectData} />
+            </div>
+          </>
+          
         }
-    </div>
+    </article>
   )
 }
 

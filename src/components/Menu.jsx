@@ -12,7 +12,7 @@ export default function Menu(){
 
     if (btnAbout.textContent === 'About') {
       btnAbout.textContent = 'Back'
-      canvas.updateContainer3dPosition(0, window.innerHeight*-10, 0)
+      canvas.updateContainer3dPosition(0, window.innerHeight*-11, 0)
       canvas.moveContainer3d();
       about.classList.add('about-active')
       title.classList.add(`title-about`)
@@ -44,7 +44,7 @@ export default function Menu(){
           id='menu-webDevelopment' 
           onClick={() => canvas.activateSceneById('webDevelopment')}
         >
-          WEB DEVELOPMENT
+          web development
         </li>
         <li 
           className="menu-item" 
@@ -52,21 +52,21 @@ export default function Menu(){
           onClick={() => canvas.activateSceneById('codeHub')}
           
         >
-          CODE HUB
+          code hub
         </li>
         <li 
           className="menu-item"
           id='menu-vizualization3d' 
           onClick={() => canvas.activateSceneById('vizualization3d')}
         >
-          3D VISUALIZATION
+          3d visualization
         </li>
         <li 
           className="menu-item" 
           id='menu-architecture'
           onClick={() => canvas.activateSceneById('architecture')}
         >
-          ARCHITECTURE
+          architecture
         </li>
       </ul>
 

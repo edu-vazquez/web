@@ -90,8 +90,6 @@ export function App() {
 
       document.querySelector(`#title`).classList.add(`title-hide`)
 
-      document.querySelector(`#${cardId}`).classList.add('project-active');
-
       document.querySelector(`#menu-about`).classList.add(`menu-about-hidden`)
 
       activeProjectIdRef.current = cardId

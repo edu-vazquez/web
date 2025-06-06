@@ -1,7 +1,5 @@
-import { useContext } from "react";
+import { useRef } from "react";
 import Project from "./Project";
-import { useRef } from 'preact/hooks';
-import { CanvasContext } from "../app";
 
 export default function Scene(props){
   const sceneRef = useRef(null);
@@ -18,7 +16,7 @@ export default function Scene(props){
   let projectsPositionsIndex = 0
 
   return (
-      <div 
+      <section 
         className="scene"
         id={props.scene.id}
         ref={sceneRef}
@@ -42,13 +40,13 @@ export default function Scene(props){
             />
           </>
         ))}
-      </div>
+      </section>
     )
 }
 
 function EmptyProject (props){
-  const maxX = 20
-  const maxY = 20
+  const maxX = 200
+  const maxY = 200
   const minZ = 500
   const maxZ = 3000
   const style = {};

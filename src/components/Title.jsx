@@ -14,7 +14,7 @@ export default function Title() {
       id={'title'}
       onClick={handleClick}
     >
-      Eduardo Vazquez
+      EDUARDO VAZQUEZ
     </h1>
   )
 }

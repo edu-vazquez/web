@@ -7,15 +7,21 @@ export const scenesData = [
     z: -3000,
     projects: [
       {
-        id: 'webDevelopment-card1',
-        title:'this is a Title',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        id: 'webDevelopment-project1',
+        projectName:'Healthy Food',
+        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste facere veniam vero optio maiores vitae officia corrupti eveniet impedit est iusto sint dolorum, saepe illum neque cum quidem et!',
+    
         technologies: [
           'html',
           'css',
           'javascript',
         ],
-        imageUrl: '/images/projects/web/healthy_food.png',
+        projectMiniatureUrl: '/images/projects/web/healthy-food/healthy_food_miniature.png',
+        mainImageStyle: {
+          marginTop: '-1800px',
+          marginLeft: '-550px',
+          width: '300%',
+        },
         projectUrl: 'https://healthy-food.eduardo-vazquez.com',
         cardAditionalImages: [
           '/images/architecture/project-01.jpg',
@@ -27,15 +33,20 @@ export const scenesData = [
         ],
       },
       {
-        id: 'webDevelopment-card2',
-        title:'this is a Title',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        id: 'webDevelopment-project2',
+        projectName:'this is a projectName',
+        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste facere veniam vero optio maiores vitae officia corrupti eveniet impedit est iusto sint dolorum, saepe illum neque cum quidem et!',
         technologies: [
           'html',
           'css',
           'javascript',
         ],
-        imageUrl: '/images/projects/web/healthy_food.png',
+        projectMiniatureUrl: '/images/projects/web/healthy-food/healthy_food_miniature.png',
+        mainImageStyle: {
+          marginTop: '-1800px',
+          marginLeft: '-550px',
+          width: '300%',
+        },
         projectUrl: 'https://healthy-food.eduardo-vazquez.com',
         cardAditionalImages: [
           '/images/architecture/project-01.jpg',
@@ -47,15 +58,20 @@ export const scenesData = [
         ],
       },
       {
-        id: 'webDevelopment-card3',
-        title:'this is a Title',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        id: 'webDevelopment-project3',
+        projectName:'this is a projectName',
+        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste facere veniam vero optio maiores vitae officia corrupti eveniet impedit est iusto sint dolorum, saepe illum neque cum quidem et!',
         technologies: [
           'html',
           'css',
           'javascript',
         ],
-        imageUrl: '/images/projects/web/healthy_food.png',
+        projectMiniatureUrl: '/images/projects/web/healthy-food/healthy_food_miniature.png',
+        mainImageStyle: {
+          marginTop: '-1800px',
+          marginLeft: '-550px',
+          width: '300%',
+        },
         projectUrl: 'https://healthy-food.eduardo-vazquez.com',
         cardAditionalImages: [
           '/images/architecture/project-01.jpg',
@@ -67,15 +83,20 @@ export const scenesData = [
         ],
       },
       {
-        id: 'webDevelopment-card4',
-        title:'this is a Title',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        id: 'webDevelopment-project4',
+        projectName:'this is a projectName',
+        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste facere veniam vero optio maiores vitae officia corrupti eveniet impedit est iusto sint dolorum, saepe illum neque cum quidem et!',
         technologies: [
           'html',
           'css',
           'javascript',
         ],
-        imageUrl: '/images/projects/web/healthy_food.png',
+        projectMiniatureUrl: '/images/projects/web/healthy-food/healthy_food_miniature.png',
+        mainImageStyle: {
+          marginTop: '-1800px',
+          marginLeft: '-550px',
+          width: '300%',
+        },
         projectUrl: 'https://healthy-food.eduardo-vazquez.com',
         cardAditionalImages: [
           '/images/architecture/project-01.jpg',
@@ -96,15 +117,15 @@ export const scenesData = [
     z: -3500,
     projects: [
       {
-        id: 'codeHub-card1',
-        title:'this is a Title',
+        id: 'codeHub-project1',
+        projectName:'this is a projectName',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         technologies: [
           'html',
           'css',
           'javascript',
         ],
-        imageUrl: '/images/architecture/project-01.jpg',
+        projectMiniatureUrl: '/images/architecture/project-01.jpg',
         cardAditionalImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',
@@ -115,15 +136,15 @@ export const scenesData = [
         ],
       },
       {
-        id: 'codeHub-card2',
-        title:'this is a Title',
+        id: 'codeHub-project2',
+        projectName:'this is a projectName',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         technologies: [
           'html',
           'css',
           'javascript',
         ],
-        imageUrl: '/images/architecture/project-01.jpg',
+        projectMiniatureUrl: '/images/architecture/project-01.jpg',
         cardAditionalImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',
@@ -134,15 +155,15 @@ export const scenesData = [
         ],
       },
       {
-        id: 'codeHub-card3',
-        title:'this is a Title',
+        id: 'codeHub-project3',
+        projectName:'this is a projectName',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         technologies: [
           'html',
           'css',
           'javascript',
         ],
-        imageUrl: '/images/architecture/project-01.jpg',
+        projectMiniatureUrl: '/images/architecture/project-01.jpg',
         cardAditionalImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',
@@ -153,15 +174,15 @@ export const scenesData = [
         ],
       },
       {
-        id: 'codeHub-card4',
-        title:'this is a Title',
+        id: 'codeHub-project4',
+        projectName:'this is a projectName',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         technologies: [
           'html',
           'css',
           'javascript',
         ],
-        imageUrl: '/images/architecture/project-01.jpg',
+        projectMiniatureUrl: '/images/architecture/project-01.jpg',
         cardAditionalImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',
@@ -181,15 +202,15 @@ export const scenesData = [
     z: -4000,
     projects: [
       {
-        id: 'vizualization3d-card1',
-        title:'this is a Title',
+        id: 'vizualization3d-project1',
+        projectName:'this is a projectName',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         technologies: [
           'html',
           'css',
           'javascript',
         ],
-        imageUrl: '/images/architecture/project-01.jpg',
+        projectMiniatureUrl: '/images/architecture/project-01.jpg',
         cardAditionalImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',
@@ -200,15 +221,15 @@ export const scenesData = [
         ],
       },
       {
-        id: 'vizualization3d-card2',
-        title:'this is a Title',
+        id: 'vizualization3d-project2',
+        projectName:'this is a projectName',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         technologies: [
           'html',
           'css',
           'javascript',
         ],
-        imageUrl: '/images/architecture/project-01.jpg',
+        projectMiniatureUrl: '/images/architecture/project-01.jpg',
         cardAditionalImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',
@@ -219,15 +240,15 @@ export const scenesData = [
         ],
       },
       {
-        id: 'vizualization3d-card3',
-        title:'this is a Title',
+        id: 'vizualization3d-project3',
+        projectName:'this is a projectName',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         technologies: [
           'html',
           'css',
           'javascript',
         ],
-        imageUrl: '/images/architecture/project-01.jpg',
+        projectMiniatureUrl: '/images/architecture/project-01.jpg',
         cardAditionalImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',
@@ -238,15 +259,15 @@ export const scenesData = [
         ],
       },
       {
-        id: 'vizualization3d-card4',
-        title:'this is a Title',
+        id: 'vizualization3d-project4',
+        projectName:'this is a projectName',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         technologies: [
           'html',
           'css',
           'javascript',
         ],
-        imageUrl: '/images/architecture/project-01.jpg',
+        projectMiniatureUrl: '/images/architecture/project-01.jpg',
         cardAditionalImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',
@@ -266,15 +287,15 @@ export const scenesData = [
     z: -4500,
     projects: [
       {
-        id: 'architecture-card1',
-        title:'this is a Title',
+        id: 'architecture-project1',
+        projectName:'this is a projectName',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         technologies: [
           'html',
           'css',
           'javascript',
         ],
-        imageUrl: '/images/architecture/project-01.jpg',
+        projectMiniatureUrl: '/images/architecture/project-01.jpg',
         cardAditionalImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',
@@ -285,15 +306,15 @@ export const scenesData = [
         ],
       },
       {
-        id: 'architecture-card2',
-        title:'this is a Title',
+        id: 'architecture-project2',
+        projectName:'this is a projectName',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         technologies: [
           'html',
           'css',
           'javascript',
         ],
-        imageUrl: '/images/architecture/project-01.jpg',
+        projectMiniatureUrl: '/images/architecture/project-01.jpg',
         cardAditionalImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',
@@ -304,15 +325,15 @@ export const scenesData = [
         ],
       },
       {
-        id: 'architecture-card3',
-        title:'this is a Title',
+        id: 'architecture-project3',
+        projectName:'this is a projectName',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         technologies: [
           'html',
           'css',
           'javascript',
         ],
-        imageUrl: '/images/architecture/project-01.jpg',
+        projectMiniatureUrl: '/images/architecture/project-01.jpg',
         cardAditionalImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',
@@ -323,15 +344,15 @@ export const scenesData = [
         ],
       },
       {
-        id: 'architecture-card4',
-        title:'this is a Title',
+        id: 'architecture-project4',
+        projectName:'this is a projectName',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         technologies: [
           'html',
           'css',
           'javascript',
         ],
-        imageUrl: '/images/architecture/project-01.jpg',
+        projectMiniatureUrl: '/images/architecture/project-01.jpg',
         cardAditionalImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',
