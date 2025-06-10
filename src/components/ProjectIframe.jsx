@@ -11,7 +11,10 @@ export default function ProjectIframe(props){
         frameborder="0"
         id={`${props.projectData.id}-iframe`}
         onLoad={() => {
-          console.log(document.querySelector(`#${props.projectData.id}-iframe`).contentDocument.body.scrollHeight)
+          setTimeout(() => {
+            console.log(document.querySelector(`#${props.projectData.id}-iframe`).contentDocument.body.scrollHeight)
+          }, 2000)
+          
         }}
       >
       </iframe>
