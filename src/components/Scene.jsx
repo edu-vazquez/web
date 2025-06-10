@@ -58,11 +58,11 @@ function EmptyProject (props){
   style.transform = `translate3d(${project3dPosition.current.x}%, ${project3dPosition.current.y}%, ${project3dPosition.current.z}px)`
 
   return (
-    <div 
-      className={'project project--empty'}
+    <section 
+      className={'project--empty'}
       style={style}
     >
-    </div>
+    </section>
   )
 }
 

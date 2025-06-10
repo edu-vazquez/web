@@ -121,4 +121,106 @@
   }
 
 
+
+=====================24-06-09=====================
+.module-web {
+  position: relative; /* Necesario para que el ::before se posicione correctamente */
+  width: 100vw;
+  height: 100dvh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: rgba(0, 0, 0, 0.365);
+  border: 3px solid blue;
+  
+
+  & .module-web-content-container{
+    position: relative;
+    width: 100vw;
+    height: 100dvh;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    & .module-web-info{
+      width: 40vw;
+      height: 100dvh;
+      left: 5vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      row-gap: 2rem;
+      font-family: "Ubuntu Mono", monospace;
+      position: absolute;
+      padding: 2rem;
+      color: white;
+
+      & h3{
+        width: 100%;
+        font-size: 1rem;
+        font-weight: 100;
+        text-transform: uppercase;
+      }
+      & p {
+        width: 100%;
+        line-height: 2rem;
+      }
+
+      & ul{
+        display: flex;
+        width: 100%;
+
+        & li{
+          margin-right: .2rem;
+        }
+      }
+
+    }
+  }
+  & .module-web-iframe-wrapper{
+    width: 90vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 5vw;
+    top: 0;
+
+    
+  }
+
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: transparent;
+    z-index: -1;
+    transition: background-color var(--container3dMovementTimeTransition) ease;
+  }
+  /* BOTONES */
+  & button{
+    width: 5vw;
+    background: none;
+    border-style: none;
+    color: white;
+    font-family: "Syne Mono", monospace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & p{
+      font-size: 1rem;
+      margin-top: 5px;
+    }
+
+  }
+}
+.module-web-active {
+  &::before{
+    background-color: var(--project-background-color);
+  }
+
+}
         

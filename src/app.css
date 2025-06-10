@@ -168,32 +168,6 @@ ul{
             align-items: center;
             align-content: center;
             pointer-events: none;
-            
-            & .project{
-                width: var(--app-width);
-                height: var(--app-height);
-                transform-style: preserve-3d;
-                pointer-events: auto;
-                position: absolute;
-                cursor: pointer;
-                background-color: rgba(255, 255, 255, 0.4);
-
-                & .project--content{
-                    width: 100vw;
-                    height: var(--app-height); 
-                    margin: 0 auto; 
-                    overflow: hidden;
-                    animation: appear var(--container3dMovementTimeTransition) ease;
-                }
-                & .project--content.fade-out {
-                    animation: disappear calc(var(--container3dMovementTimeTransition) / 2) ease forwards;
-                }
-            }
-
-            & .project.project--empty{
-                cursor: none;
-                pointer-events: none;
-            }
         }
     }
 }
@@ -313,16 +287,3 @@ ul{
     }
 }
 
-@keyframes appear {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes disappear {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}

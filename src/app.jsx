@@ -83,15 +83,8 @@ export function App() {
   }
 
   function activateProjectById(cardId) {
-    if (activeSceneIdRef.current && !cardId.includes("random")){
+    if (activeSceneIdRef.current){
       hideMenu()
-
-      document.querySelector(`#menu-main`).classList.add(`menu-main-hide`)
-
-      document.querySelector(`#title`).classList.add(`title-hide`)
-
-      document.querySelector(`#menu-about`).classList.add(`menu-about-hidden`)
-
       activeProjectIdRef.current = cardId
     }
   }
@@ -113,6 +106,12 @@ export function App() {
   function hideMenu(){
     const menuItemsArr = [...document.querySelectorAll('.menu-scenes > .menu-item')]
     menuItemsArr.forEach((el, index ) => {setTimeout(() => el.classList.add('menu-item-about'), 100*index)});
+  
+    document.querySelector(`#menu-main`).classList.add(`menu-main-hide`)
+
+    document.querySelector(`#title`).classList.add(`title-hide`)
+
+    document.querySelector(`#menu-about`).classList.add(`menu-about-hidden`)
   }
   function showMenu(){
     const menuItemsArr = [...document.querySelectorAll('.menu-scenes > .menu-item')]
