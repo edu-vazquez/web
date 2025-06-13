@@ -12,11 +12,10 @@ export default function Menu(){
 
     if (btnAbout.textContent === 'About') {
       btnAbout.textContent = 'Back'
-      canvas.updateContainer3dPosition(0, window.innerHeight*-11, 0)
+      canvas.updateContainer3dPosition(0, window.innerHeight*-15, 0)
       canvas.moveContainer3d();
       about.classList.add('about-active')
       title.classList.add(`title-about`)
-
       canvas.hideMenu()
     } else {
       btnAbout.textContent = 'About'

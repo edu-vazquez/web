@@ -2,9 +2,12 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { CanvasContext } from "../app";
 import ProjectIframe from "./ProjectIframe";
 import './Project.css'
+import ProjectMenu from "./ProjectMenu";
+import ProjectInfo from "./ProjectInfo";
 
 export default function Project (props){
   const canvas = useContext(CanvasContext)
+  const [projectStatus, setProjectStatus] = useState('')
   const maxX = 20
   const maxY = 20
   const project3dPosition = useRef({
@@ -21,16 +24,22 @@ export default function Project (props){
     canvas.moveContainer3d() // usa todo pixeles
   }
 
-  const [isProjectActive, setIsProjectActive] = useState(false)
-
-
   const style = {
     transform: `translate3d(${project3dPosition.current.x}%, ${project3dPosition.current.y}%, ${project3dPosition.current.z}px)`,
-    backgroundImage:
-      props.scene.id === canvas.activeSceneIdState && !isProjectActive
-        ? `url(${props.projectData.projectMiniatureUrl})`
+    pointerEvents:
+      projectStatus === 'miniature'
+        ? `auto`
         : "none",
   };
+
+  useEffect(() => {
+    if (props.scene.id === canvas.activeSceneIdState){
+      setProjectStatus('miniature')
+    } else {
+
+      setProjectStatus('')
+    }
+  }, [canvas.activeSceneIdState])
 
   return (
     <article 
@@ -40,11 +49,35 @@ export default function Project (props){
       onClick={() => {
         moveToProject()
         canvas.activateProjectById(props.projectData.id)
-        setIsProjectActive(true)
+        setProjectStatus('start')
       }}
     >
       {
-        isProjectActive && <ProjectIframe projectData={props.projectData} />
+        projectStatus === 'miniature' && (
+          <div 
+            className="project-miniature" 
+            style={{backgroundImage: `url(${props.projectData.projectMiniatureUrl})`}} 
+          >
+          </div>
+        )
+      }
+      {
+        (projectStatus === 'start' || projectStatus === 'info') && 
+          <>
+            <ProjectMenu 
+              projectData={props.projectData} 
+              setProjectStatus={setProjectStatus} 
+              projectStatus={projectStatus}  
+            />
+            <ProjectInfo 
+              projectData={props.projectData}  
+              projectStatus={projectStatus}  
+            />
+            <ProjectIframe 
+              projectData={props.projectData} 
+              projectStatus={projectStatus} 
+            />
+          </>
       }
       
     </article>

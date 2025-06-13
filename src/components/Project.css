@@ -1,6 +1,4 @@
-:root {
-    --project-background-color: black;
-}
+
 .project{
   width: var(--app-width);
   height: var(--app-height);
@@ -8,50 +6,48 @@
   pointer-events: auto;
   position: absolute;
   cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.4);
-
-  & .project-content{
-    width: 80vw;
-    height: var(--app-height);
-    position: absolute;
-    right: 10vw;
-    overflow: hidden;
-
-    animation: appear var(--container3dMovementTimeTransition) ease;
-
-    & iframe{
-      width: 100%;
-      height:  100%;
-      background-color: white;
-
-      transition: opacity var(--container3dMovementTimeTransition) ease;
-      overflow: scroll;
-    }
-    & iframe.iframe-visible{
-      opacity: 1;
-    }
-  }
+  background-color: white;
 
   & .project--content.fade-out {
       animation: disappear calc(var(--container3dMovementTimeTransition) / 2) ease forwards;
   }
 }
 
-& .project.project--empty{
-    cursor: none;
+.project .project-menu{
+  position: absolute;
+  width: var(--app-width);
+  height: var(--app-height);
+  display: flex;
+  justify-content: space-between;
+
+  & .project-menu-container-btn{
+    width: 5vw;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
     pointer-events: none;
-}
-          
-@keyframes appear {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
+
+    & button{
+      border-style: none;
+      background: none;
+      color:var(--font-color);
+      margin-top: .5rem;
+      pointer-events: auto;
+      cursor: pointer;
+      font-weight: 300;
+      letter-spacing: 2px;
+    }
+
   }
 }
 
-@keyframes disappear {
-  from { opacity: 1; }
-  to { opacity: 0; }
+& .project--empty{
+    cursor: none;
+    pointer-events: none;
+}
+
+.project-miniature{
+  width: var(--app-width);
+  height: var(--app-height);
+  animation: appear var(--container3dMovementTimeTransition) ease;
 }

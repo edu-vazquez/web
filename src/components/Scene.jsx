@@ -59,7 +59,7 @@ function EmptyProject (props){
 
   return (
     <section 
-      className={'project--empty'}
+      className={'project project--empty'}
       style={style}
     >
     </section>

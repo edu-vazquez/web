@@ -1,0 +1,40 @@
+.project .project-iframe-container{
+  height: var(--app-height);
+  position: absolute;
+  right: 5vw;
+  transition: width var(--container3dMovementTimeTransition) ease;
+
+  animation: appear var(--container3dMovementTimeTransition) ease;
+
+  & iframe{
+    width: 100%;
+    height: 100dvh;
+    background-color: white;
+    overflow: auto;
+    pointer-events: auto ;
+
+    transition: opacity var(--container3dMovementTimeTransition) ease;
+  }
+}
+
+.project-iframe-start{
+  width: 90vw;
+}
+.project-iframe-info{
+  width: 50vw;
+}
+
+          
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes disappear {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}

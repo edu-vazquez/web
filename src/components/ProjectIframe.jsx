@@ -1,21 +1,27 @@
-import { useEffect, useRef } from "react";
-
+import { useEffect, useState } from 'react'
+import './ProjectIframe.css'
 export default function ProjectIframe(props){
+  console.log(props.projectStatus)
+
+  const [iframeClasses, setIframeClasses] = useState('');
+
+  useEffect(() => {
+    if (props.projectStatus === 'start'){
+      setIframeClasses('project-iframe-container project-iframe-start')
+    } else if (props.projectStatus === 'info') {
+      setIframeClasses('project-iframe-container project-iframe-info')
+    }
+  }, [props.projectStatus])
+
 
   return (
     <div
-      className='project-content'
+      className={iframeClasses}
     >
       <iframe 
         src={props.projectData.projectUrl} 
         frameborder="0"
         id={`${props.projectData.id}-iframe`}
-        onLoad={() => {
-          setTimeout(() => {
-            console.log(document.querySelector(`#${props.projectData.id}-iframe`).contentDocument.body.scrollHeight)
-          }, 2000)
-          
-        }}
       >
       </iframe>
     </div>

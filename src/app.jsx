@@ -83,6 +83,7 @@ export function App() {
   }
 
   function activateProjectById(cardId) {
+    document.querySelector(`#menu-about`).classList.add(`menu-about-hidden`)
     if (activeSceneIdRef.current){
       hideMenu()
       activeProjectIdRef.current = cardId
@@ -110,8 +111,6 @@ export function App() {
     document.querySelector(`#menu-main`).classList.add(`menu-main-hide`)
 
     document.querySelector(`#title`).classList.add(`title-hide`)
-
-    document.querySelector(`#menu-about`).classList.add(`menu-about-hidden`)
   }
   function showMenu(){
     const menuItemsArr = [...document.querySelectorAll('.menu-scenes > .menu-item')]
