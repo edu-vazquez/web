@@ -1,6 +1,6 @@
 import "./ProjectMenu.css"
-import { CanvasContext } from '../app';
-import { useContext } from 'preact/hooks';
+import { CanvasContext } from "../app";
+import { useContext } from "preact/hooks";
 
 export default function ProjectMenu(props){
   const canvas = useContext(CanvasContext);
@@ -8,18 +8,19 @@ export default function ProjectMenu(props){
   function handleInfoBtn(e){
     e.stopPropagation()
 
-    if (props.projectStatus === 'start'){
-      props.setProjectStatus('info')
-      document.querySelector('#project-menu-info-btn').textContent = 'info-'
-    } else if (props.projectStatus === 'info') {
-      props.setProjectStatus('start')
-      document.querySelector('#project-menu-info-btn').textContent = 'info+'
+    if (props.projectShowing === "show-page"){
+      document.querySelector("#project-menu-info-btn").textContent = "info-"
+      props.setProjectShowing("show-info")
+    } else if (props.projectShowing === "show-info") {
+      document.querySelector("#project-menu-info-btn").textContent = "info+"
+      props.setProjectShowing("show-page")
     }
+    console.log(props.projectShowing)
   }
 
   function handleCloseBtn(e){
     e.stopPropagation()
-    props.setProjectStatus('miniature')
+    props.setProjectStatus("miniature")
     canvas.activateSceneById(canvas.activeSceneIdState)
     canvas.showHeadline()
   }

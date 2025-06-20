@@ -12,6 +12,7 @@
   font-weight: 300;
   padding: 1rem;
   transition: right  var(--container3dMovementTimeTransition) ease-in-out;
+  color: black;
 
 
   & h3{

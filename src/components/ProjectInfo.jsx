@@ -3,9 +3,9 @@ import './ProjectInfo.css'
 export default function ProjectInfo(props){
   let classes = ''
 
-  if (props.projectStatus === 'start'){
+  if (props.projectShowing === 'show-page'){
     classes = "project-info project-info-start"
-  } else if (props.projectStatus === 'info') {
+  } else if (props.projectShowing === 'show-info') {
     classes = "project-info project-info-info"
   }
 

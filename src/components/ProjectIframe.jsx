@@ -5,12 +5,12 @@ export default function ProjectIframe(props){
   const [iframeClasses, setIframeClasses] = useState('');
 
   useEffect(() => {
-    if (props.projectStatus === 'start'){
+    if (props.projectShowing === 'show-page'){
       setIframeClasses('project-iframe-container project-iframe-start')
-    } else if (props.projectStatus === 'info') {
+    } else if (props.projectShowing === 'show-info') {
       setIframeClasses('project-iframe-container project-iframe-info')
     }
-  }, [props.projectStatus])
+  }, [props.projectShowing])
 
 
   return (

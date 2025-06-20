@@ -7,7 +7,8 @@ import ProjectInfo from "./ProjectInfo";
 
 export default function Project (props){
   const canvas = useContext(CanvasContext)
-  const projectRef = useRef(null)
+  const [projectStatus, setProjectStatus] = useState("miniature")
+  const [projectShowing, setProjectShowing] = useState("show-page")
   const maxX = 20
   const maxY = 20
   const project3dPosition = useRef({
@@ -38,15 +39,21 @@ export default function Project (props){
   if (canvas.activeSceneIdState === "ini") {
     miniatureClasses.current = "project-miniature miniature-hidden"
   } else if (canvas.activeSceneIdState === props.scene.id){ 
-    miniatureClasses.current = "project-miniature miniature-appear"
-    style.pointerEvents = canvas.activeProjectIdRef === props.projectData.id ? 'none' : 'auto'
+    if (projectStatus === "miniature"){
+      miniatureClasses.current = "project-miniature miniature-appear"
+      style.pointerEvents = canvas.activeProjectIdRef === props.projectData.id ? 'none' : 'auto'
+    } else if (projectStatus === "start") {
+      miniatureClasses.current = "project-miniature miniature-disappear"
+    } else {
+      miniatureClasses.current = "project-miniature miniature-hidden"
+    }
   } else if (canvas.activeSceneIdState !== props.scene.id){
     console.log("!==",miniatureClasses.current)
     if (miniatureClasses.current.includes("miniature-appear")){
       miniatureClasses.current = "project-miniature miniature-disappear"
     }
-   
   }
+   console.log("projectstatus: ", projectStatus)
 
   return (
     <article 
@@ -55,6 +62,7 @@ export default function Project (props){
       id={props.projectData.id}
       onClick={() => {
         moveToProject()
+        setProjectStatus("start")
         canvas.activateProjectById(props.projectData.id)
         canvas.hideHeadline()
       }}
@@ -66,20 +74,22 @@ export default function Project (props){
       </div>
       
       {
-        (canvas.activeProjectIdRef === props.projectData.id) && 
+        (projectStatus === "start") && 
           <>
             <ProjectMenu 
               projectData={props.projectData} 
-              setProjectStatus={setProjectStatus} 
               projectStatus={projectStatus}  
+              setProjectStatus={setProjectStatus} 
+              setProjectShowing={setProjectShowing}
+              projectShowing={projectShowing}
             />
             <ProjectInfo 
               projectData={props.projectData}  
-              projectStatus={projectStatus}  
+              projectShowing={projectShowing}
             />
             <ProjectIframe 
               projectData={props.projectData} 
-              projectStatus={projectStatus} 
+              projectShowing={projectShowing}
             />
           </>
       }
