@@ -4,7 +4,7 @@ import { scenesData } from "./assets/scenesData";
 
 import Menu from './components/Menu';
 import Canvas from './components/Canvas';
-import Title from './components/Title';
+import Headline from './components/Headline';
 import About from "./components/About";
 import './app.css'
 import { useMemo } from "react";
@@ -12,19 +12,21 @@ import { useMemo } from "react";
 export const CanvasContext = createContext();
 
 export function App() {
-  const activeSceneIdRef = useRef(null)
+  const activeSceneIdRef = useRef("")
+  const [activeSceneIdState, setActiveSceneState] = useState("ini")
   const activeProjectIdRef = useRef(null)
-  const [activeSceneIdState, setActiveSceneSate] = useState(null)
   const container3dPosition = useRef({ x: 0, y: 0, z: 0 });
   const container3dRef = useRef(null)
   const isMobile = useRef(false)
   let isZooming = false // flag que se usa para evitar múltiples ejecuciones de requestAnimationFrame al mismo tiempo.
+  
+  console.log(activeSceneIdState)
 
   /* ###### LIMITES PARA ZOOMS, X e Y */
   const zMax = useRef(6000)
   const zMin = useRef(0)
 
-  function updateContainer3dPosition(x, y ,z){
+ function updateContainer3dPosition(x, y ,z){
     container3dPosition.current.x = x
     container3dPosition.current.y = y
     container3dPosition.current.z = z
@@ -44,15 +46,13 @@ export function App() {
 
   function activateSceneById(id) {
     const sceneEnteringData = scenesData.find(scene => scene.id === id)
-    const title = document.querySelector(`#title`)
+    const headline = document.querySelector(`#headline`)
     const menu = document.querySelector(`#menu-${id}`)
-    setActiveSceneSate(id)
-  
+    setActiveSceneState(id)
+ 
     if (activeSceneIdRef.current){
       const menuLeaving = document.querySelector(`#menu-${activeSceneIdRef.current}`)
       menuLeaving.classList.remove(`menu-item-as-title`)
-
-      const sceneLeavingData = scenesData.find(scene => scene.id === activeSceneIdRef.current)
     }
     
     if (activeProjectIdRef.current){
@@ -67,7 +67,7 @@ export function App() {
 
     activeSceneIdRef.current = id;
     menu.classList.add(`menu-item-as-title`)
-    title.classList.add(`title-small`)
+    headline.classList.add(`headline-small`)
   };
 
   function goHome(){
@@ -77,9 +77,10 @@ export function App() {
       const menuLeaving = document.querySelector(`#menu-${activeSceneIdRef.current}`)
       menuLeaving.classList.remove(`menu-item-as-title`)
     }
-    document.querySelector(`#title`).classList.remove(`title-small`)
+    document.querySelector(`#headline`).classList.remove(`headline-small`)
     const menuItemsArr = [...document.querySelectorAll('.menu-scenes > .menu-item')]
     menuItemsArr.forEach((el, index ) => {setTimeout(() => el.classList.remove('menu-item-about'), 100*index)});
+    setActiveSceneState("home")
   }
 
   function activateProjectById(cardId) {
@@ -93,9 +94,9 @@ export function App() {
   function deactivateProjectById(cardId) {
     if (activeProjectIdRef.current){
       const card = document.querySelector(`#${cardId}`)
-      const title = document.querySelector(`#title`)
+      const headline = document.querySelector(`#headline`)
 
-      title.classList.remove(`title-hide`)
+      headline.classList.remove(`headline-hide`)
       card.classList.remove('project-active'); 
       activeProjectIdRef.current = null
       document.querySelector(`#menu-about`).classList.remove(`menu-about-hidden`)
@@ -106,15 +107,33 @@ export function App() {
 
   function hideMenu(){
     const menuItemsArr = [...document.querySelectorAll('.menu-scenes > .menu-item')]
-    menuItemsArr.forEach((el, index ) => {setTimeout(() => el.classList.add('menu-item-about'), 100*index)});
-  
-    document.querySelector(`#menu-main`).classList.add(`menu-main-hide`)
-
-    document.querySelector(`#title`).classList.add(`title-hide`)
+    const headline = document.querySelector("#headline")
+    const menu = document.querySelector("#menu-main")
+    
+    menuItemsArr.forEach(
+      (el, index ) => {
+        setTimeout(() => el.classList.add('menu-item-about'), 100*index)
+      });
   }
+
   function showMenu(){
     const menuItemsArr = [...document.querySelectorAll('.menu-scenes > .menu-item')]
-    menuItemsArr.forEach((el, index ) => {setTimeout(() => el.classList.remove('menu-item-about'), 100*index)});
+    const headline = document.querySelector("#headline")
+    menuItemsArr.forEach(
+      (el, index ) => {
+        setTimeout(() => el.classList.remove('menu-item-about'), 100*index)});
+  }
+
+  function toggleHeadlineAccent(){
+    document.querySelector("#headline").classList.toggle("headline-as-title")
+  }
+  
+  function hideHeadline(){
+    document.querySelector("#headline").classList.add("headline-hidden")
+  }
+  
+  function showHeadline(){
+    document.querySelector("#headline").classList.remove("headline-hidden")
   }
 
   function initAppDimentions() {
@@ -152,15 +171,19 @@ export function App() {
         activateSceneById,
         activateProjectById, 
         deactivateProjectById,
+        toggleHeadlineAccent,
         goHome,
         hideMenu,
         showMenu,
         zMax, 
-        zMin }}
+        zMin,
+        hideHeadline,
+        showHeadline,
+    }}
         >
       <Menu />
       <Canvas />
-      <Title />
+      <Headline />
       <About />
     </CanvasContext.Provider>
   )

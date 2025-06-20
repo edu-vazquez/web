@@ -1,3 +1,4 @@
+import "./Menu.css"
 import { CanvasContext } from '../app';
 import { useContext } from 'preact/hooks';
 
@@ -5,26 +6,31 @@ export default function Menu(){
   const canvas = useContext(CanvasContext);
   
 
-  function showAbout(){
+  function toggleAboutVisibility(){
     const btnAbout = document.querySelector('#menu-about')
-    const title = document.querySelector(`#title`)
     const about = document.querySelector('#about')
+    const movingDimension = window.innerHeight * 15
+
+    canvas.toggleHeadlineAccent()
 
     if (btnAbout.textContent === 'About') {
       btnAbout.textContent = 'Back'
-      canvas.updateContainer3dPosition(0, window.innerHeight*-15, 0)
+      canvas.updateContainer3dPosition(
+        canvas.container3dPosition.current.x, 
+        canvas.container3dPosition.current.y - movingDimension, 
+        canvas.container3dPosition.current.z
+      )
       canvas.moveContainer3d();
       about.classList.add('about-active')
-      title.classList.add(`title-about`)
       canvas.hideMenu()
     } else {
       btnAbout.textContent = 'About'
-      canvas.updateContainer3dPosition(0, 0, 0)
+      canvas.updateContainer3dPosition(
+        canvas.container3dPosition.current.x, 
+        canvas.container3dPosition.current.y + movingDimension, 
+        canvas.container3dPosition.current.z)
       canvas.moveContainer3d();
-      
       about.classList.remove('about-active')
-      title.classList.remove(`title-about`)
-
       canvas.showMenu()
     }
   }
@@ -36,10 +42,10 @@ export default function Menu(){
     >
       <ul 
         className="menu-scenes"
-        id='menu-titems'
+        id='menu-items'
       >
         <li 
-          className="menu-item" 
+          className="menu-item " 
           id='menu-webDevelopment' 
           onClick={() => canvas.activateSceneById('webDevelopment')}
         >
@@ -73,7 +79,7 @@ export default function Menu(){
         <li 
           className="menu-item" 
           id='menu-about'
-          onClick={showAbout}
+          onClick={toggleAboutVisibility}
         >
           About
         </li>

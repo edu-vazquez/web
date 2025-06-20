@@ -1,7 +1,8 @@
+import "./Headline.css"
 import { useContext } from "preact/hooks";
 import { CanvasContext } from "../app"
 
-export default function Title() {
+export default function Headline() {
   const canvas = useContext(CanvasContext)
 
   function handleClick(){
@@ -10,8 +11,8 @@ export default function Title() {
 
   return (
     <h1 
-      className={'title'} 
-      id={'title'}
+      className={'headline'} 
+      id={'headline'}
       onClick={handleClick}
     >
       Eduardo Vazquez

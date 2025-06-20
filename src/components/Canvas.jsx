@@ -1,3 +1,4 @@
+import "./Canvas.css"
 import Container3d from "./Container3d";
 import { CanvasContext } from '../app';
 import { useContext, useRef } from 'preact/hooks';

@@ -1,3 +1,4 @@
+import "./ProjectMenu.css"
 import { CanvasContext } from '../app';
 import { useContext } from 'preact/hooks';
 
@@ -20,6 +21,7 @@ export default function ProjectMenu(props){
     e.stopPropagation()
     props.setProjectStatus('miniature')
     canvas.activateSceneById(canvas.activeSceneIdState)
+    canvas.showHeadline()
   }
 
   return (

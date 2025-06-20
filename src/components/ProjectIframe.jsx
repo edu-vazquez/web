@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import './ProjectIframe.css'
 export default function ProjectIframe(props){
-  console.log(props.projectStatus)
 
   const [iframeClasses, setIframeClasses] = useState('');
 

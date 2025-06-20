@@ -1,8 +1,8 @@
+import "./Scene.css"
 import { useRef } from "react";
 import Project from "./Project";
 
 export default function Scene(props){
-  const sceneRef = useRef(null);
   const projectsPositions = [
     { x: -50, y: -50 },
     { x: -50, y: 50 },
@@ -19,7 +19,6 @@ export default function Scene(props){
       <section 
         className="scene"
         id={props.scene.id}
-        ref={sceneRef}
         style={{
           transform: `translate3d(${props.scene.x}%, ${props.scene.y}%, ${props.scene.z}px)`,
         }}
@@ -46,7 +45,7 @@ export default function Scene(props){
 
 function EmptyProject (props){
   const maxX = 200
-  const maxY = 200
+  const maxY = 300
   const minZ = 500
   const maxZ = 3000
   const style = {};

@@ -7,7 +7,7 @@ import ProjectInfo from "./ProjectInfo";
 
 export default function Project (props){
   const canvas = useContext(CanvasContext)
-  const [projectStatus, setProjectStatus] = useState('')
+  const projectRef = useRef(null)
   const maxX = 20
   const maxY = 20
   const project3dPosition = useRef({
@@ -24,22 +24,29 @@ export default function Project (props){
     canvas.moveContainer3d() // usa todo pixeles
   }
 
-  const style = {
-    transform: `translate3d(${project3dPosition.current.x}%, ${project3dPosition.current.y}%, ${project3dPosition.current.z}px)`,
-    pointerEvents:
-      projectStatus === 'miniature'
-        ? `auto`
-        : "none",
+  let style = {
+    transform: `
+      translate3d(
+        ${project3dPosition.current.x}%, 
+        ${project3dPosition.current.y}%,
+        ${project3dPosition.current.z}px)
+    `
   };
+  
+  const miniatureClasses = useRef("")
 
-  useEffect(() => {
-    if (props.scene.id === canvas.activeSceneIdState){
-      setProjectStatus('miniature')
-    } else {
-
-      setProjectStatus('')
+  if (canvas.activeSceneIdState === "ini") {
+    miniatureClasses.current = "project-miniature miniature-hidden"
+  } else if (canvas.activeSceneIdState === props.scene.id){ 
+    miniatureClasses.current = "project-miniature miniature-appear"
+    style.pointerEvents = canvas.activeProjectIdRef === props.projectData.id ? 'none' : 'auto'
+  } else if (canvas.activeSceneIdState !== props.scene.id){
+    console.log("!==",miniatureClasses.current)
+    if (miniatureClasses.current.includes("miniature-appear")){
+      miniatureClasses.current = "project-miniature miniature-disappear"
     }
-  }, [canvas.activeSceneIdState])
+   
+  }
 
   return (
     <article 
@@ -49,20 +56,17 @@ export default function Project (props){
       onClick={() => {
         moveToProject()
         canvas.activateProjectById(props.projectData.id)
-        setProjectStatus('start')
+        canvas.hideHeadline()
       }}
     >
+      <div 
+        className={miniatureClasses.current}
+        style={{backgroundImage: `url(${props.projectData.projectMiniatureUrl})`}} 
+      >
+      </div>
+      
       {
-        projectStatus === 'miniature' && (
-          <div 
-            className="project-miniature" 
-            style={{backgroundImage: `url(${props.projectData.projectMiniatureUrl})`}} 
-          >
-          </div>
-        )
-      }
-      {
-        (projectStatus === 'start' || projectStatus === 'info') && 
+        (canvas.activeProjectIdRef === props.projectData.id) && 
           <>
             <ProjectMenu 
               projectData={props.projectData} 
