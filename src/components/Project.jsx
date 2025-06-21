@@ -48,12 +48,10 @@ export default function Project (props){
       miniatureClasses.current = "project-miniature miniature-hidden"
     }
   } else if (canvas.activeSceneIdState !== props.scene.id){
-    console.log("!==",miniatureClasses.current)
     if (miniatureClasses.current.includes("miniature-appear")){
       miniatureClasses.current = "project-miniature miniature-disappear"
     }
   }
-   console.log("projectstatus: ", projectStatus)
 
   return (
     <article 

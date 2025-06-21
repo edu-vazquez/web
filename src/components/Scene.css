@@ -1,4 +1,4 @@
-& .scene{
+.scene{
   width: var(--app-width);
   height: var(--app-height);
   position: absolute;

@@ -6,7 +6,7 @@
 }
 
 :root {
-    --background: black;
+    --global-background: black;
     --project-background: rgba(255, 255, 255, 0.5);
     --font-color: rgb(243, 243, 243);
     --font-color-hover: rgb(142, 142, 142);
@@ -24,7 +24,7 @@ html, body {
     align-items: center;
     width: 100vw;
     font-family: "Poppins", sans-serif;
-    background: var(--background);
+    background: var(--global-background);
     user-select: none;
     color: var(--font-color);
     overflow: hidden;

@@ -1,26 +1,33 @@
 .project .project-menu{
   position: absolute;
-  width: var(--app-width);
-  height: var(--app-height);
+  width: 100vw;
+  height: 100dvh;
   display: flex;
   justify-content: space-between;
+}
 
-  & .project-menu-container-btn{
-    width: 5vw;
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-    pointer-events: none;
-    & button{
-      border-style: none;
-      background: none;
-      color: black;
-      margin-top: .5rem;
-      pointer-events: auto;
-      cursor: pointer;
-      font-weight: 300;
-      letter-spacing: 2px;
-    }
+.project-menu-container-btn{
+  width: 5vw;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  pointer-events: none;
 
+  & button{
+    border-style: none;
+    background: none;
+    color: black;
+    margin-top: .5rem;
+    pointer-events: auto;
+    cursor: pointer;
+    font-weight: 500;
+    letter-spacing: 2px;
+  }
+
+}
+
+@media (max-width: 780px){
+  .project-menu-container-btn{
+    width: 15vw;
   }
 }

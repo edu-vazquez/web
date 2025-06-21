@@ -15,7 +15,6 @@ export default function ProjectMenu(props){
       document.querySelector("#project-menu-info-btn").textContent = "info+"
       props.setProjectShowing("show-page")
     }
-    console.log(props.projectShowing)
   }
 
   function handleCloseBtn(e){

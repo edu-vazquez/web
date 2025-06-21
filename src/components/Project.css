@@ -6,15 +6,11 @@
   position: absolute;
   cursor: pointer;
   background-color: white;
-
-  & .project--content.fade-out {
-      animation: disappear calc(var(--container3dMovementTimeTransition) / 2) ease forwards;
-  }
 }
 
 .project--empty{
-    cursor: none;
-    pointer-events: none;
+  cursor: none;
+  pointer-events: none;
 }
 
 .project-miniature{

@@ -20,7 +20,6 @@ export function App() {
   const isMobile = useRef(false)
   let isZooming = false // flag que se usa para evitar múltiples ejecuciones de requestAnimationFrame al mismo tiempo.
   
-  console.log(activeSceneIdState)
 
   /* ###### LIMITES PARA ZOOMS, X e Y */
   const zMax = useRef(6000)

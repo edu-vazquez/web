@@ -4,9 +4,9 @@ export default function ProjectInfo(props){
   let classes = ''
 
   if (props.projectShowing === 'show-page'){
-    classes = "project-info project-info-start"
+    classes = "project-info project-info-show-page"
   } else if (props.projectShowing === 'show-info') {
-    classes = "project-info project-info-info"
+    classes = "project-info project-info-show-info"
   }
 
 

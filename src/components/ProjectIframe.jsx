@@ -2,20 +2,17 @@ import { useEffect, useState } from 'react'
 import './ProjectIframe.css'
 export default function ProjectIframe(props){
 
-  const [iframeClasses, setIframeClasses] = useState('');
+  let iframeContainerClass = ""
 
-  useEffect(() => {
-    if (props.projectShowing === 'show-page'){
-      setIframeClasses('project-iframe-container project-iframe-start')
-    } else if (props.projectShowing === 'show-info') {
-      setIframeClasses('project-iframe-container project-iframe-info')
-    }
-  }, [props.projectShowing])
-
+  if (props.projectShowing === 'show-page'){
+    iframeContainerClass = 'project-iframe-container project-iframe-show-page'
+  } else if (props.projectShowing === 'show-info') {
+    iframeContainerClass = 'project-iframe-container project-iframe-show-info'
+  }
 
   return (
     <div
-      className={iframeClasses}
+      className={iframeContainerClass}
     >
       <iframe 
         src={props.projectData.projectUrl} 
