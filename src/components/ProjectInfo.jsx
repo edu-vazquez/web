@@ -1,7 +1,7 @@
 import './ProjectInfo.css'
 
 export default function ProjectInfo(props){
-  let classes = ''
+  const classes = useRef("ini")
 
   if (props.projectShowing === 'show-page'){
     classes = "project-info project-info-show-page"
@@ -15,14 +15,17 @@ export default function ProjectInfo(props){
       className={classes}
       id={`${props.projectData.id}-info`}
       >
-      <a 
-        href={props.projectData.projectUrl} 
-        target="_blank"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <h3>{props.projectData.projectName} <i class="fa-solid fa-up-right-from-square"></i></h3>
+      <h3>
+        {props.projectData.projectName} 
+        <a 
+          href={props.projectData.projectUrl} 
+          target="_blank"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <i class="fa-solid fa-up-right-from-square"></i>
+        </a>
+      </h3>
         
-      </a>
       <p>{props.projectData.description}</p>
       <ul>
         {

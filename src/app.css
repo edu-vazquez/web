@@ -7,8 +7,9 @@
 
 :root {
     --global-background: black;
-    --project-background: rgba(255, 255, 255, 0.5);
-    --font-color: rgb(243, 243, 243);
+    --project-background: rgb(235, 235, 235);
+    --font-color-canvas: rgb(255, 255, 255);
+    --font-color-project: black;
     --font-color-hover: rgb(142, 142, 142);
     --app-height: 100vh;
     --app-width: 100vw;
@@ -26,7 +27,7 @@ html, body {
     font-family: "Poppins", sans-serif;
     background: var(--global-background);
     user-select: none;
-    color: var(--font-color);
+    color: var(--font-color-canvas);
     overflow: hidden;
 }
 
@@ -39,7 +40,7 @@ html, body, .canvas {
 }
 
 a{
-    color: var(--font-color);
+    color: var(--font-color-canvas);
     text-decoration: none;
 }
 ul{

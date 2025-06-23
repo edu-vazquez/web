@@ -45,7 +45,6 @@ iframe{
       right: 0;
       bottom: 0dvh;
       transition: 
-        width var(--container3dMovementTimeTransition) ease,
         bottom var(--container3dMovementTimeTransition) ease;
       animation: appear var(--container3dMovementTimeTransition) ease;
   }
@@ -63,7 +62,7 @@ iframe{
   }
   .project-iframe-show-info{
     width: 100vw;
-    bottom: -30dvh;
+    bottom: -35dvh;
   } 
 }
 
