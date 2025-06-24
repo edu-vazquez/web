@@ -7,7 +7,7 @@
 }
 
 .project-menu-container-btn{
-  width: 5vw;
+  width: fit-content;
   display: flex;
   justify-content: center;
   align-items: baseline;
@@ -17,17 +17,23 @@
     border-style: none;
     background: none;
     color: black;
-    margin-top: .5rem;
     pointer-events: auto;
     cursor: pointer;
     font-weight: 500;
+    font-size: 1rem;
     letter-spacing: 2px;
+    width: 5vw;
   }
-
 }
 
 @media (max-width: 780px){
   .project-menu-container-btn{
-    width: 15vw;
+    width: 20vw;
+
+    & button{
+      width: 20vw;
+      height: 5dvh;
+      font-size: 1.1rem;
+    }
   }
 }
