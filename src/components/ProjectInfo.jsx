@@ -1,18 +1,19 @@
+import { useRef } from "preact/hooks";
 import './ProjectInfo.css'
 
 export default function ProjectInfo(props){
   const classes = useRef("ini")
 
   if (props.projectShowing === 'show-page'){
-    classes = "project-info project-info-show-page"
+    classes.current = "project-info project-info-show-page"
   } else if (props.projectShowing === 'show-info') {
-    classes = "project-info project-info-show-info"
+    classes.current = "project-info project-info-show-info"
   }
 
 
   return (
     <div 
-      className={classes}
+      className={classes.current}
       id={`${props.projectData.id}-info`}
       >
       <h3>
