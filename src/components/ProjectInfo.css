@@ -43,10 +43,10 @@
     animation: 1s moveToRight ease  both;
   }
   & > *:nth-child(2) {
-    animation-delay: .1s
+    animation-delay: .2s
   }
   & > *:nth-child(3) {
-    animation-delay: .2s
+    animation-delay: .4s
   }
 }
 .project-info.project-info-show-info{ 
@@ -54,10 +54,10 @@
     animation: 1s moveToLeft ease forwards;
   }
   & > *:nth-child(2) {
-    animation-delay: .1s
+    animation-delay: .2s
   }
   & > *:nth-child(3) {
-    animation-delay: .2s
+    animation-delay: .4s
   }
 }
 
@@ -82,10 +82,10 @@
       animation: 1s moveDown ease  both;
     }
     & > *:nth-child(1) {
-      animation-delay: .2s
+      animation-delay: .4s
     }
     & > *:nth-child(2) {
-      animation-delay: .1s
+      animation-delay: .2s
     }
     & > *:nth-child(3) {
       animation-delay: .0s
@@ -96,10 +96,10 @@
       animation: 1s moveUp ease  both;
     }
     & > *:nth-child(2) {
-      animation-delay: .1s
+      animation-delay: .2s
     }
     & > *:nth-child(3) {
-      animation-delay: .2s
+      animation-delay: .4s
     }
   }
 }

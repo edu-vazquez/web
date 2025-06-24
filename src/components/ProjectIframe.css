@@ -40,10 +40,10 @@ iframe{
 
 @media (max-width: 780px){
   .project-iframe-container{
-      height: 95dvh;
+      height: 93dvh;
       width: 100dvh;
       right: 0;
-      bottom: 0dvh;
+      bottom: 0;
       transition: 
         bottom var(--container3dMovementTimeTransition) ease;
       animation: appear var(--container3dMovementTimeTransition) ease;
@@ -62,7 +62,7 @@ iframe{
   }
   .project-iframe-show-info{
     width: 100vw;
-    bottom: -35dvh;
+    bottom: -45dvh;
   } 
 }
 
