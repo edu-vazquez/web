@@ -45,9 +45,9 @@ export default function Scene(props){
 
 function EmptyProject (props){
   const maxX = 200
-  const maxY = 300
-  const minZ = 500
-  const maxZ = 3000
+  const maxY = 50
+  const minZ = 1000
+  const maxZ = 5000
   const style = {};
   const project3dPosition = useRef({
     x: `${props.position.x + (Math.random() * 2 - 1) * maxX}`, 

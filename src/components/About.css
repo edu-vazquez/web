@@ -17,8 +17,26 @@
       justify-content: center;
       gap: 30px;
     }
-    & i{
-        margin-left:1rem;
+    & .about-links{
+      width: 100%;
+      display: flex;
+      gap: 50px; 
+      & a{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        & i{
+         font-size: 3rem;
+        }
+        & span{
+          font-size: 1rem;
+          font-weight: 300;
+        }
+      }
+    }
+    & .email i{
+      margin-left: 10px;
     }
 }
 .about-active{
@@ -48,7 +66,7 @@
 }
 
 .selectable {
-    user-select:text;
+    user-select:text !important;
 }
 @media (max-width: 780px) {
   .about{
@@ -68,8 +86,17 @@
       justify-content: center;
       gap: 2dvh;
     }
-    & i{ 
-      margin-left:1rem;
+    & .about-links{
+      gap: 20px; 
+      & a{
+        & i{
+         font-size: 2rem;
+        }
+        & span{
+          font-size: .6rem;
+          font-weight: 300;
+        }
+      }
     }
-  }
+
 }

@@ -22,7 +22,7 @@ export const scenesData = [
           marginLeft: '-550px',
           width: '300%',
         },
-        projectUrl: 'https://healthy-food.eduardo-vazquez.com',
+        projectUrl: 'https://cv-it.eduardo-vazquez.com',
         cardAditionalImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',

@@ -19,7 +19,7 @@
     color: black;
     pointer-events: auto;
     cursor: pointer;
-    font-weight: 500;
+    font-weight: 300;
     font-size: 1rem;
     letter-spacing: 2px;
     width: 5vw;
@@ -33,7 +33,7 @@
     & button{
       width: 20vw;
       height: 5dvh;
-      font-size: 1.1rem;
+      font-size: .8rem;
     }
   }
 }

@@ -20,8 +20,6 @@
         transform-style: preserve-3d;
         transition: transform var(--container3dMovementTimeTransition) ease; 
         pointer-events: none;
-        touch-action: none;
-
     }
 }
 

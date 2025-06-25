@@ -35,8 +35,8 @@ button{
     font-family: "Poppins", sans-serif;
 }
 html, body, .canvas {
-    touch-action: none; 
-    overscroll-behavior: none; 
+    touch-action: auto; 
+    overscroll-behavior: auto; 
 }
 
 a{

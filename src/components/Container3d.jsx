@@ -78,7 +78,7 @@ export const Container3d = forwardRef((props, ref) => {
   }
 
   function zoomOutLayout(){
-    canvas.deactivateProjectById(canvas.activeProjectIdRef.current)
+    canvas.deactivaterojectById(canvas.activeProjectIdRef.current)
     if (canvas.activeSceneIdRef.current){
       const menu = document.querySelector(`#menu-${canvas.activeSceneIdRef.current}`)
       menu.classList.remove(`menu-item-as-title`)
@@ -91,24 +91,7 @@ export const Container3d = forwardRef((props, ref) => {
     canvas.showMenu()
   }
 
-    useEffect(() => {
-    body.addEventListener('pointerdown', handlePointerDown);
-    body.addEventListener('pointermove', handlePointerMove);
-    body.addEventListener('pointerup', handlePointerUp);
-
-    // Wheel zoom
-    body.addEventListener('wheel', zoomWithScroll, { passive: false });
-
-    return () => {
-
-      body.removeEventListener('pointerdown', handlePointerDown);
-      body.removeEventListener('pointermove', handlePointerMove);
-      body.removeEventListener('pointerup', handlePointerUp);
-
-      // wheel zoom
-      body.removeEventListener('wheel', zoomWithScroll);
-    };
-  }, []);
+ 
 
   return (
     <div className='container3d' id='container3d' ref={ref}>

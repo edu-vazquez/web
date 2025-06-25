@@ -24,7 +24,7 @@
     transform: scale(0.35) translateY(0);
 }
 .headline-as-title{
-    transform: scale(0.5) translateY(-150dvh);
+    transform: scale(0.525) translateY(-150dvh);
 }
 
 .headline-hidden{

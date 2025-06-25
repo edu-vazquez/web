@@ -223,4 +223,35 @@
   }
 
 }
-        
+       
+
+
+ESTO ESTABA EN CONTAINER Y LO ELIMINE PARA VER SI PUEDO HACER SCROLL EN EL MOVIL DEL iframe
+
+
+useEffect(() => {
+    body.addEventListener('pointerdown', handlePointerDown);
+    body.addEventListener('pointermove', handlePointerMove);
+    body.addEventListener('pointerup', handlePointerUp);
+
+    // Wheel zoom
+    body.addEventListener('wheel', zoomWithScroll, { passive: false });
+
+    return () => {
+
+      body.removeEventListener('pointerdown', handlePointerDown);
+      body.removeEventListener('pointermove', handlePointerMove);
+      body.removeEventListener('pointerup', handlePointerUp);
+
+      // wheel zoom
+      body.removeEventListener('wheel', zoomWithScroll);
+    };
+  }, []);
+
+
+      <iframe 
+        src={props.projectData.projectUrl} 
+        frameborder="0"
+        id={`${props.projectData.id}-iframe`}
+      >
+      </iframe>
