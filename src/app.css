@@ -13,7 +13,7 @@
     --font-color-hover: rgb(142, 142, 142);
     --app-height: 100vh;
     --app-width: 100vw;
-    --container3dMovementTimeTransition: 1s;
+    --time: 1s;
     
     /* MODIFICAR TIMETRANSITION EN PROJECT SETTIMEOUT */
 }

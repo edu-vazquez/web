@@ -1,25 +1,23 @@
 .canvas {
-    width: 100vw;
-    height: var(--app-height);
-    perspective: 500px;
-    transform-style: preserve-3d;
-    position: relative;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    perspective: 500px;
-
-    & .container3d {
-        width: var(--app-width);
-        height: var(--app-height);
-        position: relative;
-        top: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transform-style: preserve-3d;
-        transition: transform var(--container3dMovementTimeTransition) ease; 
-        pointer-events: none;
-    }
+  width: 100vw;
+  height: var(--app-height);
+  perspective: 500px;
+  transform-style: preserve-3d;
+  position: relative;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  perspective: 500px;
 }
-
+.container3d {
+  width: var(--app-width);
+  height: var(--app-height);
+  position: relative;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  transition: transform var(--time) ease; 
+  pointer-events: none;
+}

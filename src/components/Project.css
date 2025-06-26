@@ -29,11 +29,11 @@
 }
 
 .miniature-appear{
-  animation: appear var(--container3dMovementTimeTransition) ease;
+  animation: appear var(--time) ease;
 }
 
 .miniature-disappear{
-  animation: disappear var(--container3dMovementTimeTransition) forwards;
+  animation: disappear var(--time) forwards;
 }
 
 @keyframes disappear {

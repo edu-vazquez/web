@@ -3,11 +3,10 @@
   position: absolute;
   right: 5vw;
   bottom: 0;
-  transition: width var(--container3dMovementTimeTransition) ease;
-
-  animation: appear var(--container3dMovementTimeTransition) ease;
-
+  transition: width var(--time) ease;
+  animation: appear var(--time) ease;
 }
+
 iframe{
   width: 100%;
   height: 100%;
@@ -17,11 +16,31 @@ iframe{
 .project-iframe-show-page{
   width: 90vw;
 }
+
 .project-iframe-show-info{
   width: 50vw;
 }
 
-          
+@media (max-width: 780px){
+  .project-iframe-container{
+    height: 95dvh;
+    height: 93dvh;
+    width: 100dvh;
+    right: 0;
+    bottom: 0;
+    transition: bottom var(--time) ease;
+  }
+
+  .project-iframe-show-page{
+    width: 100vw;
+  }
+
+  .project-iframe-show-info{
+    width: 100vw;
+    bottom: -30dvh;
+  } 
+}
+
 @keyframes appear {
   from { opacity: 0;}
   to { opacity: 1; }
@@ -35,23 +54,3 @@ iframe{
     opacity: 0;
     visibility: hidden; }
 }
-
-@media (max-width: 780px){
-  .project-iframe-container{
-      height: 95dvh;
-      height: 93dvh;
-      width: 100dvh;
-      right: 0;
-      bottom: 0;
-      transition: 
-        bottom var(--container3dMovementTimeTransition) ease;
-  }
-  .project-iframe-show-page{
-    width: 100vw;
-  }
-  .project-iframe-show-info{
-    width: 100vw;
-    bottom: -45dvh;
-  } 
-}
-
