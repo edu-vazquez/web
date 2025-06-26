@@ -20,12 +20,9 @@
     margin-top: .5rem;
     pointer-events: auto;
     cursor: pointer;
-<<<<<<< HEAD
     font-weight: 300;
     font-size: 1rem;
-=======
     font-weight: 500;
->>>>>>> parent of c0950d3 (se arregla menuproject)
     letter-spacing: 2px;
   }
 
@@ -33,7 +30,6 @@
 
 @media (max-width: 780px){
   .project-menu-container-btn{
-<<<<<<< HEAD
     width: 20vw;
 
     & button{
@@ -41,8 +37,6 @@
       height: 5dvh;
       font-size: .8rem;
     }
-=======
     width: 15vw;
->>>>>>> parent of c0950d3 (se arregla menuproject)
   }
 }
