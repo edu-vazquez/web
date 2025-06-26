@@ -38,7 +38,12 @@ iframe{
 
 @media (max-width: 780px){
   .project-iframe-container{
+<<<<<<< HEAD
       height: 95dvh;
+=======
+      height: 93dvh;
+      width: 100dvh;
+>>>>>>> parent of c0950d3 (se arregla menuproject)
       right: 0;
       bottom: 0;
       transition: 
