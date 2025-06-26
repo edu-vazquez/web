@@ -1,6 +1,6 @@
 .scene{
-  width: 100vw;
-  height: 100dvh;
+  width: var(--app-width);
+  height: var(--app-height);
   position: absolute;
   transform-style: preserve-3d;
   display: flex;
