@@ -21,7 +21,6 @@
 html, body {
     height: var(--app-height);
     width: var(--app-width);
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,6 +34,10 @@ html, body {
 
 button{
     font-family: "Poppins", sans-serif;
+}
+html, body, .canvas {
+    touch-action: auto; 
+    overscroll-behavior: auto; 
 }
 
 a{
