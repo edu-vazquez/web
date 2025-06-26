@@ -7,37 +7,38 @@
     transition: top .8s ease; 
     padding-top: 35dvh;
 
-    & .about-container{
-      max-width: 50vw;
-      height: 100%;
-      margin: auto auto;
+}
+.email i{
+  margin-left: 10px;
+}
+.about-links{
+  width: 100%;
+  display: flex;
+  gap: 50px; 
+}
 
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 30px;
-    }
-    & .about-links{
-      width: 100%;
-      display: flex;
-      gap: 50px; 
-      & a{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        
-        & i{
-         font-size: 3rem;
-        }
-        & span{
-          font-size: 1rem;
-          font-weight: 300;
-        }
-      }
-    }
-    & .email i{
-      margin-left: 10px;
-    }
+.about-links a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.about-links i{
+  font-size: 3rem;
+}
+.about-liks span{
+  font-size: 1rem;
+  font-weight: 300;
+}
+.about-container{
+  max-width: 50vw;
+  height: 100%;
+  margin: auto auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
 }
 .about-active{
     top: 0;
@@ -64,10 +65,12 @@
     }
 }
 
-
 .selectable {
     user-select:text !important;
 }
+
+
+
 @media (max-width: 780px) {
   .about{
     font-size: 1rem;
@@ -87,16 +90,16 @@
       justify-content: center;
       gap: 2dvh;
   }
-  .about-links{
-      gap: 20px; 
-      & a{
-        & i{
-         font-size: 2rem;
-        }
-        & span{
-          font-size: .6rem;
-          font-weight: 300;
-        }
-      }
+  .about-links {
+    gap: 20px;
+  }
+
+  .about-links a i {
+    font-size: 2rem;
+  }
+
+  .about-links a span {
+    font-size: 0.6rem;
+    font-weight: 300;
   }
 }
