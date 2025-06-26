@@ -7,7 +7,6 @@ import Canvas from './components/Canvas';
 import Headline from './components/Headline';
 import About from "./components/About";
 import './app.css'
-import { useMemo } from "react";
 
 export const CanvasContext = createContext();
 
@@ -17,7 +16,6 @@ export function App() {
   const activeProjectIdRef = useRef(null)
   const container3dPosition = useRef({ x: 0, y: 0, z: 0 });
   const container3dRef = useRef(null)
-  const isMobile = useRef(false)
   let isZooming = false // flag que se usa para evitar múltiples ejecuciones de requestAnimationFrame al mismo tiempo.
   
 
@@ -164,7 +162,6 @@ export function App() {
         activeSceneIdRef, 
         activeSceneIdState,
         activeProjectIdRef,
-        isMobile,
         updateContainer3dPosition, 
         moveContainer3d, 
         activateSceneById,
