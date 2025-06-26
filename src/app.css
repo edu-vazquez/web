@@ -19,24 +19,22 @@
 }
 
 html, body {
-    height: 100dvh;
+    height: var(--app-height);
+    width: var(--app-width);
+
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    font-family: "Poppins", sans-serif;
-    background: var(--global-background);
     user-select: none;
-    color: var(--font-color-canvas);
     overflow: hidden;
+
+    background: var(--global-background);
+    color: var(--font-color-canvas);
+    font-family: "Poppins", sans-serif;
 }
 
 button{
     font-family: "Poppins", sans-serif;
-}
-html, body, .canvas {
-    touch-action: auto; 
-    overscroll-behavior: auto; 
 }
 
 a{
