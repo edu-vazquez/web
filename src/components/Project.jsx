@@ -4,6 +4,7 @@ import ProjectIframe from "./ProjectIframe";
 import './Project.css'
 import ProjectMenu from "./ProjectMenu";
 import ProjectInfo from "./ProjectInfo";
+import ProjectGallery from "./ProjectGallery";
 
 export default function Project (props){
   const canvas = useContext(CanvasContext)
@@ -85,10 +86,16 @@ export default function Project (props){
               projectData={props.projectData}  
               projectShowing={projectShowing}
             />
-            <ProjectIframe 
-              projectData={props.projectData} 
-              projectShowing={projectShowing}
-            />
+            { props.projectData.type === "gallery" ?
+              <ProjectGallery 
+                projectData={props.projectData} 
+                projectShowing={projectShowing}
+              /> :
+              <ProjectIframe 
+                projectData={props.projectData} 
+                projectShowing={projectShowing}
+              />
+            }
           </>
       }
       

@@ -14,8 +14,6 @@
     --app-height: 100vh;
     --app-width: 100vw;
     --time: 1s;
-    
-    /* MODIFICAR TIMETRANSITION EN PROJECT SETTIMEOUT */
 }
 
 html, body {

@@ -27,7 +27,7 @@ export function App() {
     container3dPosition.current.x = x
     container3dPosition.current.y = y
     container3dPosition.current.z = z
-  }
+  }  
 
   function moveContainer3d() {
     if (!isZooming) {

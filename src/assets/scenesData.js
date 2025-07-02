@@ -1,13 +1,13 @@
 export const scenesData = [
   {
     id: 'webDevelopment',
-    type: 'web',
     x: -250,
     y: -150,
     z: -3000,
     projects: [
       {
         id: 'webDevelopment-project1',
+        type: 'web',
         projectName:'Healthy Food',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste facere veniam vero optio maiores vitae officia corrupti eveniet impedit est iusto sint dolorum, saepe illum neque cum quidem et!',
     
@@ -23,7 +23,7 @@ export const scenesData = [
           width: '300%',
         },
         projectUrl: 'https://cv-it.eduardo-vazquez.com',
-        cardAditionalImages: [
+        projectImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',
           '/images/architecture/project-03.jpg',
@@ -34,6 +34,7 @@ export const scenesData = [
       },
       {
         id: 'webDevelopment-project2',
+        type: 'web',
         projectName:'this is a projectName',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste facere veniam vero optio maiores vitae officia corrupti eveniet impedit est iusto sint dolorum, saepe illum neque cum quidem et!',
         technologies: [
@@ -48,7 +49,7 @@ export const scenesData = [
           width: '300%',
         },
         projectUrl: 'https://healthy-food.eduardo-vazquez.com',
-        cardAditionalImages: [
+        projectImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',
           '/images/architecture/project-03.jpg',
@@ -59,6 +60,7 @@ export const scenesData = [
       },
       {
         id: 'webDevelopment-project3',
+        type: 'web',
         projectName:'this is a projectName',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste facere veniam vero optio maiores vitae officia corrupti eveniet impedit est iusto sint dolorum, saepe illum neque cum quidem et!',
         technologies: [
@@ -73,7 +75,7 @@ export const scenesData = [
           width: '300%',
         },
         projectUrl: 'https://healthy-food.eduardo-vazquez.com',
-        cardAditionalImages: [
+        projectImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',
           '/images/architecture/project-03.jpg',
@@ -84,6 +86,7 @@ export const scenesData = [
       },
       {
         id: 'webDevelopment-project4',
+        type: 'web',
         projectName:'this is a projectName',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste facere veniam vero optio maiores vitae officia corrupti eveniet impedit est iusto sint dolorum, saepe illum neque cum quidem et!',
         technologies: [
@@ -98,7 +101,7 @@ export const scenesData = [
           width: '300%',
         },
         projectUrl: 'https://healthy-food.eduardo-vazquez.com',
-        cardAditionalImages: [
+        projectImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',
           '/images/architecture/project-03.jpg',
@@ -111,13 +114,13 @@ export const scenesData = [
   },
   {
     id: 'codeHub',
-    type: 'code',
     x: 250,
     y: 150,
     z: -3500,
     projects: [
       {
         id: 'codeHub-project1',
+        type: 'code',
         projectName:'this is a projectName',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         technologies: [
@@ -126,7 +129,7 @@ export const scenesData = [
           'javascript',
         ],
         projectMiniatureUrl: '/images/architecture/project-01.jpg',
-        cardAditionalImages: [
+        projectImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',
           '/images/architecture/project-03.jpg',
@@ -137,6 +140,7 @@ export const scenesData = [
       },
       {
         id: 'codeHub-project2',
+        type: 'code',
         projectName:'this is a projectName',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         technologies: [
@@ -145,7 +149,7 @@ export const scenesData = [
           'javascript',
         ],
         projectMiniatureUrl: '/images/architecture/project-01.jpg',
-        cardAditionalImages: [
+        projectImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',
           '/images/architecture/project-03.jpg',
@@ -156,6 +160,7 @@ export const scenesData = [
       },
       {
         id: 'codeHub-project3',
+        type: 'code',
         projectName:'this is a projectName',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         technologies: [
@@ -164,7 +169,7 @@ export const scenesData = [
           'javascript',
         ],
         projectMiniatureUrl: '/images/architecture/project-01.jpg',
-        cardAditionalImages: [
+        projectImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',
           '/images/architecture/project-03.jpg',
@@ -175,6 +180,7 @@ export const scenesData = [
       },
       {
         id: 'codeHub-project4',
+        type: 'code',
         projectName:'this is a projectName',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         technologies: [
@@ -183,7 +189,7 @@ export const scenesData = [
           'javascript',
         ],
         projectMiniatureUrl: '/images/architecture/project-01.jpg',
-        cardAditionalImages: [
+        projectImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',
           '/images/architecture/project-03.jpg',
@@ -196,13 +202,13 @@ export const scenesData = [
   },
   {
     id: 'vizualization3d',
-    type: 'threeD',
     x: 250,
     y: -150,
     z: -4000,
     projects: [
       {
         id: 'vizualization3d-project1',
+        type: 'gallery',
         projectName:'this is a projectName',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         technologies: [
@@ -211,17 +217,23 @@ export const scenesData = [
           'javascript',
         ],
         projectMiniatureUrl: '/images/architecture/project-01.jpg',
-        cardAditionalImages: [
-          '/images/architecture/project-01.jpg',
-          '/images/architecture/project-02.jpg',
-          '/images/architecture/project-03.jpg',
-          '/images/architecture/project-04.jpg',
-          '/images/architecture/project-05.jpg',
-          '/images/architecture/project-06.jpg',
+        projectImages: [
+          './images/architecture/arq-ingenia-duarte-gonzalez/A.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/B.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/C.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/D.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/E.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/F.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/G.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/H.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/I.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/J.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/K.png',
         ],
       },
       {
         id: 'vizualization3d-project2',
+        type: 'gallery',
         projectName:'this is a projectName',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         technologies: [
@@ -230,17 +242,23 @@ export const scenesData = [
           'javascript',
         ],
         projectMiniatureUrl: '/images/architecture/project-01.jpg',
-        cardAditionalImages: [
-          '/images/architecture/project-01.jpg',
-          '/images/architecture/project-02.jpg',
-          '/images/architecture/project-03.jpg',
-          '/images/architecture/project-04.jpg',
-          '/images/architecture/project-05.jpg',
-          '/images/architecture/project-06.jpg',
+        projectImages: [
+          './images/architecture/arq-ingenia-duarte-gonzalez/A.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/B.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/C.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/D.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/E.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/F.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/G.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/H.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/I.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/J.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/K.png',
         ],
       },
       {
         id: 'vizualization3d-project3',
+        type: 'gallery',
         projectName:'this is a projectName',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         technologies: [
@@ -249,17 +267,23 @@ export const scenesData = [
           'javascript',
         ],
         projectMiniatureUrl: '/images/architecture/project-01.jpg',
-        cardAditionalImages: [
-          '/images/architecture/project-01.jpg',
-          '/images/architecture/project-02.jpg',
-          '/images/architecture/project-03.jpg',
-          '/images/architecture/project-04.jpg',
-          '/images/architecture/project-05.jpg',
-          '/images/architecture/project-06.jpg',
+        projectImages: [
+          './images/architecture/arq-ingenia-duarte-gonzalez/A.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/B.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/C.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/D.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/E.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/F.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/G.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/H.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/I.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/J.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/K.png',
         ],
       },
       {
         id: 'vizualization3d-project4',
+        type: 'gallery',
         projectName:'this is a projectName',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         technologies: [
@@ -268,26 +292,31 @@ export const scenesData = [
           'javascript',
         ],
         projectMiniatureUrl: '/images/architecture/project-01.jpg',
-        cardAditionalImages: [
-          '/images/architecture/project-01.jpg',
-          '/images/architecture/project-02.jpg',
-          '/images/architecture/project-03.jpg',
-          '/images/architecture/project-04.jpg',
-          '/images/architecture/project-05.jpg',
-          '/images/architecture/project-06.jpg',
+        projectImages: [
+          './images/architecture/arq-ingenia-duarte-gonzalez/A.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/B.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/C.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/D.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/E.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/F.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/G.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/H.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/I.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/J.png',
+          './images/architecture/arq-ingenia-duarte-gonzalez/K.png',
         ],
       }
     ],
   },
   {
     id: 'architecture',
-    type: 'architecture',
     x: -250,
     y: 150,
     z: -4500,
     projects: [
       {
         id: 'architecture-project1',
+        type: 'gallery',
         projectName:'this is a projectName',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         technologies: [
@@ -296,7 +325,7 @@ export const scenesData = [
           'javascript',
         ],
         projectMiniatureUrl: '/images/architecture/project-01.jpg',
-        cardAditionalImages: [
+        projectImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',
           '/images/architecture/project-03.jpg',
@@ -307,6 +336,7 @@ export const scenesData = [
       },
       {
         id: 'architecture-project2',
+        type: 'gallery',
         projectName:'this is a projectName',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         technologies: [
@@ -315,7 +345,7 @@ export const scenesData = [
           'javascript',
         ],
         projectMiniatureUrl: '/images/architecture/project-01.jpg',
-        cardAditionalImages: [
+        projectImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',
           '/images/architecture/project-03.jpg',
@@ -326,6 +356,7 @@ export const scenesData = [
       },
       {
         id: 'architecture-project3',
+        type: 'gallery',
         projectName:'this is a projectName',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         technologies: [
@@ -334,7 +365,7 @@ export const scenesData = [
           'javascript',
         ],
         projectMiniatureUrl: '/images/architecture/project-01.jpg',
-        cardAditionalImages: [
+        projectImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',
           '/images/architecture/project-03.jpg',
@@ -345,6 +376,7 @@ export const scenesData = [
       },
       {
         id: 'architecture-project4',
+        type: 'gallery',
         projectName:'this is a projectName',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         technologies: [
@@ -353,7 +385,7 @@ export const scenesData = [
           'javascript',
         ],
         projectMiniatureUrl: '/images/architecture/project-01.jpg',
-        cardAditionalImages: [
+        projectImages: [
           '/images/architecture/project-01.jpg',
           '/images/architecture/project-02.jpg',
           '/images/architecture/project-03.jpg',
