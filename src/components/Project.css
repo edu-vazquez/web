@@ -5,7 +5,7 @@
   pointer-events: auto;
   position: absolute;
   cursor: pointer;
-  background-color: var(--project-background);
+  background-color: white;
 }
 
 .project--empty{

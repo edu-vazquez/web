@@ -39,6 +39,9 @@
   margin-left: 1rem;
   color: black;
 }
+.project-info-ini{
+  opacity: 0;
+}
 
 .project-info-show-page > *:nth-child(1){
   animation: moveToRight 1s ease both;

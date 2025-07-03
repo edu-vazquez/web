@@ -9,7 +9,7 @@ import ProjectGallery from "./ProjectGallery";
 export default function Project (props){
   const canvas = useContext(CanvasContext)
   const [projectStatus, setProjectStatus] = useState("miniature")
-  const [projectShowing, setProjectShowing] = useState("show-page")
+  const [projectShowing, setProjectShowing] = useState("ini")
   const maxX = 20
   const maxY = 20
   const project3dPosition = useRef({

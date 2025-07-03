@@ -4,7 +4,10 @@ import './ProjectInfo.css'
 export default function ProjectInfo(props){
   const classes = useRef("ini")
 
-  if (props.projectShowing === 'show-page'){
+  console.log(props.projectShowing)
+  if( props.projectShowing === "ini"){
+    classes.current = "project-info project-info-ini"
+  } else if (props.projectShowing === 'show-page'){
     classes.current = "project-info project-info-show-page"
   } else if (props.projectShowing === 'show-info') {
     classes.current = "project-info project-info-show-info"

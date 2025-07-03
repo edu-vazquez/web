@@ -8,7 +8,7 @@ export default function ProjectMenu(props){
   function handleInfoBtn(e){
     e.stopPropagation()
 
-    if (props.projectShowing === "show-page"){
+    if (props.projectShowing === "show-page" || props.projectShowing === "ini"){
       document.querySelector("#project-menu-info-btn").textContent = "info-"
       props.setProjectShowing("show-info")
     } else if (props.projectShowing === "show-info") {

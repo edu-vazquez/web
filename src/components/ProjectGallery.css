@@ -34,7 +34,16 @@
 
 .gallery-img-container img{
   width: 25vw;
-  transform-style: preserve-3d; 
+  transform-style: preserve-3d;
+  opacity: 0;
+  filter: grayscale(100%);
+  transition: filter 1s ease;
+}
+.gallery-img-container img:hover{
+  filter: grayscale(0%);
+}
+.project-img-appear{
+  animation: projectImgAppear var(--time) ease forwards;
 }
 
 .project-gallery-show-gallery{
@@ -45,4 +54,9 @@
 .project-gallery-show-info{
   padding-left: 50vw;
   overflow: hidden; 
+}
+
+@keyframes projectImgAppear{
+  from { opacity: 0;}
+  to {opacity: 1;}
 }

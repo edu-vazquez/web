@@ -25,8 +25,6 @@
   font-size: 1rem;
   font-weight: 500;
   letter-spacing: 2px;
-  transform: translateY(-5dvh);
-  animation: projectMenuBtnAppear var(--time) ease var(--time) forwards;
 }
 
 @media (max-width: 780px){
@@ -40,13 +38,7 @@
   }
 }
 
-@keyframes projectMenuBtnAppear{
-  from { 
-    transform: translateY(-5dvh);
-    opacity: 0
-  }
-  to { 
-    transform: translateY(0dvh);
-    opacity:1
-  }
+@keyframes prjectMenuBtnAppear{
+  from { transform: translateY(-5dvh)};
+  to { transform: translateY(0)}
 }

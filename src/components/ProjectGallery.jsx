@@ -21,7 +21,7 @@ export default function ProjectGallery(props) {
   }
 
 
-  if (props.projectShowing === 'show-page'){
+  if (props.projectShowing === 'show-page' || props.projectShowing === "ini"){
     galleryClasses = 'project-gallery project-gallery-show-gallery'
   } else if (props.projectShowing === 'show-info') {
     document.querySelector('.gallery-img-container').scrollIntoView({
@@ -42,11 +42,15 @@ export default function ProjectGallery(props) {
                 src={item} 
                 alt="" 
                 key={`p-i-${index}`} 
+                id={`${props.projectData.id}-i-${index}`} 
+                onLoad={() => {
+                  document.querySelector(`#${props.projectData.id}-i-${index}`).classList.add("project-img-appear")
+                }}
                 style={{transform : `translate3d(
                         ${image3dPos.current[index].x},
                         ${image3dPos.current[index].y}px,
                         ${image3dPos.current[index].z}px)`
-                      }}
+                }}
               />
             )
           })
