@@ -1,12 +1,14 @@
 .project-gallery{
+  width: 100vw;
   position: absolute;
   right: 0vw;
   height: 95dvh;
   top: 5dvh;
+  pointer-events: auto;
+  cursor: auto;
   transition:
     padding-left 1s ease,
     width 1s ease;
-  width: 100vw;
     
   transform-style: preserve-3d; 
   perspective: 100px;

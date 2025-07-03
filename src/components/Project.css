@@ -2,9 +2,9 @@
   width: var(--app-width);
   height: var(--app-height);
   transform-style: preserve-3d;
-  pointer-events: auto;
   position: absolute;
-  cursor: pointer;
+  cursor: none;
+  pointer-events: none;
   background-color: white;
 }
 
@@ -22,6 +22,8 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .miniature-hidden{
