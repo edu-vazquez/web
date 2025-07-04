@@ -28,20 +28,23 @@
   height: 100%;
 
   display: flex;
-  justify-content: flex-start;
   align-items: center;
-  gap: 10px;
   transform-style: preserve-3d; 
 }
 
-.gallery-img-container img{
+.gallery-img{
   width: 25vw;
   transform-style: preserve-3d;
   opacity: 0;
   filter: grayscale(100%);
-  transition: filter 1s ease;
+  transition: 
+    filter 1s ease,
+    top 1s ease,
+    left 1s ease,
+    transform 1s ease;
+  cursor: zoom-in;
 }
-.gallery-img-container img:hover{
+.gallery-img:hover{
   filter: grayscale(0%);
 }
 .project-img-appear{
@@ -62,3 +65,4 @@
   from { opacity: 0;}
   to {opacity: 1;}
 }
+

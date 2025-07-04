@@ -5,6 +5,7 @@
   display: flex;
   justify-content: space-between;
   color: var(--font-color-project);
+  transition: margin-top 1s ease;
 }
 
 .project-menu-container-btn{

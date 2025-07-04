@@ -68,7 +68,8 @@ export default function Project (props){
     >
       <div 
         className={miniatureClasses.current}
-        style={{backgroundImage: `url(${props.projectData.projectMiniatureUrl})`}} 
+        style={{
+          backgroundImage: `url(${props.projectData.projectMiniatureUrl})`}} 
       >
       </div>
       
